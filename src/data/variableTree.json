@@ -1,0 +1,5549 @@
+[
+    {
+      "id": 10000,
+      "text": "Atmosphere",
+      "children": [
+        {
+          "id": 39,
+          "text": "Atmospheric density",
+          "children": []
+        },
+        {
+          "id": 12257,
+          "text": "Bioaerosol",
+          "children": [
+            {
+              "id": 12295,
+              "text": "Fungi",
+              "children": [
+                {
+                  "id": 12297,
+                  "text": "Capnodiales",
+                  "children": [
+                    {
+                      "id": 12363,
+                      "text": "Cladosporium",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12296,
+                  "text": "Pleosporales",
+                  "children": [
+                    {
+                      "id": 12362,
+                      "text": "Alternaria",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 12258,
+              "text": "Pollen",
+              "children": [
+                {
+                  "id": 12276,
+                  "text": "Adoxaceae",
+                  "children": [
+                    {
+                      "id": 12339,
+                      "text": "Sambucus",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12292,
+                  "text": "Altingiaceae",
+                  "children": [
+                    {
+                      "id": 12359,
+                      "text": "Liquidambar",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12266,
+                  "text": "Amaranthaceae",
+                  "children": [
+                    {
+                      "id": 12320,
+                      "text": "Chenopodium",
+                      "children": []
+                    },
+                    {
+                      "id": 12319,
+                      "text": "Total Amaranthaceae",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12282,
+                  "text": "Aquifoliaceae",
+                  "children": [
+                    {
+                      "id": 12345,
+                      "text": "Ilex",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12261,
+                  "text": "Arecaceae",
+                  "children": [
+                    {
+                      "id": 12307,
+                      "text": "Total Arecaceae",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12269,
+                  "text": "Asteraceae",
+                  "children": [
+                    {
+                      "id": 12327,
+                      "text": "Ambrosia",
+                      "children": []
+                    },
+                    {
+                      "id": 12328,
+                      "text": "Artemisia",
+                      "children": []
+                    },
+                    {
+                      "id": 12329,
+                      "text": "Solidago",
+                      "children": []
+                    },
+                    {
+                      "id": 12326,
+                      "text": "Total Asteraceae",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12265,
+                  "text": "Betulaceae",
+                  "children": [
+                    {
+                      "id": 12315,
+                      "text": "Alnus",
+                      "children": []
+                    },
+                    {
+                      "id": 12316,
+                      "text": "Betula",
+                      "children": []
+                    },
+                    {
+                      "id": 12317,
+                      "text": "Carpinus",
+                      "children": []
+                    },
+                    {
+                      "id": 12318,
+                      "text": "Corylus",
+                      "children": []
+                    },
+                    {
+                      "id": 12355,
+                      "text": "Ostrya",
+                      "children": []
+                    },
+                    {
+                      "id": 12314,
+                      "text": "Total Betulaceae",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12274,
+                  "text": "Brassicaceae",
+                  "children": [
+                    {
+                      "id": 12337,
+                      "text": "Brassica",
+                      "children": []
+                    },
+                    {
+                      "id": 12354,
+                      "text": "Total Brassicaceae",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12290,
+                  "text": "Buxaceae",
+                  "children": [
+                    {
+                      "id": 12357,
+                      "text": "Buxus",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12279,
+                  "text": "Cannabaceae",
+                  "children": [
+                    {
+                      "id": 12342,
+                      "text": "Humulus",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12287,
+                  "text": "Caryophyllaceae",
+                  "children": [
+                    {
+                      "id": 12351,
+                      "text": "Silene",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12260,
+                  "text": "Cupressaceae",
+                  "children": [
+                    {
+                      "id": 12306,
+                      "text": "Total Cupressaceae",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12284,
+                  "text": "Cyperaceae",
+                  "children": [
+                    {
+                      "id": 12348,
+                      "text": "Total Cyperaceae",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12281,
+                  "text": "Elaeagnaceae",
+                  "children": [
+                    {
+                      "id": 12344,
+                      "text": "Hippophae",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12285,
+                  "text": "Ericaceae",
+                  "children": [
+                    {
+                      "id": 12349,
+                      "text": "Total Ericaceae",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12293,
+                  "text": "Euphorbiaceae",
+                  "children": [
+                    {
+                      "id": 12360,
+                      "text": "Mercurialis",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12264,
+                  "text": "Fagaceae",
+                  "children": [
+                    {
+                      "id": 12311,
+                      "text": "Castanea",
+                      "children": []
+                    },
+                    {
+                      "id": 12312,
+                      "text": "Fagus",
+                      "children": []
+                    },
+                    {
+                      "id": 12313,
+                      "text": "Quercus",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12291,
+                  "text": "Ginkgoaceae",
+                  "children": [
+                    {
+                      "id": 12358,
+                      "text": "Ginkgo",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12271,
+                  "text": "Juglandaceae",
+                  "children": [
+                    {
+                      "id": 12333,
+                      "text": "Juglans",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12283,
+                  "text": "Juncaceae",
+                  "children": [
+                    {
+                      "id": 12347,
+                      "text": "Total Juncaceae",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12278,
+                  "text": "Malvaceae",
+                  "children": [
+                    {
+                      "id": 12341,
+                      "text": "Tilia",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12294,
+                  "text": "Moraceae",
+                  "children": [
+                    {
+                      "id": 12361,
+                      "text": "Total Moraceae",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12268,
+                  "text": "Oleaceae",
+                  "children": [
+                    {
+                      "id": 12325,
+                      "text": "Fraxinus",
+                      "children": []
+                    },
+                    {
+                      "id": 12346,
+                      "text": "Ligustrum",
+                      "children": []
+                    },
+                    {
+                      "id": 12324,
+                      "text": "Olea",
+                      "children": []
+                    },
+                    {
+                      "id": 12323,
+                      "text": "Total Oleaceae",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12259,
+                  "text": "Pinaceae",
+                  "children": [
+                    {
+                      "id": 12302,
+                      "text": "Abies",
+                      "children": []
+                    },
+                    {
+                      "id": 12356,
+                      "text": "Cedrus",
+                      "children": []
+                    },
+                    {
+                      "id": 12304,
+                      "text": "Larix",
+                      "children": []
+                    },
+                    {
+                      "id": 12303,
+                      "text": "Picea",
+                      "children": []
+                    },
+                    {
+                      "id": 12305,
+                      "text": "Pinus",
+                      "children": []
+                    },
+                    {
+                      "id": 12301,
+                      "text": "Total Pinaceae",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12275,
+                  "text": "Plantaginaceae",
+                  "children": [
+                    {
+                      "id": 12338,
+                      "text": "Plantago",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12262,
+                  "text": "Platanaceae",
+                  "children": [
+                    {
+                      "id": 12308,
+                      "text": "Platanus",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12270,
+                  "text": "Poaceae",
+                  "children": [
+                    {
+                      "id": 12331,
+                      "text": "Secale",
+                      "children": []
+                    },
+                    {
+                      "id": 12330,
+                      "text": "Total Poaceae",
+                      "children": []
+                    },
+                    {
+                      "id": 12332,
+                      "text": "Zea mays",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12277,
+                  "text": "Polygonaceae",
+                  "children": [
+                    {
+                      "id": 12340,
+                      "text": "Rumex",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12288,
+                  "text": "Ranunculaceae",
+                  "children": [
+                    {
+                      "id": 12352,
+                      "text": "Total Ranunculaceae",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12286,
+                  "text": "Rosaceae",
+                  "children": [
+                    {
+                      "id": 12350,
+                      "text": "Total Rosaceae",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12267,
+                  "text": "Salicaceae",
+                  "children": [
+                    {
+                      "id": 12321,
+                      "text": "Populus",
+                      "children": []
+                    },
+                    {
+                      "id": 12322,
+                      "text": "Salix",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12273,
+                  "text": "Sapindaceae",
+                  "children": [
+                    {
+                      "id": 12335,
+                      "text": "Acer",
+                      "children": []
+                    },
+                    {
+                      "id": 12336,
+                      "text": "Aesculus",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12280,
+                  "text": "Taxaceae",
+                  "children": [
+                    {
+                      "id": 12343,
+                      "text": "Taxus",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12300,
+                  "text": "Total pollen",
+                  "children": []
+                },
+                {
+                  "id": 12272,
+                  "text": "Ulmaceae",
+                  "children": [
+                    {
+                      "id": 12334,
+                      "text": "Ulmus",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12289,
+                  "text": "Umbelliferae",
+                  "children": [
+                    {
+                      "id": 12353,
+                      "text": "Total Umbelliferae",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12263,
+                  "text": "Urticaceae",
+                  "children": [
+                    {
+                      "id": 12309,
+                      "text": "Parietaria",
+                      "children": []
+                    },
+                    {
+                      "id": 12310,
+                      "text": "Urtica",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 10016,
+          "text": "Clouds",
+          "children": [
+            {
+              "id": 179,
+              "text": "Cloud amount",
+              "children": []
+            },
+            {
+              "id": 180,
+              "text": "Cloud cover",
+              "children": []
+            },
+            {
+              "id": 181,
+              "text": "Cloud drop effective radius",
+              "children": []
+            },
+            {
+              "id": 182,
+              "text": "Cloud hydrometeor concentration",
+              "children": []
+            },
+            {
+              "id": 12442,
+              "text": "Cloud phase",
+              "children": []
+            },
+            {
+              "id": 183,
+              "text": "Effective radius of cloud hydrometeors",
+              "children": []
+            },
+            {
+              "id": 10017,
+              "text": "Ice",
+              "children": [
+                {
+                  "id": 327,
+                  "text": "Cloud ice",
+                  "children": []
+                },
+                {
+                  "id": 329,
+                  "text": "Cloud ice effective radius",
+                  "children": []
+                },
+                {
+                  "id": 330,
+                  "text": "Freezing level height in clouds",
+                  "children": []
+                },
+                {
+                  "id": 331,
+                  "text": "Icing potential",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 10018,
+              "text": "Liquid water",
+              "children": [
+                {
+                  "id": 373,
+                  "text": "Cloud liquid water (CLW)",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 186,
+              "text": "Melting layer depth in clouds",
+              "children": []
+            },
+            {
+              "id": 10019,
+              "text": "Optical properties",
+              "children": [
+                {
+                  "id": 506,
+                  "text": "Cloud optical depth",
+                  "children": []
+                },
+                {
+                  "id": 507,
+                  "text": "Optical depth of fog",
+                  "children": []
+                },
+                {
+                  "id": 508,
+                  "text": "Optical depth within each cloud layer",
+                  "children": []
+                },
+                {
+                  "id": 509,
+                  "text": "Short-wave cloud reflectance",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 188,
+              "text": "PSC occurrence",
+              "children": []
+            },
+            {
+              "id": 10020,
+              "text": "Position",
+              "children": [
+                {
+                  "id": 531,
+                  "text": "Cloud base height",
+                  "children": []
+                },
+                {
+                  "id": 532,
+                  "text": "Cloud top height",
+                  "children": []
+                },
+                {
+                  "id": 533,
+                  "text": "Height of inversion",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 10021,
+              "text": "Type",
+              "children": [
+                {
+                  "id": 550,
+                  "text": "Type of cloud",
+                  "children": []
+                },
+                {
+                  "id": 551,
+                  "text": "Type of high clouds",
+                  "children": []
+                },
+                {
+                  "id": 552,
+                  "text": "Type of low clouds",
+                  "children": []
+                },
+                {
+                  "id": 553,
+                  "text": "Type of middle clouds",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 10022,
+          "text": "Dynamics",
+          "children": [
+            {
+              "id": 12441,
+              "text": "Mixed layer height",
+              "children": []
+            },
+            {
+              "id": 248,
+              "text": "Transport calculations (e.g., trajectories)",
+              "children": []
+            },
+            {
+              "id": 249,
+              "text": "Turbulence",
+              "children": []
+            },
+            {
+              "id": 250,
+              "text": "Turbulence type (low levels and wake vortex)",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 12003,
+          "text": "Gas phase",
+          "children": [
+            {
+              "id": 10023,
+              "text": "Greenhouse Gas",
+              "children": [
+                {
+                  "id": 10024,
+                  "text": "CFCs",
+                  "children": [
+                    {
+                      "id": 589,
+                      "text": "C2Cl2F4 (1,2-dichlorotetrafluoroethane, CFC-114)",
+                      "children": []
+                    },
+                    {
+                      "id": 590,
+                      "text": "C2Cl3F3 (1,1,2-trichloro-1,2,2-trifluoroethane, CFC-113)",
+                      "children": []
+                    },
+                    {
+                      "id": 591,
+                      "text": "C2ClF5 (1-chloro-1,1,2,2,2-pentafluoroethane, CFC-115)",
+                      "children": []
+                    },
+                    {
+                      "id": 592,
+                      "text": "CCl2F2 (dichlorodifluoromethane, CFC-12)",
+                      "children": []
+                    },
+                    {
+                      "id": 593,
+                      "text": "CCl3F (trichlorofluoromethane, CFC-11)",
+                      "children": []
+                    },
+                    {
+                      "id": 12366,
+                      "text": "CClF3 (chlorotrifluoromethane, CFC-13)",
+                      "children": []
+                    },
+                    {
+                      "id": 12016,
+                      "text": "Cl3CCF3 (1,1,1-trichloro-2,2,2-trifluoroethane, CFC-113a)",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12365,
+                  "text": "CH3D (monodeuterated methane, methane-d1)",
+                  "children": []
+                },
+                {
+                  "id": 192,
+                  "text": "CH4 (methane)",
+                  "children": []
+                },
+                {
+                  "id": 193,
+                  "text": "CH4 (methane, C-13)",
+                  "children": []
+                },
+                {
+                  "id": 194,
+                  "text": "CO2 (carbon dioxide)",
+                  "children": []
+                },
+                {
+                  "id": 195,
+                  "text": "CO2 (carbon dioxide, C-13)",
+                  "children": []
+                },
+                {
+                  "id": 196,
+                  "text": "CO2 [O-18]",
+                  "children": []
+                },
+                {
+                  "id": 10027,
+                  "text": "HCFCs",
+                  "children": [
+                    {
+                      "id": 12518,
+                      "text": "C2H2Cl2F2 (1,2-dichloro-1,1-difluoroethane, HCFC-132b)",
+                      "children": []
+                    },
+                    {
+                      "id": 12519,
+                      "text": "C2H2ClF3 (2-chloro-1,1,1-trifluoroethane, HCFC-133a)",
+                      "children": []
+                    },
+                    {
+                      "id": 534,
+                      "text": "C2H3Cl2F (1,1-dichloro-1-fluoroethane, HCFC-141b)",
+                      "children": []
+                    },
+                    {
+                      "id": 12019,
+                      "text": "C2H3Cl2F (1,1-dichloro-2-fluoroethane, HCFC-141a)",
+                      "children": []
+                    },
+                    {
+                      "id": 535,
+                      "text": "C2H3ClF2 (1-chloro-1,1-difluoroethane, HCFC-142b)",
+                      "children": []
+                    },
+                    {
+                      "id": 12367,
+                      "text": "C2HClF4 (1-chloro-1,2,2,2-tetrafluoroethane, HCFC-124)",
+                      "children": []
+                    },
+                    {
+                      "id": 12520,
+                      "text": "C3H2F6 (1,1,1,3,3,3-hexafluoropropane, HFC-236fa)",
+                      "children": []
+                    },
+                    {
+                      "id": 537,
+                      "text": "CHClF2 (chlorodifluoromethane, HCFC-22)",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 10028,
+                  "text": "HFCs",
+                  "children": [
+                    {
+                      "id": 554,
+                      "text": "C2H2F4 (1,1,1,2-tetrafluoroethane, HFC-134a)",
+                      "children": []
+                    },
+                    {
+                      "id": 536,
+                      "text": "C2H3F3 (1,1,1-trifluoroethane, HFC-143a)",
+                      "children": []
+                    },
+                    {
+                      "id": 555,
+                      "text": "C2H4F2 (1,1-difluoroethane, HFC-152a)",
+                      "children": []
+                    },
+                    {
+                      "id": 556,
+                      "text": "C2HF5 (pentafluoroethane, HFC-125)",
+                      "children": []
+                    },
+                    {
+                      "id": 557,
+                      "text": "C3H2F6 (1,1,1,2,3,3-hexafluoropropane, HFC-236ea)",
+                      "children": []
+                    },
+                    {
+                      "id": 558,
+                      "text": "C3H3F5 (1,1,1,3,3-Pentafluoropropane, HFC-245fa)",
+                      "children": []
+                    },
+                    {
+                      "id": 559,
+                      "text": "C3HF7 (1,1,1,2,3,3,3-Heptafluoropropane, HFC-227ea)",
+                      "children": []
+                    },
+                    {
+                      "id": 560,
+                      "text": "C4H5F5 (1,1,1,3,3-pentafluorobutane, HFC-365mfc)",
+                      "children": []
+                    },
+                    {
+                      "id": 12368,
+                      "text": "C5H2F10 (1,1,1,2,2,3,4,5,5,5-decafluoropentane, HFC-43-10-mee)",
+                      "children": []
+                    },
+                    {
+                      "id": 561,
+                      "text": "CH2F2 (difluoromethane, HFC-32)",
+                      "children": []
+                    },
+                    {
+                      "id": 562,
+                      "text": "CHF3 (trifluoromethane, HFC-23)",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 10025,
+                  "text": "Halocarbons",
+                  "children": [
+                    {
+                      "id": 594,
+                      "text": "CCl4 (tetrachloromethane, carbon tetrachloride)",
+                      "children": []
+                    },
+                    {
+                      "id": 595,
+                      "text": "CH3CCl3 (1,1,1-trichloroethane, methyl chloroform)",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 10026,
+                  "text": "Halon",
+                  "children": [
+                    {
+                      "id": 12018,
+                      "text": "C2Br2F4 (1,2-dibromo-1,1,2,2-tetrafluoroethane, Halon 2402)",
+                      "children": []
+                    },
+                    {
+                      "id": 12017,
+                      "text": "CBr2F2 (dibromodifluoromethane, Halon 1202)",
+                      "children": []
+                    },
+                    {
+                      "id": 332,
+                      "text": "CBrClF2 (Halon 1211)",
+                      "children": []
+                    },
+                    {
+                      "id": 333,
+                      "text": "CBrF3 (bromotrifluoromethane, Halon 1301)",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 201,
+                  "text": "N2O (nitrous oxide)",
+                  "children": []
+                },
+                {
+                  "id": 12364,
+                  "text": "NF3 (nitrogen trifluoride)",
+                  "children": []
+                },
+                {
+                  "id": 10029,
+                  "text": "PFCs",
+                  "children": [
+                    {
+                      "id": 419,
+                      "text": "C2F6 (hexafluoroethane, PFC-116)",
+                      "children": []
+                    },
+                    {
+                      "id": 420,
+                      "text": "C3F8 (octafluoropropane, PFC-218)",
+                      "children": []
+                    },
+                    {
+                      "id": 12369,
+                      "text": "C4F8 (octafluorocyclobutane, PFC-318)",
+                      "children": []
+                    },
+                    {
+                      "id": 421,
+                      "text": "CF4 (tetrafluoromethane, carbon tetrafluoride, perfluoromethane, PFC-14)",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 203,
+                  "text": "SF6 (sulfur hexafluoride)",
+                  "children": []
+                },
+                {
+                  "id": 204,
+                  "text": "SO2F2 (sulfuryl fluoride)",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 12299,
+              "text": "O2/N2 ratio",
+              "children": []
+            },
+            {
+              "id": 12588,
+              "text": "Organic",
+              "children": [
+                {
+                  "id": 12412,
+                  "text": "C10H16 (3-carene)",
+                  "children": []
+                },
+                {
+                  "id": 12411,
+                  "text": "C10H16 (D-limonene)",
+                  "children": []
+                },
+                {
+                  "id": 12407,
+                  "text": "C10H16 (alpha-pinene)",
+                  "children": []
+                },
+                {
+                  "id": 12408,
+                  "text": "C10H16 (beta-pinene)",
+                  "children": []
+                },
+                {
+                  "id": 12410,
+                  "text": "C10H16 (camphene)",
+                  "children": []
+                },
+                {
+                  "id": 12409,
+                  "text": "C10H16 (myrcene)",
+                  "children": []
+                },
+                {
+                  "id": 12406,
+                  "text": "C10H16 (tricyclene)",
+                  "children": []
+                },
+                {
+                  "id": 12393,
+                  "text": "C2H2Cl2 ((E)-1,2-dichloroethene, trans-1,2-dichloroethene)",
+                  "children": []
+                },
+                {
+                  "id": 12392,
+                  "text": "C2H2Cl2 ((Z)-1,2-dichloroethene, cis-1,2-dichloroethene)",
+                  "children": []
+                },
+                {
+                  "id": 12391,
+                  "text": "C2H2Cl2 (1,1-dichloroethene)",
+                  "children": []
+                },
+                {
+                  "id": 12394,
+                  "text": "C2H2Cl2 (1,2-dichloroethene)",
+                  "children": []
+                },
+                {
+                  "id": 12413,
+                  "text": "C2H2O2 (glyoxal)",
+                  "children": []
+                },
+                {
+                  "id": 12395,
+                  "text": "C2H4Cl2 (1,1-dichloroethane)",
+                  "children": []
+                },
+                {
+                  "id": 12396,
+                  "text": "C2H4Cl2 (1,2-dichloroethane)",
+                  "children": []
+                },
+                {
+                  "id": 12415,
+                  "text": "C2H4O2 (glycolaldehyde)",
+                  "children": []
+                },
+                {
+                  "id": 12414,
+                  "text": "C2H4O2 (methyl formate)",
+                  "children": []
+                },
+                {
+                  "id": 12379,
+                  "text": "C2H5NO3 (ethyl nitrate)",
+                  "children": []
+                },
+                {
+                  "id": 12375,
+                  "text": "C3H3N (2-propenenitrile, acrylonitrile)",
+                  "children": []
+                },
+                {
+                  "id": 12376,
+                  "text": "C3H5N (propanenitrile)",
+                  "children": []
+                },
+                {
+                  "id": 12419,
+                  "text": "C3H6O2 (1,3-dioxolane)",
+                  "children": []
+                },
+                {
+                  "id": 12417,
+                  "text": "C3H6O2 (ethyl formate)",
+                  "children": []
+                },
+                {
+                  "id": 12418,
+                  "text": "C3H6O2 (hydroxyacetone)",
+                  "children": []
+                },
+                {
+                  "id": 12416,
+                  "text": "C3H6O2 (methyl acetate)",
+                  "children": []
+                },
+                {
+                  "id": 12380,
+                  "text": "C3H7NO3 (isopropyl nitrate)",
+                  "children": []
+                },
+                {
+                  "id": 12370,
+                  "text": "C3H8O (1-propanol)",
+                  "children": []
+                },
+                {
+                  "id": 12371,
+                  "text": "C3H8O (2-propanol)",
+                  "children": []
+                },
+                {
+                  "id": 12372,
+                  "text": "C4H4O (furan)",
+                  "children": []
+                },
+                {
+                  "id": 12377,
+                  "text": "C4H5N (2-methyl-2-propenenitrile, methylacrylonitrile)",
+                  "children": []
+                },
+                {
+                  "id": 12388,
+                  "text": "C4H6O ((E)-crotonaldehyde, trans-2-butenal)",
+                  "children": []
+                },
+                {
+                  "id": 12389,
+                  "text": "C4H6O ((Z)-crotonaldehyde, cis-2-butenal)",
+                  "children": []
+                },
+                {
+                  "id": 12390,
+                  "text": "C4H6O (crotonaldehyde, 2-butenal)",
+                  "children": []
+                },
+                {
+                  "id": 12420,
+                  "text": "C4H8O2 (ethyl acetate)",
+                  "children": []
+                },
+                {
+                  "id": 12421,
+                  "text": "C4H8O2 (methyl propionate)",
+                  "children": []
+                },
+                {
+                  "id": 12384,
+                  "text": "C4H9NO3 (2-butyl nitrate, sec-butyl nitrate)",
+                  "children": []
+                },
+                {
+                  "id": 12382,
+                  "text": "C4H9NO3 (isobutyl nitrate)",
+                  "children": []
+                },
+                {
+                  "id": 12381,
+                  "text": "C4H9NO3 (n-butyl nitrate)",
+                  "children": []
+                },
+                {
+                  "id": 12383,
+                  "text": "C4H9NO3 (t-butyl nitrate)",
+                  "children": []
+                },
+                {
+                  "id": 12385,
+                  "text": "C5H10O (2-methyl-3-buten-2-ol)",
+                  "children": []
+                },
+                {
+                  "id": 12402,
+                  "text": "C5H4O2 (3-furaldehyde)",
+                  "children": []
+                },
+                {
+                  "id": 12401,
+                  "text": "C5H4O2 (furfural)",
+                  "children": []
+                },
+                {
+                  "id": 12373,
+                  "text": "C5H6O (2-methylfuran)",
+                  "children": []
+                },
+                {
+                  "id": 12374,
+                  "text": "C5H6O (3-methylfuran)",
+                  "children": []
+                },
+                {
+                  "id": 12405,
+                  "text": "C6H5Cl (chlorobenzene)",
+                  "children": []
+                },
+                {
+                  "id": 12422,
+                  "text": "C8H10 (p-xylene)",
+                  "children": []
+                },
+                {
+                  "id": 12387,
+                  "text": "C8H18 (2,2,4-trimethylpentane)",
+                  "children": []
+                },
+                {
+                  "id": 12386,
+                  "text": "C8H18 (n-octane)",
+                  "children": []
+                },
+                {
+                  "id": 12404,
+                  "text": "C8H6 (ethynylbenzene)",
+                  "children": []
+                },
+                {
+                  "id": 12403,
+                  "text": "C8H8 (styrene)",
+                  "children": []
+                },
+                {
+                  "id": 12399,
+                  "text": "CH2ClI (chloroiodomethane)",
+                  "children": []
+                },
+                {
+                  "id": 12400,
+                  "text": "CH2I2 (diiodomethane)",
+                  "children": []
+                },
+                {
+                  "id": 12378,
+                  "text": "CH3NO3 (methyl nitrate)",
+                  "children": []
+                },
+                {
+                  "id": 12397,
+                  "text": "CHBr2Cl (dibromochloromethane)",
+                  "children": []
+                },
+                {
+                  "id": 12398,
+                  "text": "CHBrCl2 (bromodichloromethane)",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 10033,
+              "text": "Other Gas",
+              "children": [
+                {
+                  "id": 205,
+                  "text": "H2 (hydrogen molecule)",
+                  "children": []
+                },
+                {
+                  "id": 206,
+                  "text": "H2O (as a chemical species)",
+                  "children": []
+                },
+                {
+                  "id": 207,
+                  "text": "HDO (as a chemical species)",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 10034,
+              "text": "Ozone",
+              "children": [
+                {
+                  "id": 262,
+                  "text": "Surface ozone",
+                  "children": []
+                },
+                {
+                  "id": 263,
+                  "text": "Total column ozone",
+                  "children": []
+                },
+                {
+                  "id": 264,
+                  "text": "Vertical ozone profile",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 10047,
+              "text": "Reactive Gas",
+              "children": [
+                {
+                  "id": 274,
+                  "text": "BrO (bromine monoxide)",
+                  "children": []
+                },
+                {
+                  "id": 275,
+                  "text": "C2Cl4 (tetrachloroethene)",
+                  "children": []
+                },
+                {
+                  "id": 276,
+                  "text": "C2HCl3 (trichloroethene)",
+                  "children": []
+                },
+                {
+                  "id": 277,
+                  "text": "CH2Br2 (dibromomethane)",
+                  "children": []
+                },
+                {
+                  "id": 278,
+                  "text": "CH2Cl2 (dichloromethane)",
+                  "children": []
+                },
+                {
+                  "id": 279,
+                  "text": "CH3Br (bromomethane)",
+                  "children": []
+                },
+                {
+                  "id": 280,
+                  "text": "CH3Cl (chloromethane)",
+                  "children": []
+                },
+                {
+                  "id": 281,
+                  "text": "CH3I (iodomethane)",
+                  "children": []
+                },
+                {
+                  "id": 282,
+                  "text": "CHBr3 (bromoform)",
+                  "children": []
+                },
+                {
+                  "id": 283,
+                  "text": "CHCl3 (trichloromethane, chloroform)",
+                  "children": []
+                },
+                {
+                  "id": 284,
+                  "text": "CO",
+                  "children": []
+                },
+                {
+                  "id": 285,
+                  "text": "COF2 (difluoromethanal, carbonyl fluoride)",
+                  "children": []
+                },
+                {
+                  "id": 286,
+                  "text": "ClO (chlorine monoxide)",
+                  "children": []
+                },
+                {
+                  "id": 287,
+                  "text": "H2O2 (hydrogen peroxide)",
+                  "children": []
+                },
+                {
+                  "id": 288,
+                  "text": "HCl (hydrochloric acid)",
+                  "children": []
+                },
+                {
+                  "id": 289,
+                  "text": "HF (hydrofluoric acid)",
+                  "children": []
+                },
+                {
+                  "id": 10048,
+                  "text": "Nitrogen containing compounds",
+                  "children": [
+                    {
+                      "id": 391,
+                      "text": "C2H3O5N (peroxyacetylnitrate, PAN)",
+                      "children": []
+                    },
+                    {
+                      "id": 392,
+                      "text": "ClONO2 (chlorine nitrate)",
+                      "children": []
+                    },
+                    {
+                      "id": 393,
+                      "text": "HCN (formonitrile, hydrogen cyanide)",
+                      "children": []
+                    },
+                    {
+                      "id": 394,
+                      "text": "HNO3 (nitric acid)",
+                      "children": []
+                    },
+                    {
+                      "id": 390,
+                      "text": "NH3 (Ammonia)",
+                      "children": []
+                    },
+                    {
+                      "id": 395,
+                      "text": "NO (nitrogen monoxide)",
+                      "children": []
+                    },
+                    {
+                      "id": 396,
+                      "text": "NO2 (nitrogen dioxide)",
+                      "children": []
+                    },
+                    {
+                      "id": 397,
+                      "text": "NOx",
+                      "children": []
+                    },
+                    {
+                      "id": 398,
+                      "text": "NOy",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 291,
+                  "text": "ROOH",
+                  "children": []
+                },
+                {
+                  "id": 10049,
+                  "text": "Sulfur containing compounds",
+                  "children": [
+                    {
+                      "id": 428,
+                      "text": "COS (OCS, carbon oxide sulfide, carbonyl sulfide)",
+                      "children": []
+                    },
+                    {
+                      "id": 429,
+                      "text": "CS2 (Carbon disulfide)",
+                      "children": []
+                    },
+                    {
+                      "id": 430,
+                      "text": "SO2",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 10050,
+                  "text": "VOC",
+                  "children": [
+                    {
+                      "id": 434,
+                      "text": "C2H2 (ethyne, acetylene)",
+                      "children": []
+                    },
+                    {
+                      "id": 435,
+                      "text": "C2H2O2 (oxaldehyde, ethanedial)",
+                      "children": []
+                    },
+                    {
+                      "id": 436,
+                      "text": "C2H4 (ethene)",
+                      "children": []
+                    },
+                    {
+                      "id": 437,
+                      "text": "C2H6 (ethane)",
+                      "children": []
+                    },
+                    {
+                      "id": 438,
+                      "text": "C2H6S (dimethylsulfide, DMS)",
+                      "children": []
+                    },
+                    {
+                      "id": 439,
+                      "text": "C3H4 (propyne)",
+                      "children": []
+                    },
+                    {
+                      "id": 440,
+                      "text": "C3H4O (prop-2-enal, acrolein)",
+                      "children": []
+                    },
+                    {
+                      "id": 441,
+                      "text": "C3H4O2 (2-oxopropanal, methylglyoxal)",
+                      "children": []
+                    },
+                    {
+                      "id": 442,
+                      "text": "C3H6 (propene)",
+                      "children": []
+                    },
+                    {
+                      "id": 443,
+                      "text": "C3H6O (acetone, propanone)",
+                      "children": []
+                    },
+                    {
+                      "id": 444,
+                      "text": "C3H6O (propanal)",
+                      "children": []
+                    },
+                    {
+                      "id": 445,
+                      "text": "C3H8 (propane)",
+                      "children": []
+                    },
+                    {
+                      "id": 446,
+                      "text": "C4H6 (1,3-butadiene, butadiene)",
+                      "children": []
+                    },
+                    {
+                      "id": 447,
+                      "text": "C4H6O (2-methylprop-2-enal, methacrolein)",
+                      "children": []
+                    },
+                    {
+                      "id": 448,
+                      "text": "C4H6O (but-3-en-2-one, methylvinylketone)",
+                      "children": []
+                    },
+                    {
+                      "id": 449,
+                      "text": "C4H8 (1-butene)",
+                      "children": []
+                    },
+                    {
+                      "id": 450,
+                      "text": "C4H8 (sum of butenes)",
+                      "children": []
+                    },
+                    {
+                      "id": 451,
+                      "text": "C4H8O (butan-2-one, methylethylketone)",
+                      "children": []
+                    },
+                    {
+                      "id": 452,
+                      "text": "C4H8O (butanal isomers)",
+                      "children": []
+                    },
+                    {
+                      "id": 453,
+                      "text": "C5H10 (1-pentene)",
+                      "children": []
+                    },
+                    {
+                      "id": 454,
+                      "text": "C5H10 (2-methyl-1-butene)",
+                      "children": []
+                    },
+                    {
+                      "id": 455,
+                      "text": "C5H10 (2-methyl-2-butene)",
+                      "children": []
+                    },
+                    {
+                      "id": 456,
+                      "text": "C5H10 (3-methyl-1-butene)",
+                      "children": []
+                    },
+                    {
+                      "id": 457,
+                      "text": "C5H10 (cyclopentane)",
+                      "children": []
+                    },
+                    {
+                      "id": 458,
+                      "text": "C5H10 (sum of 1-pentene and 2-methyl-2-butene)",
+                      "children": []
+                    },
+                    {
+                      "id": 459,
+                      "text": "C5H10 (sum of pentenes)",
+                      "children": []
+                    },
+                    {
+                      "id": 460,
+                      "text": "C5H10O (pentanal, valeraldehyde)",
+                      "children": []
+                    },
+                    {
+                      "id": 461,
+                      "text": "C5H12 & C4H8 (sum of 2,2-dimethylpropane & c-2-butene)",
+                      "children": []
+                    },
+                    {
+                      "id": 462,
+                      "text": "C5H12 (2,2-dimethylpropane)",
+                      "children": []
+                    },
+                    {
+                      "id": 463,
+                      "text": "C5H14 (2,3-dimethylbutane)",
+                      "children": []
+                    },
+                    {
+                      "id": 464,
+                      "text": "C5H8 (2-methyl-1,3-butadiene, isoprene)",
+                      "children": []
+                    },
+                    {
+                      "id": 465,
+                      "text": "C5H8 (cyclopentene)",
+                      "children": []
+                    },
+                    {
+                      "id": 466,
+                      "text": "C5Hn, n=10 (sum of 3-methyl-1-butene and cyclopentene)",
+                      "children": []
+                    },
+                    {
+                      "id": 467,
+                      "text": "C5Hn, n={12, 10} (sum of n-pentane and cyclopentane)",
+                      "children": []
+                    },
+                    {
+                      "id": 468,
+                      "text": "C6H12 (cyclohexane)",
+                      "children": []
+                    },
+                    {
+                      "id": 469,
+                      "text": "C6H12 (methylcyclopentane)",
+                      "children": []
+                    },
+                    {
+                      "id": 470,
+                      "text": "C6H12O (hexanal isomers)",
+                      "children": []
+                    },
+                    {
+                      "id": 471,
+                      "text": "C6H14 (2,2-dimethylbutane)",
+                      "children": []
+                    },
+                    {
+                      "id": 472,
+                      "text": "C6H14 (2-methylpentane)",
+                      "children": []
+                    },
+                    {
+                      "id": 473,
+                      "text": "C6H14 (3-methylpentane)",
+                      "children": []
+                    },
+                    {
+                      "id": 474,
+                      "text": "C6H14 (n-hexane)",
+                      "children": []
+                    },
+                    {
+                      "id": 475,
+                      "text": "C6H14 (sum of methylpentanes)",
+                      "children": []
+                    },
+                    {
+                      "id": 476,
+                      "text": "C6H6 (benzene)",
+                      "children": []
+                    },
+                    {
+                      "id": 478,
+                      "text": "C6Hn, n={14, 12} (sum of 2,2-dimethylbutane and methylcyclopentane)",
+                      "children": []
+                    },
+                    {
+                      "id": 479,
+                      "text": "C6Hn, n={14, 12} (sum of 2,3-dimethylbutane and methylcyclopentane)",
+                      "children": []
+                    },
+                    {
+                      "id": 477,
+                      "text": "C6Hn, n={14, 12} (sum of 3-methylpentane and cyclohexane)",
+                      "children": []
+                    },
+                    {
+                      "id": 480,
+                      "text": "C7H16 (sum of methylhexanes)",
+                      "children": []
+                    },
+                    {
+                      "id": 481,
+                      "text": "C7H6O (benzene carbaldehyde)",
+                      "children": []
+                    },
+                    {
+                      "id": 482,
+                      "text": "C7H8 (toluene)",
+                      "children": []
+                    },
+                    {
+                      "id": 486,
+                      "text": "C8H10 (Sum of p-xylene and m-xylene, 1,3- and 1,4-dimethylbenzene)",
+                      "children": []
+                    },
+                    {
+                      "id": 483,
+                      "text": "C8H10 (ethylbenzene)",
+                      "children": []
+                    },
+                    {
+                      "id": 484,
+                      "text": "C8H10 (m-xylene)",
+                      "children": []
+                    },
+                    {
+                      "id": 485,
+                      "text": "C8H10 (o-xylene)",
+                      "children": []
+                    },
+                    {
+                      "id": 487,
+                      "text": "C9H12 (1,2,4-trimethylbenzene)",
+                      "children": []
+                    },
+                    {
+                      "id": 488,
+                      "text": "C9H12 (1,3,5-trimethylbenzene)",
+                      "children": []
+                    },
+                    {
+                      "id": 489,
+                      "text": "CH2O (methanal, formaldehyde)",
+                      "children": []
+                    },
+                    {
+                      "id": 490,
+                      "text": "CH3CH2OH (ethanol)",
+                      "children": []
+                    },
+                    {
+                      "id": 491,
+                      "text": "CH3CHO (acetaldehyde, ethanal)",
+                      "children": []
+                    },
+                    {
+                      "id": 492,
+                      "text": "CH3CN (acetonitrile)",
+                      "children": []
+                    },
+                    {
+                      "id": 493,
+                      "text": "CH3OH (methanol)",
+                      "children": []
+                    },
+                    {
+                      "id": 494,
+                      "text": "NMHC",
+                      "children": []
+                    },
+                    {
+                      "id": 495,
+                      "text": "c-C4H8 (cis-2-butene)",
+                      "children": []
+                    },
+                    {
+                      "id": 496,
+                      "text": "c-C5H10 (cis-2-pentene)",
+                      "children": []
+                    },
+                    {
+                      "id": 497,
+                      "text": "i-C4H10 (2-methylpropane, iso-butane)",
+                      "children": []
+                    },
+                    {
+                      "id": 498,
+                      "text": "i-C4H8 (2-methylpropene, iso-butene)",
+                      "children": []
+                    },
+                    {
+                      "id": 499,
+                      "text": "i-C5H12 (2-methylbutane, iso-pentane)",
+                      "children": []
+                    },
+                    {
+                      "id": 500,
+                      "text": "i-C7H16 (2-methylhexane, isoheptane)",
+                      "children": []
+                    },
+                    {
+                      "id": 501,
+                      "text": "n-C4H10 (n-butane)",
+                      "children": []
+                    },
+                    {
+                      "id": 502,
+                      "text": "n-C5H12 (n-pentane)",
+                      "children": []
+                    },
+                    {
+                      "id": 503,
+                      "text": "n-C7H16 (n-heptane)",
+                      "children": []
+                    },
+                    {
+                      "id": 504,
+                      "text": "t-C4H8 (trans-2-butene)",
+                      "children": []
+                    },
+                    {
+                      "id": 505,
+                      "text": "t-C5H10 (trans-2-pentene)",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 12443,
+          "text": "Height of the top of the PBL",
+          "children": []
+        },
+        {
+          "id": 10030,
+          "text": "Humidity",
+          "children": [
+            {
+              "id": 252,
+              "text": "Integrated water vapour",
+              "children": []
+            },
+            {
+              "id": 253,
+              "text": "Mass mixing ratio",
+              "children": []
+            },
+            {
+              "id": 254,
+              "text": "Object wetness duration",
+              "children": []
+            },
+            {
+              "id": 251,
+              "text": "Relative humidity (with respect to water)",
+              "children": []
+            },
+            {
+              "id": 12564,
+              "text": "Specific humidity",
+              "children": []
+            },
+            {
+              "id": 255,
+              "text": "Water vapour pressure",
+              "children": []
+            },
+            {
+              "id": 256,
+              "text": "Watervapor profile",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 44,
+          "text": "Integrated air samples",
+          "children": []
+        },
+        {
+          "id": 10031,
+          "text": "Lightning",
+          "children": [
+            {
+              "id": 12002,
+              "text": "Lightning density cloud-to-ground",
+              "children": []
+            },
+            {
+              "id": 257,
+              "text": "Lightning discharge energy",
+              "children": []
+            },
+            {
+              "id": 258,
+              "text": "Lightning discharge polarity",
+              "children": []
+            },
+            {
+              "id": 259,
+              "text": "Lightning discharge rates",
+              "children": []
+            },
+            {
+              "id": 260,
+              "text": "Lightning discharge type (cloud to cloud, cloud to surface)",
+              "children": []
+            },
+            {
+              "id": 10032,
+              "text": "Position",
+              "children": [
+                {
+                  "id": 431,
+                  "text": "Lightning detection (time and location)",
+                  "children": []
+                },
+                {
+                  "id": 432,
+                  "text": "Lightning direction from station",
+                  "children": []
+                },
+                {
+                  "id": 433,
+                  "text": "Lightning distance from station",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 12001,
+              "text": "Total lightning density",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 10036,
+          "text": "POPs",
+          "children": [
+            {
+              "id": 10037,
+              "text": "PAH",
+              "children": [
+                {
+                  "id": 334,
+                  "text": "C13H10 (9H-fluorene, fluorene), in air",
+                  "children": []
+                },
+                {
+                  "id": 335,
+                  "text": "C14H10 (anthracene), PM10",
+                  "children": []
+                },
+                {
+                  "id": 336,
+                  "text": "C14H10 (anthracene), in aerosol",
+                  "children": []
+                },
+                {
+                  "id": 338,
+                  "text": "C14H10 (anthracene), in air",
+                  "children": []
+                },
+                {
+                  "id": 337,
+                  "text": "C14H10 (anthracene), in air and aerosol",
+                  "children": []
+                },
+                {
+                  "id": 339,
+                  "text": "C14H10 (phenanthrene), PM10",
+                  "children": []
+                },
+                {
+                  "id": 340,
+                  "text": "C14H10 (phenanthrene), in aerosol",
+                  "children": []
+                },
+                {
+                  "id": 341,
+                  "text": "C14H10 (phenanthrene), in air",
+                  "children": []
+                },
+                {
+                  "id": 342,
+                  "text": "C14H10 (phenanthrene), in air and aerosol",
+                  "children": []
+                },
+                {
+                  "id": 344,
+                  "text": "C14H10 (phenanthrene), in total precipitation",
+                  "children": []
+                },
+                {
+                  "id": 343,
+                  "text": "C14H10 (phenanthrene), in wet deposition",
+                  "children": []
+                },
+                {
+                  "id": 345,
+                  "text": "C16H10 (pyrene), in air and aerosol",
+                  "children": []
+                },
+                {
+                  "id": 346,
+                  "text": "C18H12 (Benz(a)anthracene), PM10",
+                  "children": []
+                },
+                {
+                  "id": 347,
+                  "text": "C18H12 (Benz(a)anthracene), in aerosol",
+                  "children": []
+                },
+                {
+                  "id": 348,
+                  "text": "C18H12 (Benz(a)anthracene), in air",
+                  "children": []
+                },
+                {
+                  "id": 349,
+                  "text": "C18H12 (Benz(a)anthracene), in air and aerosol",
+                  "children": []
+                },
+                {
+                  "id": 350,
+                  "text": "C18H12 (Benz(a)anthracene), in precipitation",
+                  "children": []
+                },
+                {
+                  "id": 351,
+                  "text": "C18H12 (Benz(a)anthracene), in total precipitation",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 10038,
+              "text": "POP",
+              "children": [
+                {
+                  "id": 375,
+                  "text": "C12H8Cl6 (aldrin), in aerosol",
+                  "children": []
+                },
+                {
+                  "id": 376,
+                  "text": "C12H8Cl6 (aldrin), in air",
+                  "children": []
+                },
+                {
+                  "id": 377,
+                  "text": "C12H8Cl6 (aldrin), in air and aerosol",
+                  "children": []
+                },
+                {
+                  "id": 378,
+                  "text": "C12H8Cl6 (aldrin), in total precipitation",
+                  "children": []
+                },
+                {
+                  "id": 379,
+                  "text": "C12H8Cl6 (aldrin), in wet precipitation",
+                  "children": []
+                },
+                {
+                  "id": 380,
+                  "text": "C6Cl6 (hexachlorobenzene, HCB), in air",
+                  "children": []
+                },
+                {
+                  "id": 381,
+                  "text": "C6H6Cl6 (1,2,3,4,5,6-hexachlorocyclohexane, alpha-lindane, alpha-HCH), in aerosol",
+                  "children": []
+                },
+                {
+                  "id": 382,
+                  "text": "C6H6Cl6 (1,2,3,4,5,6-hexachlorocyclohexane, alpha-lindane, alpha-HCH), in air",
+                  "children": []
+                },
+                {
+                  "id": 383,
+                  "text": "C6H6Cl6 (1,2,3,4,5,6-hexachlorocyclohexane, alpha-lindane, alpha-HCH), in wet precipitation",
+                  "children": []
+                },
+                {
+                  "id": 384,
+                  "text": "C6H6Cl6 (1,2,3,4,5,6-hexachlorocyclohexane, gamma-lindane, gamma-HCH), in air",
+                  "children": []
+                },
+                {
+                  "id": 385,
+                  "text": "C6H6Cl6 (1,2,3,4,5,6-hexachlorocyclohexane, gamma-lindane, gamma-HCH), in wet precipitation",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 10001,
+          "text": "Particle phase",
+          "children": [
+            {
+              "id": 12440,
+              "text": "Aerosol layer height",
+              "children": []
+            },
+            {
+              "id": 12444,
+              "text": "Aerosol type",
+              "children": []
+            },
+            {
+              "id": 10002,
+              "text": "Composition",
+              "children": [
+                {
+                  "id": 579,
+                  "text": "Acidity-Alkalinity, TSP",
+                  "children": []
+                },
+                {
+                  "id": 10003,
+                  "text": "Inorganic anions",
+                  "children": [
+                    {
+                      "id": 614,
+                      "text": "Cl- (chloride), PM1",
+                      "children": []
+                    },
+                    {
+                      "id": 615,
+                      "text": "Cl- (chloride), PM10",
+                      "children": []
+                    },
+                    {
+                      "id": 616,
+                      "text": "Cl- (chloride), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 617,
+                      "text": "Cl- (chloride), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 618,
+                      "text": "F- (fluoride), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 621,
+                      "text": "SO4= (sulfate), PM10",
+                      "children": []
+                    },
+                    {
+                      "id": 622,
+                      "text": "SO4= (sulfate), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 620,
+                      "text": "SO4= (sulfate), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 619,
+                      "text": "SO4= (sulfate), corrected",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 10004,
+                  "text": "Inorganic carbonaceous",
+                  "children": [
+                    {
+                      "id": 624,
+                      "text": "Elemental carbon, PM1",
+                      "children": []
+                    },
+                    {
+                      "id": 623,
+                      "text": "Elemental carbon, PM10",
+                      "children": []
+                    },
+                    {
+                      "id": 625,
+                      "text": "Elemental carbon, PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 626,
+                      "text": "Total carbon, PM10",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 10005,
+                  "text": "Inorganic cations",
+                  "children": [
+                    {
+                      "id": 632,
+                      "text": "Ca++ (calcium), PM10",
+                      "children": []
+                    },
+                    {
+                      "id": 633,
+                      "text": "Ca++ (calcium), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 634,
+                      "text": "Ca++ (calcium), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 638,
+                      "text": "K+ (potassium), PM10",
+                      "children": []
+                    },
+                    {
+                      "id": 639,
+                      "text": "K+ (potassium), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 640,
+                      "text": "K+ (potassium), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 635,
+                      "text": "Mg++ (magnesium), PM10",
+                      "children": []
+                    },
+                    {
+                      "id": 636,
+                      "text": "Mg++ (magnesium), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 637,
+                      "text": "Mg++ (magnesium), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 641,
+                      "text": "Na+ (sodium), PM10",
+                      "children": []
+                    },
+                    {
+                      "id": 642,
+                      "text": "Na+ (sodium), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 643,
+                      "text": "Na+ (sodium), TSP",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 10006,
+                  "text": "Inorganic nitrogen species",
+                  "children": [
+                    {
+                      "id": 644,
+                      "text": "NH3 (ammonia), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 646,
+                      "text": "NH4+ (ammonia), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 645,
+                      "text": "NH4+ (ammonium), PM10",
+                      "children": []
+                    },
+                    {
+                      "id": 647,
+                      "text": "NH4+ (ammonium), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 649,
+                      "text": "NH4NO3 (ammonium nitrate), PM1",
+                      "children": []
+                    },
+                    {
+                      "id": 648,
+                      "text": "NH4NO4 (ammonium nitrate), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 653,
+                      "text": "NO2- (nitrite), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 650,
+                      "text": "NO3- (nitrate), PM10",
+                      "children": []
+                    },
+                    {
+                      "id": 651,
+                      "text": "NO3- (nitrate), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 652,
+                      "text": "NO3- (nitrate), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 655,
+                      "text": "Sum of HNO3 (nitric acid) and NO3- (nitrate)",
+                      "children": []
+                    },
+                    {
+                      "id": 654,
+                      "text": "Sum of NH3 (ammonia) and NH4+ (ammonium)",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 10007,
+                  "text": "Major inorganic components",
+                  "children": [
+                    {
+                      "id": 656,
+                      "text": "Major chemical components",
+                      "children": []
+                    },
+                    {
+                      "id": 657,
+                      "text": "Major inorganic components, TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 658,
+                      "text": "Major inorganic components, coarse",
+                      "children": []
+                    },
+                    {
+                      "id": 659,
+                      "text": "Major inorganic components, fine",
+                      "children": []
+                    },
+                    {
+                      "id": 660,
+                      "text": "Other chemical components, coarse",
+                      "children": []
+                    },
+                    {
+                      "id": 661,
+                      "text": "Other chemical components, fine",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 10008,
+                  "text": "Organic anions",
+                  "children": [
+                    {
+                      "id": 663,
+                      "text": "C2H3O2- (CH3COO-, acetate)",
+                      "children": []
+                    },
+                    {
+                      "id": 662,
+                      "text": "C2H3O2- (CH3COO-, acetate), PM1",
+                      "children": []
+                    },
+                    {
+                      "id": 664,
+                      "text": "C2O4= (oxalate, ethanedioate), PM1",
+                      "children": []
+                    },
+                    {
+                      "id": 665,
+                      "text": "C2O4= (oxalate, ethanedioate), PM10",
+                      "children": []
+                    },
+                    {
+                      "id": 666,
+                      "text": "C2O4= (oxalate, ethanedioate), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 667,
+                      "text": "CH3O3S- (methanesulfonate), PM1",
+                      "children": []
+                    },
+                    {
+                      "id": 668,
+                      "text": "CH3O3S- (methanesulfonate), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 669,
+                      "text": "CHO2- (HCOO-, formate)",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 10009,
+                  "text": "Organic carbonaceous",
+                  "children": [
+                    {
+                      "id": 670,
+                      "text": "Carbonaceous-organic material, PM10",
+                      "children": []
+                    },
+                    {
+                      "id": 671,
+                      "text": "Carbonaceous-organic material, fine",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 10010,
+                  "text": "Trace elements",
+                  "children": [
+                    {
+                      "id": 673,
+                      "text": "Al (Aluminium), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 674,
+                      "text": "Al (Aluminium), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 677,
+                      "text": "As (Arsenic), PM10",
+                      "children": []
+                    },
+                    {
+                      "id": 678,
+                      "text": "As (Arsenic), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 679,
+                      "text": "Ba (Barium), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 680,
+                      "text": "Ba (Barium), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 681,
+                      "text": "Bi (Bismuth), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 682,
+                      "text": "Bi (Bismuth), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 683,
+                      "text": "Cd (Cadmium), PM1",
+                      "children": []
+                    },
+                    {
+                      "id": 684,
+                      "text": "Cd (Cadmium), PM10",
+                      "children": []
+                    },
+                    {
+                      "id": 685,
+                      "text": "Cd (Cadmium), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 686,
+                      "text": "Cd (Cadmium), PM2.5 - PM10",
+                      "children": []
+                    },
+                    {
+                      "id": 687,
+                      "text": "Cd (Cadmium), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 688,
+                      "text": "Ce (Cerium), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 689,
+                      "text": "Ce (Cerium), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 691,
+                      "text": "Co (Cobalt), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 690,
+                      "text": "Cr (Chromium), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 692,
+                      "text": "Cu (Copper), PM10",
+                      "children": []
+                    },
+                    {
+                      "id": 693,
+                      "text": "Cu (Copper), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 694,
+                      "text": "Fe (Iron), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 703,
+                      "text": "Hg (Mercury), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 695,
+                      "text": "La (Lanthanum), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 696,
+                      "text": "La (Lanthanum), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 699,
+                      "text": "Li (Lithium), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 700,
+                      "text": "Li (Lithium), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 701,
+                      "text": "Mn (Manganese), PM10",
+                      "children": []
+                    },
+                    {
+                      "id": 702,
+                      "text": "Mn (Manganese), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 704,
+                      "text": "Ni (Nickel), PM10",
+                      "children": []
+                    },
+                    {
+                      "id": 705,
+                      "text": "Ni (Nickel), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 706,
+                      "text": "P (Phosphorous), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 707,
+                      "text": "P (Phosphorous), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 697,
+                      "text": "Pb (Lead), PM10",
+                      "children": []
+                    },
+                    {
+                      "id": 698,
+                      "text": "Pb (Lead), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 708,
+                      "text": "Rb (Rubidium), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 709,
+                      "text": "Rb (Rubidium), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 675,
+                      "text": "Sb (Antimony), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 676,
+                      "text": "Sb (Antimony), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 710,
+                      "text": "Se (Selenium), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 717,
+                      "text": "Sn (Tin), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 718,
+                      "text": "Sn (Tin), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 711,
+                      "text": "Sr (Strontium), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 712,
+                      "text": "Sr (Strontium), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 715,
+                      "text": "Th (Thorium), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 716,
+                      "text": "Th (Thorium), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 672,
+                      "text": "Ti (Titanium), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 713,
+                      "text": "Tl (Thallium), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 714,
+                      "text": "Tl (Thallium), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 719,
+                      "text": "U (Uranium), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 720,
+                      "text": "U (Uranium), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 721,
+                      "text": "V (Vanadium), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 722,
+                      "text": "V (Vanadium), TSP",
+                      "children": []
+                    },
+                    {
+                      "id": 723,
+                      "text": "Zn (Zinc), PM2.5",
+                      "children": []
+                    },
+                    {
+                      "id": 724,
+                      "text": "Zn (Zinc), TSP",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 10011,
+              "text": "Optical properties",
+              "children": [
+                {
+                  "id": 314,
+                  "text": "Aerosol Absorption Optical Depth",
+                  "children": []
+                },
+                {
+                  "id": 315,
+                  "text": "Aerosol Extinction Coefficient",
+                  "children": []
+                },
+                {
+                  "id": 325,
+                  "text": "Aerosol optical depth, TSP",
+                  "children": []
+                },
+                {
+                  "id": 12523,
+                  "text": "Attenuated backscatter",
+                  "children": []
+                },
+                {
+                  "id": 319,
+                  "text": "Light backscattering coefficient, PM1",
+                  "children": []
+                },
+                {
+                  "id": 320,
+                  "text": "Light backscattering coefficient, PM10",
+                  "children": []
+                },
+                {
+                  "id": 321,
+                  "text": "Light backscattering coefficient, total aerosol",
+                  "children": []
+                },
+                {
+                  "id": 316,
+                  "text": "Particle light absorption coefficient, PM1",
+                  "children": []
+                },
+                {
+                  "id": 317,
+                  "text": "Particle light absorption coefficient, PM10",
+                  "children": []
+                },
+                {
+                  "id": 318,
+                  "text": "Particle light absorption coefficient, TSP",
+                  "children": []
+                },
+                {
+                  "id": 12437,
+                  "text": "Particle light backscatter coefficient",
+                  "children": []
+                },
+                {
+                  "id": 12423,
+                  "text": "Particle light extinction coefficient",
+                  "children": []
+                },
+                {
+                  "id": 12436,
+                  "text": "Particle light hemispheric backscatter coefficient",
+                  "children": []
+                },
+                {
+                  "id": 12438,
+                  "text": "Particle light hemispheric forward scattering coefficient",
+                  "children": []
+                },
+                {
+                  "id": 322,
+                  "text": "Particle light scattering coefficient, PM1",
+                  "children": []
+                },
+                {
+                  "id": 323,
+                  "text": "Particle light scattering coefficient, PM10",
+                  "children": []
+                },
+                {
+                  "id": 324,
+                  "text": "Particle light scattering coefficient, TSP",
+                  "children": []
+                },
+                {
+                  "id": 12424,
+                  "text": "Particle single scattering albedo",
+                  "children": []
+                },
+                {
+                  "id": 12565,
+                  "text": "Relative attenuated backscatter",
+                  "children": []
+                },
+                {
+                  "id": 12429,
+                  "text": "Ångström exponent  for aerosol absorption optical depth",
+                  "children": []
+                },
+                {
+                  "id": 12428,
+                  "text": "Ångström exponent for aerosol optical depth",
+                  "children": []
+                },
+                {
+                  "id": 12427,
+                  "text": "Ångström exponent for particle light absorption",
+                  "children": []
+                },
+                {
+                  "id": 12425,
+                  "text": "Ångström exponent for particle light extinction",
+                  "children": []
+                },
+                {
+                  "id": 12426,
+                  "text": "Ångström exponent for particle light scattering",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 10012,
+              "text": "Physical properties",
+              "children": [
+                {
+                  "id": 361,
+                  "text": "Aerosol column burden (mass density)",
+                  "children": []
+                },
+                {
+                  "id": 729,
+                  "text": "Aerosol volcanic ash (Total column)",
+                  "children": []
+                },
+                {
+                  "id": 411,
+                  "text": "CCN concentration at single supersaturation",
+                  "children": []
+                },
+                {
+                  "id": 412,
+                  "text": "CCN concentration spectra",
+                  "children": []
+                },
+                {
+                  "id": 727,
+                  "text": "Dust mass concentration",
+                  "children": []
+                },
+                {
+                  "id": 413,
+                  "text": "Hygroscopic growth factor, 110 μm equivalent",
+                  "children": []
+                },
+                {
+                  "id": 414,
+                  "text": "Hygroscopic growth factor, 165 μm equivalent",
+                  "children": []
+                },
+                {
+                  "id": 415,
+                  "text": "Hygroscopic growth factor, 35 μm equivalent",
+                  "children": []
+                },
+                {
+                  "id": 416,
+                  "text": "Hygroscopic growth factor, 50 μm equivalent",
+                  "children": []
+                },
+                {
+                  "id": 417,
+                  "text": "Hygroscopic growth factor, 75 μm equivalent",
+                  "children": []
+                },
+                {
+                  "id": 418,
+                  "text": "Hygroscopic growth factor, total aerosol",
+                  "children": []
+                },
+                {
+                  "id": 12435,
+                  "text": "Hygroscopic particle light extinction growth factor",
+                  "children": []
+                },
+                {
+                  "id": 12434,
+                  "text": "Hygroscopic particle light scattering growth factor",
+                  "children": []
+                },
+                {
+                  "id": 12433,
+                  "text": "Hygroscopic particle size growth factor",
+                  "children": []
+                },
+                {
+                  "id": 12439,
+                  "text": "Particle effective diameter",
+                  "children": []
+                },
+                {
+                  "id": 362,
+                  "text": "Particle effective radius",
+                  "children": []
+                },
+                {
+                  "id": 367,
+                  "text": "Particle mass concentration (size fractionated)",
+                  "children": []
+                },
+                {
+                  "id": 365,
+                  "text": "Particle mass concentration, PM1",
+                  "children": []
+                },
+                {
+                  "id": 364,
+                  "text": "Particle mass concentration, PM10",
+                  "children": []
+                },
+                {
+                  "id": 366,
+                  "text": "Particle mass concentration, PM2.5",
+                  "children": []
+                },
+                {
+                  "id": 368,
+                  "text": "Particle mass concentration, TSP",
+                  "children": []
+                },
+                {
+                  "id": 12432,
+                  "text": "Particle mass size distribution",
+                  "children": []
+                },
+                {
+                  "id": 369,
+                  "text": "Particle number concentration",
+                  "children": []
+                },
+                {
+                  "id": 370,
+                  "text": "Particle number size distribution, PM10",
+                  "children": []
+                },
+                {
+                  "id": 371,
+                  "text": "Particle number size distribution, TSP",
+                  "children": []
+                },
+                {
+                  "id": 12430,
+                  "text": "Particle surface area size distribution",
+                  "children": []
+                },
+                {
+                  "id": 12431,
+                  "text": "Particle volume size distribution",
+                  "children": []
+                },
+                {
+                  "id": 728,
+                  "text": "Volcanic ash particle mass concentration",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 10035,
+          "text": "Past weather",
+          "children": [
+            {
+              "id": 265,
+              "text": "Past weather",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 10039,
+          "text": "Precipitation",
+          "children": [
+            {
+              "id": 210,
+              "text": "Amount of precipitation",
+              "children": []
+            },
+            {
+              "id": 211,
+              "text": "Duration of precipitation",
+              "children": []
+            },
+            {
+              "id": 212,
+              "text": "Intensity of precipitation",
+              "children": []
+            },
+            {
+              "id": 213,
+              "text": "Occurrence of precipitation during last period (yes/no)",
+              "children": []
+            },
+            {
+              "id": 214,
+              "text": "Rate of ice accretion",
+              "children": []
+            },
+            {
+              "id": 215,
+              "text": "Type of precipitation",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 10040,
+          "text": "Present weather",
+          "children": [
+            {
+              "id": 266,
+              "text": "Present weather",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 10041,
+          "text": "Pressure",
+          "children": [
+            {
+              "id": 216,
+              "text": "Atmospheric pressure",
+              "children": []
+            },
+            {
+              "id": 12000,
+              "text": "Atmospheric pressure profile",
+              "children": []
+            },
+            {
+              "id": 217,
+              "text": "Characteristic of pressure tendency",
+              "children": []
+            },
+            {
+              "id": 218,
+              "text": "Pressure tendency",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 10042,
+          "text": "Radiation",
+          "children": [
+            {
+              "id": 267,
+              "text": "Background luminance",
+              "children": []
+            },
+            {
+              "id": 12581,
+              "text": "Downward spectral radiance",
+              "children": []
+            },
+            {
+              "id": 12586,
+              "text": "Earth surface emissivity",
+              "children": []
+            },
+            {
+              "id": 12584,
+              "text": "Earth surface short-wave bidirectional reflectance",
+              "children": []
+            },
+            {
+              "id": 12585,
+              "text": "Earth surface spectral bidirectional reflectance",
+              "children": []
+            },
+            {
+              "id": 10043,
+              "text": "IR",
+              "children": [
+                {
+                  "id": 566,
+                  "text": "Downward long-wave irradiance",
+                  "children": []
+                },
+                {
+                  "id": 565,
+                  "text": "Long-wave irradiance (direction unspecified)",
+                  "children": []
+                },
+                {
+                  "id": 567,
+                  "text": "Upward long-wave irradiance",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 12587,
+              "text": "Long-wave earth surface emissivity",
+              "children": []
+            },
+            {
+              "id": 12579,
+              "text": "Net long-wave irradiance",
+              "children": []
+            },
+            {
+              "id": 12577,
+              "text": "Net short-wave irradiance",
+              "children": []
+            },
+            {
+              "id": 12578,
+              "text": "Short-wave irradiance (direction unspecified)",
+              "children": []
+            },
+            {
+              "id": 10044,
+              "text": "Solar",
+              "children": [
+                {
+                  "id": 571,
+                  "text": "Diffuse downward short-wave irradiance",
+                  "children": []
+                },
+                {
+                  "id": 572,
+                  "text": "Direct downward short-wave irradiance",
+                  "children": []
+                },
+                {
+                  "id": 573,
+                  "text": "Downward short-wave irradiance",
+                  "children": []
+                },
+                {
+                  "id": 575,
+                  "text": "Reflected solar radiation (retired code value)",
+                  "children": []
+                },
+                {
+                  "id": 574,
+                  "text": "Upward short-wave irradiance",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 12582,
+              "text": "Solar spectral irradiance",
+              "children": []
+            },
+            {
+              "id": 12583,
+              "text": "Solar total irradiance",
+              "children": []
+            },
+            {
+              "id": 270,
+              "text": "Sunshine duration",
+              "children": []
+            },
+            {
+              "id": 271,
+              "text": "Surface albedo",
+              "children": []
+            },
+            {
+              "id": 10045,
+              "text": "UV",
+              "children": [
+                {
+                  "id": 356,
+                  "text": "UV Broadband radiation",
+                  "children": []
+                },
+                {
+                  "id": 357,
+                  "text": "UV Erythemal radiation",
+                  "children": []
+                },
+                {
+                  "id": 358,
+                  "text": "UV Multiband radiation",
+                  "children": []
+                },
+                {
+                  "id": 359,
+                  "text": "UV Spectral radiation",
+                  "children": []
+                },
+                {
+                  "id": 273,
+                  "text": "UV-B radiation",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 12580,
+              "text": "Upward spectral radiance",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 12563,
+          "text": "Radio occultation",
+          "children": [
+            {
+              "id": 12576,
+              "text": "Impact parameter",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 10046,
+          "text": "Radionuclide",
+          "children": [
+            {
+              "id": 12508,
+              "text": "Actinium [Ac-228]",
+              "children": []
+            },
+            {
+              "id": 12515,
+              "text": "Americium [Am-241]",
+              "children": []
+            },
+            {
+              "id": 12480,
+              "text": "Antimony [Sb-122]",
+              "children": []
+            },
+            {
+              "id": 12481,
+              "text": "Antimony [Sb-124]",
+              "children": []
+            },
+            {
+              "id": 12482,
+              "text": "Antimony [Sb-125]",
+              "children": []
+            },
+            {
+              "id": 12492,
+              "text": "Barium [Ba-133]",
+              "children": []
+            },
+            {
+              "id": 12493,
+              "text": "Barium [Ba-140]",
+              "children": []
+            },
+            {
+              "id": 219,
+              "text": "Beryllium [Be-7]",
+              "children": []
+            },
+            {
+              "id": 12503,
+              "text": "Bismuth [Bi-212]",
+              "children": []
+            },
+            {
+              "id": 12504,
+              "text": "Bismuth [Bi-213]",
+              "children": []
+            },
+            {
+              "id": 220,
+              "text": "CO2 [C-14]",
+              "children": []
+            },
+            {
+              "id": 12489,
+              "text": "Caesium [Cs-134]",
+              "children": []
+            },
+            {
+              "id": 12490,
+              "text": "Caesium [Cs-136]",
+              "children": []
+            },
+            {
+              "id": 12491,
+              "text": "Caesium [Cs-137]",
+              "children": []
+            },
+            {
+              "id": 12446,
+              "text": "Carbon [C-14]",
+              "children": []
+            },
+            {
+              "id": 12494,
+              "text": "Cerium [Ce-139]",
+              "children": []
+            },
+            {
+              "id": 12495,
+              "text": "Cerium [Ce-141]",
+              "children": []
+            },
+            {
+              "id": 12496,
+              "text": "Cerium [Ce-144]",
+              "children": []
+            },
+            {
+              "id": 12449,
+              "text": "Chlorine [Cl-38]",
+              "children": []
+            },
+            {
+              "id": 12453,
+              "text": "Chromium [Cr-51]",
+              "children": []
+            },
+            {
+              "id": 12457,
+              "text": "Cobalt [Co-56]",
+              "children": []
+            },
+            {
+              "id": 12458,
+              "text": "Cobalt [Co-57]",
+              "children": []
+            },
+            {
+              "id": 12459,
+              "text": "Cobalt [Co-58]",
+              "children": []
+            },
+            {
+              "id": 12460,
+              "text": "Cobalt [Co-60]",
+              "children": []
+            },
+            {
+              "id": 12499,
+              "text": "Europium [Eu-152]",
+              "children": []
+            },
+            {
+              "id": 12462,
+              "text": "Gallium [Ga-67]",
+              "children": []
+            },
+            {
+              "id": 12517,
+              "text": "Gold [Au-198]",
+              "children": []
+            },
+            {
+              "id": 12478,
+              "text": "Indium [In-111]",
+              "children": []
+            },
+            {
+              "id": 12484,
+              "text": "Iodine [I-126], elementary",
+              "children": []
+            },
+            {
+              "id": 12485,
+              "text": "Iodine [I-131], elementary",
+              "children": []
+            },
+            {
+              "id": 12486,
+              "text": "Iodine [I-132], elementary",
+              "children": []
+            },
+            {
+              "id": 12487,
+              "text": "Iodine [I-133], elementary",
+              "children": []
+            },
+            {
+              "id": 12501,
+              "text": "Iridium [Ir-192]",
+              "children": []
+            },
+            {
+              "id": 12456,
+              "text": "Iron [Fe-59]",
+              "children": []
+            },
+            {
+              "id": 221,
+              "text": "Krypton [Kr-85]",
+              "children": []
+            },
+            {
+              "id": 12497,
+              "text": "Lanthanum [La-140]",
+              "children": []
+            },
+            {
+              "id": 222,
+              "text": "Lead [Pb-210]",
+              "children": []
+            },
+            {
+              "id": 12505,
+              "text": "Lead [Pb-212]",
+              "children": []
+            },
+            {
+              "id": 12506,
+              "text": "Lead [Pb-214]",
+              "children": []
+            },
+            {
+              "id": 12454,
+              "text": "Manganese [Mn-53]",
+              "children": []
+            },
+            {
+              "id": 12455,
+              "text": "Manganese [Mn-56]",
+              "children": []
+            },
+            {
+              "id": 12502,
+              "text": "Mercury [Hg-203]",
+              "children": []
+            },
+            {
+              "id": 12472,
+              "text": "Molybdenum [Mo-99]",
+              "children": []
+            },
+            {
+              "id": 12522,
+              "text": "Neodymium [Nd-137]",
+              "children": []
+            },
+            {
+              "id": 12498,
+              "text": "Neodymium [Nd-147]",
+              "children": []
+            },
+            {
+              "id": 12514,
+              "text": "Neptunium [Np-239]",
+              "children": []
+            },
+            {
+              "id": 12471,
+              "text": "Niobium [Nb-95]",
+              "children": []
+            },
+            {
+              "id": 12513,
+              "text": "Plutonium [Pu-238]",
+              "children": []
+            },
+            {
+              "id": 12450,
+              "text": "Potassium [K-40]",
+              "children": []
+            },
+            {
+              "id": 12451,
+              "text": "Potassium [K-42]",
+              "children": []
+            },
+            {
+              "id": 12507,
+              "text": "Radium [Ra-226]",
+              "children": []
+            },
+            {
+              "id": 223,
+              "text": "Radon [Rn-222]",
+              "children": []
+            },
+            {
+              "id": 12474,
+              "text": "Ruthenium [Ru-103]",
+              "children": []
+            },
+            {
+              "id": 12475,
+              "text": "Ruthenium [Ru-106]",
+              "children": []
+            },
+            {
+              "id": 12452,
+              "text": "Scandium [Sc-46]",
+              "children": []
+            },
+            {
+              "id": 12463,
+              "text": "Selenium [Se-75]",
+              "children": []
+            },
+            {
+              "id": 12476,
+              "text": "Silver [Ag-108m]",
+              "children": []
+            },
+            {
+              "id": 12477,
+              "text": "Silver [Ag-110m]",
+              "children": []
+            },
+            {
+              "id": 12447,
+              "text": "Sodium [Na-22]",
+              "children": []
+            },
+            {
+              "id": 12448,
+              "text": "Sodium [Na-24]",
+              "children": []
+            },
+            {
+              "id": 12464,
+              "text": "Strontium [Sr-85]",
+              "children": []
+            },
+            {
+              "id": 12465,
+              "text": "Strontium [Sr-89]",
+              "children": []
+            },
+            {
+              "id": 12466,
+              "text": "Strontium [Sr-90]",
+              "children": []
+            },
+            {
+              "id": 12467,
+              "text": "Strontium [Sr-91]",
+              "children": []
+            },
+            {
+              "id": 12516,
+              "text": "Sum of Plutonium [Pu-239] and [Pu-240]",
+              "children": []
+            },
+            {
+              "id": 12500,
+              "text": "Tantalum [Ta-182]",
+              "children": []
+            },
+            {
+              "id": 12473,
+              "text": "Technetium  [Tc-99m]",
+              "children": []
+            },
+            {
+              "id": 12521,
+              "text": "Tellurium [Te-131]",
+              "children": []
+            },
+            {
+              "id": 12483,
+              "text": "Tellurium [Te-132]",
+              "children": []
+            },
+            {
+              "id": 12509,
+              "text": "Thorium [Th-232]",
+              "children": []
+            },
+            {
+              "id": 12479,
+              "text": "Tin [Sn-113]",
+              "children": []
+            },
+            {
+              "id": 12445,
+              "text": "Tritium [H-3]",
+              "children": []
+            },
+            {
+              "id": 12510,
+              "text": "Uranium [U-234]",
+              "children": []
+            },
+            {
+              "id": 12511,
+              "text": "Uranium [U-235]",
+              "children": []
+            },
+            {
+              "id": 12512,
+              "text": "Uranium [U-238]",
+              "children": []
+            },
+            {
+              "id": 12488,
+              "text": "Xenon [Xe-133]",
+              "children": []
+            },
+            {
+              "id": 12468,
+              "text": "Yttrium [Y-88]",
+              "children": []
+            },
+            {
+              "id": 12469,
+              "text": "Yttrium [Y-90m]",
+              "children": []
+            },
+            {
+              "id": 12461,
+              "text": "Zinc [Zn-65]",
+              "children": []
+            },
+            {
+              "id": 12470,
+              "text": "Zirconium [Zr-95]",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 12562,
+          "text": "Remote sensing",
+          "children": [
+            {
+              "id": 12571,
+              "text": "Bending angle",
+              "children": []
+            },
+            {
+              "id": 12568,
+              "text": "Brightness temperature",
+              "children": []
+            },
+            {
+              "id": 12575,
+              "text": "Delay Doppler map",
+              "children": []
+            },
+            {
+              "id": 12570,
+              "text": "Radar backscatter coefficient",
+              "children": []
+            },
+            {
+              "id": 12566,
+              "text": "Radiance",
+              "children": []
+            },
+            {
+              "id": 12572,
+              "text": "Refractivity",
+              "children": []
+            },
+            {
+              "id": 12573,
+              "text": "Slant total delay (STD)",
+              "children": []
+            },
+            {
+              "id": 12569,
+              "text": "Spectral bidirectional reflectance",
+              "children": []
+            },
+            {
+              "id": 12567,
+              "text": "Spectral radiance",
+              "children": []
+            },
+            {
+              "id": 12574,
+              "text": "Zenith total delay (ZTD)",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 56,
+          "text": "Special phenomena",
+          "children": []
+        },
+        {
+          "id": 57,
+          "text": "State of ground",
+          "children": []
+        },
+        {
+          "id": 10051,
+          "text": "Temperature",
+          "children": [
+            {
+              "id": 224,
+              "text": "Air temperature (at specified distance from reference surface)",
+              "children": []
+            },
+            {
+              "id": 225,
+              "text": "Dew-point temperature (at specified distance from reference surface)",
+              "children": []
+            },
+            {
+              "id": 226,
+              "text": "Extreme temperature (min, max) (at specified distance from reference surface)",
+              "children": []
+            },
+            {
+              "id": 227,
+              "text": "Temperature profile",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 10052,
+          "text": "Total Atmospheric Deposition",
+          "children": [
+            {
+              "id": 294,
+              "text": "Acidity-Alkalinity",
+              "children": []
+            },
+            {
+              "id": 295,
+              "text": "Electric conductivity",
+              "children": []
+            },
+            {
+              "id": 296,
+              "text": "Hydrogen ion (H+) or pH",
+              "children": []
+            },
+            {
+              "id": 10053,
+              "text": "Inorganic acid",
+              "children": [
+                {
+                  "id": 529,
+                  "text": "Strong acids",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 10054,
+              "text": "Inorganic anions",
+              "children": [
+                {
+                  "id": 538,
+                  "text": "Br- (bromide)",
+                  "children": []
+                },
+                {
+                  "id": 539,
+                  "text": "Cl- (chloride)",
+                  "children": []
+                },
+                {
+                  "id": 540,
+                  "text": "F- (fluoride)",
+                  "children": []
+                },
+                {
+                  "id": 541,
+                  "text": "I- (iodide)",
+                  "children": []
+                },
+                {
+                  "id": 542,
+                  "text": "PO4--- (phosphate)",
+                  "children": []
+                },
+                {
+                  "id": 544,
+                  "text": "SO4= (sulfate)",
+                  "children": []
+                },
+                {
+                  "id": 543,
+                  "text": "SO4= (sulfate), corrected",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 10055,
+              "text": "Inorganic cations",
+              "children": [
+                {
+                  "id": 545,
+                  "text": "Ca++ (calcium)",
+                  "children": []
+                },
+                {
+                  "id": 547,
+                  "text": "K+ (potassium)",
+                  "children": []
+                },
+                {
+                  "id": 546,
+                  "text": "Mg++ (magnesium)",
+                  "children": []
+                },
+                {
+                  "id": 548,
+                  "text": "Na+ (sodium)",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 10056,
+              "text": "Inorganic nitrogen species",
+              "children": [
+                {
+                  "id": 568,
+                  "text": "NH4+ (ammonium)",
+                  "children": []
+                },
+                {
+                  "id": 570,
+                  "text": "NO2- (nitrite)",
+                  "children": []
+                },
+                {
+                  "id": 569,
+                  "text": "NO3- (nitrate)",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 10057,
+              "text": "Organic acid",
+              "children": [
+                {
+                  "id": 578,
+                  "text": "C2H5COO- (propionate)",
+                  "children": []
+                },
+                {
+                  "id": 576,
+                  "text": "CH3COO- (acetate)",
+                  "children": []
+                },
+                {
+                  "id": 577,
+                  "text": "HCOO- (formate)",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 302,
+              "text": "S (sulfur)",
+              "children": []
+            },
+            {
+              "id": 10058,
+              "text": "Trace elements",
+              "children": [
+                {
+                  "id": 597,
+                  "text": "Al (aluminium)",
+                  "children": []
+                },
+                {
+                  "id": 598,
+                  "text": "As (arsenic)",
+                  "children": []
+                },
+                {
+                  "id": 599,
+                  "text": "Cd (cadmium)",
+                  "children": []
+                },
+                {
+                  "id": 601,
+                  "text": "Co (cobalt)",
+                  "children": []
+                },
+                {
+                  "id": 600,
+                  "text": "Cr (chromium)",
+                  "children": []
+                },
+                {
+                  "id": 602,
+                  "text": "Cu (copper)",
+                  "children": []
+                },
+                {
+                  "id": 603,
+                  "text": "Fe (iron)",
+                  "children": []
+                },
+                {
+                  "id": 606,
+                  "text": "Hg (mercury)",
+                  "children": []
+                },
+                {
+                  "id": 605,
+                  "text": "Mn (manganese)",
+                  "children": []
+                },
+                {
+                  "id": 607,
+                  "text": "Ni (nickel)",
+                  "children": []
+                },
+                {
+                  "id": 604,
+                  "text": "Pb (lead)",
+                  "children": []
+                },
+                {
+                  "id": 608,
+                  "text": "V (vanadium)",
+                  "children": []
+                },
+                {
+                  "id": 609,
+                  "text": "Zn (zinc)",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 10059,
+          "text": "Visibility",
+          "children": [
+            {
+              "id": 10060,
+              "text": "Obscurations",
+              "children": [
+                {
+                  "id": 521,
+                  "text": "Extinction coefficient",
+                  "children": []
+                },
+                {
+                  "id": 522,
+                  "text": "Hydrometeor radius",
+                  "children": []
+                },
+                {
+                  "id": 523,
+                  "text": "Hydrometeor type",
+                  "children": []
+                },
+                {
+                  "id": 524,
+                  "text": "Lithometeor type",
+                  "children": []
+                },
+                {
+                  "id": 525,
+                  "text": "Meteorological Optical Range",
+                  "children": []
+                },
+                {
+                  "id": 526,
+                  "text": "Obscuration type",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 229,
+              "text": "Runway visual range",
+              "children": []
+            },
+            {
+              "id": 230,
+              "text": "Visibility",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 10061,
+          "text": "Wind",
+          "children": [
+            {
+              "id": 304,
+              "text": "Direction of cloud movement",
+              "children": []
+            },
+            {
+              "id": 305,
+              "text": "Gust Speed",
+              "children": []
+            },
+            {
+              "id": 12005,
+              "text": "Horizontal wind direction at specified distance from reference surface",
+              "children": []
+            },
+            {
+              "id": 12006,
+              "text": "Horizontal wind speed at specified distance from reference surface",
+              "children": []
+            },
+            {
+              "id": 310,
+              "text": "Upper wind (X, Y components, horizontal)",
+              "children": []
+            },
+            {
+              "id": 307,
+              "text": "Wind (Z component, vertical)",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 10062,
+      "text": "Earth",
+      "children": [
+        {
+          "id": 6,
+          "text": "Crustal motion (horizontal and vertical)",
+          "children": []
+        },
+        {
+          "id": 7,
+          "text": "Crustal plates positioning",
+          "children": []
+        },
+        {
+          "id": 8,
+          "text": "Earth Rotation",
+          "children": []
+        },
+        {
+          "id": 9,
+          "text": "Geoid",
+          "children": []
+        },
+        {
+          "id": 10,
+          "text": "Geomagnetic field",
+          "children": []
+        },
+        {
+          "id": 11,
+          "text": "Gravity field",
+          "children": []
+        },
+        {
+          "id": 12,
+          "text": "Gravity gradients",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": 10063,
+      "text": "Ocean",
+      "children": [
+        {
+          "id": 12247,
+          "text": "Biogeochemistry",
+          "children": [
+            {
+              "id": 68,
+              "text": "Dissolved organic carbon",
+              "children": []
+            },
+            {
+              "id": 739,
+              "text": "Fluorescence (DOM)",
+              "children": []
+            },
+            {
+              "id": 12249,
+              "text": "Inorganic carbon",
+              "children": [
+                {
+                  "id": 71,
+                  "text": "Chlorophyll a concentration",
+                  "children": []
+                },
+                {
+                  "id": 67,
+                  "text": "Dissolved inorganic carbon (DIC)",
+                  "children": []
+                },
+                {
+                  "id": 78,
+                  "text": "Total alkalinity (TA)",
+                  "children": []
+                },
+                {
+                  "id": 735,
+                  "text": "pCO2",
+                  "children": []
+                },
+                {
+                  "id": 736,
+                  "text": "pCO2 air-sea flux",
+                  "children": []
+                },
+                {
+                  "id": 79,
+                  "text": "pH",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 10068,
+              "text": "Nitrogen species",
+              "children": [
+                {
+                  "id": 69,
+                  "text": "Dissolved organic nitrogen",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 12252,
+              "text": "Nutrients",
+              "children": [
+                {
+                  "id": 311,
+                  "text": "NO2- (nitrite)",
+                  "children": []
+                },
+                {
+                  "id": 312,
+                  "text": "NO3- (nitrate)",
+                  "children": []
+                },
+                {
+                  "id": 399,
+                  "text": "PO4= (phosphate)",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 85,
+              "text": "O2-Ar ratio",
+              "children": []
+            },
+            {
+              "id": 12256,
+              "text": "Ocean subsurface tracers",
+              "children": []
+            },
+            {
+              "id": 73,
+              "text": "Oil spill cover",
+              "children": []
+            },
+            {
+              "id": 10070,
+              "text": "Other Gas",
+              "children": [
+                {
+                  "id": 10071,
+                  "text": "CTD",
+                  "children": [
+                    {
+                      "id": 549,
+                      "text": "pO2",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": 12254,
+                  "text": "N2, Ar",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 12251,
+              "text": "Oxygen",
+              "children": [
+                {
+                  "id": 87,
+                  "text": "Dissolved oxygen",
+                  "children": []
+                },
+                {
+                  "id": 86,
+                  "text": "Ocean subsurface dissolved oxygen concentration",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 12250,
+              "text": "Particulate matter",
+              "children": [
+                {
+                  "id": 72,
+                  "text": "Ocean suspended sediments concentration",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 10069,
+              "text": "Phosporus species",
+              "children": [
+                {
+                  "id": 400,
+                  "text": "Total organic phosphorus",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 82,
+              "text": "SiO3= (metasilicate)",
+              "children": []
+            },
+            {
+              "id": 10075,
+              "text": "VOC",
+              "children": [
+                {
+                  "id": 90,
+                  "text": "C2H6S (dimethylsulfide, DMS)",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 10067,
+          "text": "Biology",
+          "children": [
+            {
+              "id": 12248,
+              "text": "Plankton",
+              "children": [
+                {
+                  "id": 12255,
+                  "text": "Zooplankton biomass and diversity",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 74,
+              "text": "Primary production",
+              "children": []
+            },
+            {
+              "id": 733,
+              "text": "Zooplankton (size and/or development stage)",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 10077,
+          "text": "Cryosphere",
+          "children": [
+            {
+              "id": 10078,
+              "text": "Sea ice",
+              "children": [
+                {
+                  "id": 401,
+                  "text": "Sea-ice cover",
+                  "children": []
+                },
+                {
+                  "id": 402,
+                  "text": "Sea-ice elevation",
+                  "children": []
+                },
+                {
+                  "id": 403,
+                  "text": "Sea-ice motion",
+                  "children": []
+                },
+                {
+                  "id": 404,
+                  "text": "Sea-ice surface characteristics",
+                  "children": []
+                },
+                {
+                  "id": 405,
+                  "text": "Sea-ice surface temperature",
+                  "children": []
+                },
+                {
+                  "id": 406,
+                  "text": "Sea-ice thickness",
+                  "children": []
+                },
+                {
+                  "id": 407,
+                  "text": "Sea-ice type",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 10065,
+          "text": "Currents",
+          "children": [
+            {
+              "id": 62,
+              "text": "Ocean current direction",
+              "children": []
+            },
+            {
+              "id": 63,
+              "text": "Ocean current speed",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 10076,
+          "text": "Physical properties",
+          "children": [
+            {
+              "id": 10082,
+              "text": "CTD",
+              "children": [
+                {
+                  "id": 731,
+                  "text": "Conductivity",
+                  "children": []
+                },
+                {
+                  "id": 732,
+                  "text": "Density",
+                  "children": []
+                },
+                {
+                  "id": 408,
+                  "text": "Transmissivity",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 70,
+              "text": "Diffuse attenuation coefficient (DAC), turbidity",
+              "children": []
+            },
+            {
+              "id": 76,
+              "text": "Ocean Surface heat flux",
+              "children": []
+            },
+            {
+              "id": 64,
+              "text": "Ocean dynamic topography (ODT)",
+              "children": []
+            },
+            {
+              "id": 10084,
+              "text": "Ocean surface stress",
+              "children": [
+                {
+                  "id": 103,
+                  "text": "Wind stress",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 18,
+              "text": "Pressure",
+              "children": []
+            },
+            {
+              "id": 10083,
+              "text": "Sea state",
+              "children": [
+                {
+                  "id": 745,
+                  "text": "Directional waves",
+                  "children": []
+                },
+                {
+                  "id": 98,
+                  "text": "Dominant wave direction",
+                  "children": []
+                },
+                {
+                  "id": 99,
+                  "text": "Dominant wave period",
+                  "children": []
+                },
+                {
+                  "id": 100,
+                  "text": "Significant wave height",
+                  "children": []
+                },
+                {
+                  "id": 101,
+                  "text": "Wave 1D energy frequency spectrum",
+                  "children": []
+                },
+                {
+                  "id": 102,
+                  "text": "Wave directional energy frequency spectrum",
+                  "children": []
+                },
+                {
+                  "id": 743,
+                  "text": "Wave height",
+                  "children": []
+                },
+                {
+                  "id": 744,
+                  "text": "Wave period",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 12253,
+              "text": "Sea surface height",
+              "children": [
+                {
+                  "id": 96,
+                  "text": "Coastal sea level (tide)",
+                  "children": []
+                },
+                {
+                  "id": 740,
+                  "text": "Mean dynamic topography (MDT)",
+                  "children": []
+                },
+                {
+                  "id": 741,
+                  "text": "Mean sea surface (MSS)",
+                  "children": []
+                },
+                {
+                  "id": 742,
+                  "text": "Sea surface height (SSH, OST)",
+                  "children": []
+                },
+                {
+                  "id": 77,
+                  "text": "Sea surface height anomaly (SSHA)",
+                  "children": []
+                },
+                {
+                  "id": 10080,
+                  "text": "Tides",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 75,
+              "text": "Sea surface mass flux",
+              "children": []
+            },
+            {
+              "id": 92,
+              "text": "Sea surface salinity",
+              "children": []
+            },
+            {
+              "id": 95,
+              "text": "Sea surface temperature",
+              "children": []
+            },
+            {
+              "id": 91,
+              "text": "Subsurface salinity",
+              "children": []
+            },
+            {
+              "id": 94,
+              "text": "Subsurface temperature",
+              "children": []
+            },
+            {
+              "id": 65,
+              "text": "Surface currents",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 10074,
+          "text": "Radiation",
+          "children": [
+            {
+              "id": 89,
+              "text": "Water-leaving spectral radiance",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 10064,
+          "text": "Topography",
+          "children": [
+            {
+              "id": 13,
+              "text": "Bathymetry",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 10085,
+      "text": "Outer Space",
+      "children": [
+        {
+          "id": 10086,
+          "text": "Energetic particles / solar wind ",
+          "children": [
+            {
+              "id": 104,
+              "text": "Electron flux energy spectrum",
+              "children": []
+            },
+            {
+              "id": 105,
+              "text": "Electrostatic charge",
+              "children": []
+            },
+            {
+              "id": 106,
+              "text": "Heavy ion angular flux energy and mass spectrum",
+              "children": []
+            },
+            {
+              "id": 107,
+              "text": "Heavy ion flux energy and mass spectrum",
+              "children": []
+            },
+            {
+              "id": 108,
+              "text": "Interplanetary magnetic field",
+              "children": []
+            },
+            {
+              "id": 10087,
+              "text": "Particle density",
+              "children": [
+                {
+                  "id": 409,
+                  "text": "Solar wind density",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 10088,
+              "text": "Particle flux",
+              "children": [
+                {
+                  "id": 511,
+                  "text": "Alpha particles differential directional flux",
+                  "children": []
+                },
+                {
+                  "id": 512,
+                  "text": "Alpha particles integral directional flux",
+                  "children": []
+                },
+                {
+                  "id": 513,
+                  "text": "Cosmic ray neutron flux spectrum",
+                  "children": []
+                },
+                {
+                  "id": 514,
+                  "text": "Electron differential directional flux",
+                  "children": []
+                },
+                {
+                  "id": 515,
+                  "text": "Electron flux density",
+                  "children": []
+                },
+                {
+                  "id": 516,
+                  "text": "Electron integral directional flux",
+                  "children": []
+                },
+                {
+                  "id": 517,
+                  "text": "Heavy ion differential directional flux",
+                  "children": []
+                },
+                {
+                  "id": 518,
+                  "text": "Heavy ion integral directional flux",
+                  "children": []
+                },
+                {
+                  "id": 519,
+                  "text": "Proton differential directional flux",
+                  "children": []
+                },
+                {
+                  "id": 520,
+                  "text": "Proton integral directional flux",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 111,
+              "text": "Radiation Dose Rate",
+              "children": []
+            },
+            {
+              "id": 112,
+              "text": "Solar wind temperature",
+              "children": []
+            },
+            {
+              "id": 113,
+              "text": "Solar wind velocity",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 10089,
+          "text": "Ionospheric disturbances",
+          "children": [
+            {
+              "id": 114,
+              "text": "Aurora",
+              "children": []
+            },
+            {
+              "id": 115,
+              "text": "Electric Field",
+              "children": []
+            },
+            {
+              "id": 116,
+              "text": "Electron Density",
+              "children": []
+            },
+            {
+              "id": 117,
+              "text": "Ionospheric Radio Absorption",
+              "children": []
+            },
+            {
+              "id": 118,
+              "text": "Ionospheric Scintillation",
+              "children": []
+            },
+            {
+              "id": 119,
+              "text": "Ionospheric Vertical Total Electron Content (VTEC)",
+              "children": []
+            },
+            {
+              "id": 120,
+              "text": "Ionospheric plasma density",
+              "children": []
+            },
+            {
+              "id": 121,
+              "text": "Ionospheric plasma velocity",
+              "children": []
+            },
+            {
+              "id": 122,
+              "text": "Spread F",
+              "children": []
+            },
+            {
+              "id": 123,
+              "text": "foEs",
+              "children": []
+            },
+            {
+              "id": 124,
+              "text": "foF2",
+              "children": []
+            },
+            {
+              "id": 125,
+              "text": "h'F",
+              "children": []
+            },
+            {
+              "id": 126,
+              "text": "hmF2",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 10090,
+          "text": "Solar monitoring",
+          "children": [
+            {
+              "id": 127,
+              "text": "EUV flux",
+              "children": []
+            },
+            {
+              "id": 128,
+              "text": "EUV flux spectrum",
+              "children": []
+            },
+            {
+              "id": 129,
+              "text": "EUV sky image",
+              "children": []
+            },
+            {
+              "id": 130,
+              "text": "Gamma-ray flux",
+              "children": []
+            },
+            {
+              "id": 131,
+              "text": "Gamma-ray flux spectrum",
+              "children": []
+            },
+            {
+              "id": 132,
+              "text": "Heliospheric image",
+              "children": []
+            },
+            {
+              "id": 133,
+              "text": "Radio-waves",
+              "children": []
+            },
+            {
+              "id": 134,
+              "text": "Solar Ca II-K image",
+              "children": []
+            },
+            {
+              "id": 135,
+              "text": "Solar EUV flux",
+              "children": []
+            },
+            {
+              "id": 136,
+              "text": "Solar EUV flux spectrum",
+              "children": []
+            },
+            {
+              "id": 137,
+              "text": "Solar EUV image",
+              "children": []
+            },
+            {
+              "id": 138,
+              "text": "Solar H-alpha image",
+              "children": []
+            },
+            {
+              "id": 139,
+              "text": "Solar Lyman-alpha flux",
+              "children": []
+            },
+            {
+              "id": 140,
+              "text": "Solar Lyman-alpha image",
+              "children": []
+            },
+            {
+              "id": 141,
+              "text": "Solar UV flux",
+              "children": []
+            },
+            {
+              "id": 142,
+              "text": "Solar UV flux spectrum",
+              "children": []
+            },
+            {
+              "id": 143,
+              "text": "Solar UV image",
+              "children": []
+            },
+            {
+              "id": 144,
+              "text": "Solar VIS flux",
+              "children": []
+            },
+            {
+              "id": 145,
+              "text": "Solar VIS flux spectrum",
+              "children": []
+            },
+            {
+              "id": 146,
+              "text": "Solar VIS image",
+              "children": []
+            },
+            {
+              "id": 147,
+              "text": "Solar X-ray flux",
+              "children": []
+            },
+            {
+              "id": 148,
+              "text": "Solar X-ray flux spectrum",
+              "children": []
+            },
+            {
+              "id": 149,
+              "text": "Solar X-ray image",
+              "children": []
+            },
+            {
+              "id": 150,
+              "text": "Solar coronagraphic image",
+              "children": []
+            },
+            {
+              "id": 151,
+              "text": "Solar electric field",
+              "children": []
+            },
+            {
+              "id": 152,
+              "text": "Solar gamma-ray flux",
+              "children": []
+            },
+            {
+              "id": 153,
+              "text": "Solar gamma-ray flux spectrum",
+              "children": []
+            },
+            {
+              "id": 154,
+              "text": "Solar magnetic field",
+              "children": []
+            },
+            {
+              "id": 155,
+              "text": "Solar radio flux",
+              "children": []
+            },
+            {
+              "id": 156,
+              "text": "Solar radio flux spectrum",
+              "children": []
+            },
+            {
+              "id": 157,
+              "text": "Solar radio image",
+              "children": []
+            },
+            {
+              "id": 158,
+              "text": "Solar velocity fields",
+              "children": []
+            },
+            {
+              "id": 159,
+              "text": "Solar white light image",
+              "children": []
+            },
+            {
+              "id": 160,
+              "text": "UV flux",
+              "children": []
+            },
+            {
+              "id": 161,
+              "text": "UV sky image",
+              "children": []
+            },
+            {
+              "id": 162,
+              "text": "X-ray flux",
+              "children": []
+            },
+            {
+              "id": 163,
+              "text": "X-ray flux spectrum",
+              "children": []
+            },
+            {
+              "id": 164,
+              "text": "X-ray sky image",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 10091,
+      "text": "Terrestrial",
+      "children": [
+        {
+          "id": 10102,
+          "text": "Cryosphere",
+          "children": [
+            {
+              "id": 10103,
+              "text": "Glacier",
+              "children": [
+                {
+                  "id": 12013,
+                  "text": "Glacier area",
+                  "children": []
+                },
+                {
+                  "id": 12009,
+                  "text": "Glacier mass balance at a point",
+                  "children": []
+                },
+                {
+                  "id": 611,
+                  "text": "Glacier motion",
+                  "children": []
+                },
+                {
+                  "id": 612,
+                  "text": "Glacier topography",
+                  "children": []
+                },
+                {
+                  "id": 12010,
+                  "text": "Glacier-wide mass balance",
+                  "children": []
+                },
+                {
+                  "id": 12012,
+                  "text": "Surface ablation at a point",
+                  "children": []
+                },
+                {
+                  "id": 12011,
+                  "text": "Surface accumulation at a point",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 10104,
+              "text": "Ice sheet",
+              "children": [
+                {
+                  "id": 613,
+                  "text": "Ice sheet topography",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 10095,
+              "text": "Lake ice",
+              "children": [
+                {
+                  "id": 725,
+                  "text": "Ice thickness",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 354,
+              "text": "Permafrost",
+              "children": [
+                {
+                  "id": 12525,
+                  "text": "Active layer thickness",
+                  "children": []
+                },
+                {
+                  "id": 12524,
+                  "text": "Permafrost temperature",
+                  "children": []
+                },
+                {
+                  "id": 12526,
+                  "text": "Rock glacier velocity",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 10110,
+              "text": "River ice",
+              "children": [
+                {
+                  "id": 726,
+                  "text": "Ice thickness",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 10105,
+              "text": "Snow",
+              "children": [
+                {
+                  "id": 627,
+                  "text": "Depth of snowfall",
+                  "children": []
+                },
+                {
+                  "id": 12007,
+                  "text": "Presence of snow",
+                  "children": []
+                },
+                {
+                  "id": 628,
+                  "text": "Snow cover extent",
+                  "children": []
+                },
+                {
+                  "id": 629,
+                  "text": "Snow depth",
+                  "children": []
+                },
+                {
+                  "id": 630,
+                  "text": "Snow surface state",
+                  "children": []
+                },
+                {
+                  "id": 631,
+                  "text": "Water equivalent of snow cover",
+                  "children": []
+                },
+                {
+                  "id": 12008,
+                  "text": "Water equivalent of snowfall",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 12527,
+          "text": "Hydrological",
+          "children": [
+            {
+              "id": 12532,
+              "text": "Bed load discharge",
+              "children": []
+            },
+            {
+              "id": 12537,
+              "text": "Depth of runoff",
+              "children": []
+            },
+            {
+              "id": 10092,
+              "text": "Groundwater",
+              "children": [
+                {
+                  "id": 12549,
+                  "text": "Aquifer volume",
+                  "children": []
+                },
+                {
+                  "id": 12553,
+                  "text": "Effective porosity",
+                  "children": []
+                },
+                {
+                  "id": 165,
+                  "text": "Groundwater (amount per unit area)",
+                  "children": []
+                },
+                {
+                  "id": 12559,
+                  "text": "Groundwater flow",
+                  "children": []
+                },
+                {
+                  "id": 166,
+                  "text": "Groundwater level",
+                  "children": []
+                },
+                {
+                  "id": 12550,
+                  "text": "Hydraulic conductivity",
+                  "children": []
+                },
+                {
+                  "id": 12551,
+                  "text": "Hydraulic transmissivity",
+                  "children": []
+                },
+                {
+                  "id": 12556,
+                  "text": "Infiltration capacity",
+                  "children": []
+                },
+                {
+                  "id": 12555,
+                  "text": "Infiltration rate",
+                  "children": []
+                },
+                {
+                  "id": 12547,
+                  "text": "Percolation rate",
+                  "children": []
+                },
+                {
+                  "id": 12552,
+                  "text": "Porosity",
+                  "children": []
+                },
+                {
+                  "id": 12548,
+                  "text": "Recharge rate",
+                  "children": []
+                },
+                {
+                  "id": 12557,
+                  "text": "Specific capacity (well)",
+                  "children": []
+                },
+                {
+                  "id": 12554,
+                  "text": "Specific retention",
+                  "children": []
+                },
+                {
+                  "id": 12558,
+                  "text": "Specific yield",
+                  "children": []
+                },
+                {
+                  "id": 12560,
+                  "text": "Storage",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 12540,
+              "text": "Lake volume",
+              "children": []
+            },
+            {
+              "id": 12538,
+              "text": "Live storage",
+              "children": []
+            },
+            {
+              "id": 12539,
+              "text": "Reservoir storage",
+              "children": []
+            },
+            {
+              "id": 12535,
+              "text": "Runoff",
+              "children": []
+            },
+            {
+              "id": 12536,
+              "text": "Runoff coefficient",
+              "children": []
+            },
+            {
+              "id": 12531,
+              "text": "Sediment discharge",
+              "children": []
+            },
+            {
+              "id": 12542,
+              "text": "Stream index velocity",
+              "children": []
+            },
+            {
+              "id": 12544,
+              "text": "Stream mean velocity",
+              "children": []
+            },
+            {
+              "id": 12545,
+              "text": "Stream surface velocity",
+              "children": []
+            },
+            {
+              "id": 12543,
+              "text": "Stream velocity",
+              "children": []
+            },
+            {
+              "id": 10093,
+              "text": "Surface water",
+              "children": [
+                {
+                  "id": 167,
+                  "text": "Lake area",
+                  "children": []
+                },
+                {
+                  "id": 168,
+                  "text": "Lake level",
+                  "children": []
+                },
+                {
+                  "id": 171,
+                  "text": "Stream discharge",
+                  "children": []
+                },
+                {
+                  "id": 172,
+                  "text": "Stream level",
+                  "children": []
+                },
+                {
+                  "id": 10096,
+                  "text": "Temperature",
+                  "children": [
+                    {
+                      "id": 410,
+                      "text": "Lake Surface Temperature",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": 12530,
+              "text": "Suspended sediment",
+              "children": []
+            },
+            {
+              "id": 12541,
+              "text": "Suspended sediment discharge",
+              "children": []
+            },
+            {
+              "id": 12533,
+              "text": "Suspended sediment load",
+              "children": []
+            },
+            {
+              "id": 12529,
+              "text": "Total dissolved solids",
+              "children": []
+            },
+            {
+              "id": 12534,
+              "text": "Total sediment load",
+              "children": []
+            },
+            {
+              "id": 12528,
+              "text": "Water level",
+              "children": []
+            },
+            {
+              "id": 12546,
+              "text": "Water surface slope",
+              "children": []
+            },
+            {
+              "id": 10114,
+              "text": "Well",
+              "children": [
+                {
+                  "id": 174,
+                  "text": "Well discharge",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 10097,
+          "text": "Land surface",
+          "children": [
+            {
+              "id": 231,
+              "text": "Breaking action-friction coefficient",
+              "children": []
+            },
+            {
+              "id": 232,
+              "text": "Coastlines",
+              "children": []
+            },
+            {
+              "id": 10098,
+              "text": "Fire",
+              "children": [
+                {
+                  "id": 386,
+                  "text": "Fire fractional cover",
+                  "children": []
+                },
+                {
+                  "id": 387,
+                  "text": "Fire radiative power",
+                  "children": []
+                },
+                {
+                  "id": 388,
+                  "text": "Fire temperature",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 10099,
+              "text": "Greenhouse Gas",
+              "children": [
+                {
+                  "id": 422,
+                  "text": "CO2 flux",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 10100,
+              "text": "Humidity",
+              "children": [
+                {
+                  "id": 510,
+                  "text": "Evaporation",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 236,
+              "text": "Land cover",
+              "children": []
+            },
+            {
+              "id": 237,
+              "text": "Land surface topography",
+              "children": []
+            },
+            {
+              "id": 10101,
+              "text": "Radiation",
+              "children": [
+                {
+                  "id": 563,
+                  "text": "Fraction of Absorbed PAR (FAPAR)",
+                  "children": []
+                },
+                {
+                  "id": 564,
+                  "text": "Photosynthetically Active Radiation (PAR)",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 239,
+              "text": "Runway conditions",
+              "children": []
+            },
+            {
+              "id": 10106,
+              "text": "Temperature",
+              "children": [
+                {
+                  "id": 389,
+                  "text": "Land surface temperature",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 10107,
+              "text": "Vegetation",
+              "children": [
+                {
+                  "id": 423,
+                  "text": "Biomass",
+                  "children": []
+                },
+                {
+                  "id": 424,
+                  "text": "Fraction of vegetated land",
+                  "children": []
+                },
+                {
+                  "id": 425,
+                  "text": "Leaf Area Index (LAI)",
+                  "children": []
+                },
+                {
+                  "id": 426,
+                  "text": "Normalised Difference Vegetation Index (NDVI)",
+                  "children": []
+                },
+                {
+                  "id": 427,
+                  "text": "Vegetation type",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 243,
+              "text": "Wetland extent",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": 10111,
+          "text": "Soil",
+          "children": [
+            {
+              "id": 10112,
+              "text": "Humidity",
+              "children": [
+                {
+                  "id": 12561,
+                  "text": "Soil moisture",
+                  "children": []
+                },
+                {
+                  "id": 527,
+                  "text": "Soil moisture (in the roots region)",
+                  "children": []
+                },
+                {
+                  "id": 528,
+                  "text": "Soil moisture at surface",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": 245,
+              "text": "Soil heat Flux",
+              "children": []
+            },
+            {
+              "id": 246,
+              "text": "Soil type",
+              "children": []
+            },
+            {
+              "id": 10113,
+              "text": "Temperature",
+              "children": [
+                {
+                  "id": 596,
+                  "text": "Soil temperature",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]

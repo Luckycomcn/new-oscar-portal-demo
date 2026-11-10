@@ -1,0 +1,64 @@
+[
+    {
+        "id": 5,
+        "name": "Air (fixed)",
+        "definition": "Airborne observing facility, at fixed position"
+    },
+    {
+        "id": 6,
+        "name": "Air (mobile)",
+        "definition": "Airborne observing facility, moving around"
+    },
+    {
+        "id": 11,
+        "name": "Lake/River (fixed)",
+        "definition": "Observing facility at lake/river surface, at fixed position"
+    },
+    {
+        "id": 12,
+        "name": "Lake/River (mobile)",
+        "definition": "Observing facility at lake/river surface, moving around"
+    },
+    {
+        "id": 1,
+        "name": "Land (fixed)",
+        "definition": "Observing facility on solid terrain, at fixed position"
+    },
+    {
+        "id": 2,
+        "name": "Land (mobile)",
+        "definition": "Observing facility on solid terrain, moving around"
+    },
+    {
+        "id": 9,
+        "name": "Land (on ice) ",
+        "definition": "Observing facility on ice-covered ground, moving with the ice"
+    },
+    {
+        "id": 3,
+        "name": "Sea (fixed)",
+        "definition": "Observing facility at sea surface, at fixed position"
+    },
+    {
+        "id": 4,
+        "name": "Sea (mobile)",
+        "definition": "Observing facility at sea surface, moving around"
+    },
+    {
+        "id": 10,
+        "name": "Sea (on ice)",
+        "definition": "Observing facility on floating ice, moving with the ice"
+    },
+    {
+        "id": 7,
+        "name": "Underwater (fixed)",
+        "definition": "Observing facility under water, at fixed horizontal position",
+        "visibility": 2
+    },
+    {
+        "id": 8,
+        "name": "Underwater (mobile)",
+        "definition": "Observing facility under water, moving around also horizontally",
+        "visibility": 2
+    }
+]

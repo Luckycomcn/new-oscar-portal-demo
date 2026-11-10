@@ -1,0 +1,192 @@
+{
+  "wigosMetadataRepresentation": {
+    "@context": [
+      "https://wmo.int/def/wmdr/2.0"
+    ],
+    "identifier": "0-20000-0-89056",
+    "name": "CENTRO MET. ANTÁRTICO PRESIDENTE EDUARDO FREI",
+    "aliases": [
+      "Teniente Rodolfo March  Aeródromo"
+    ],
+    "facilityType": "Land (fixed)",
+    "stationClass": "Automatic weather station (AWS), GBON Surface station, Surface land meteorological station (SYNOP)",
+    "wmoRegion": "Antarctica",
+    "territory": "Chile",
+    "location": {
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -58.9825,
+          -62.1931
+        ]
+      },
+      "elevation": 45,
+      "barometerHeight": 48,
+      "positioningMethod": null,
+      "validSince": "1969-04-01"
+    },
+    "timeZone": "UTC-3",
+    "operatingStatus": "Operational",
+    "declaredStatus": "Operational",
+    "dateEstablished": "1969-04-01",
+    "dateClosed": null,
+    "programmeAffiliation": [
+      {
+        "programme": "GBON",
+        "approvalStatus": "Approved",
+        "declaredStatus": "Operational",
+        "assessedStatus": null
+      },
+      {
+        "programme": "ANTON - deprecated",
+        "approvalStatus": "Approved",
+        "declaredStatus": "Closed",
+        "assessedStatus": null
+      },
+      {
+        "programme": "CLIMAT(C) - deprecated",
+        "approvalStatus": "Approved",
+        "declaredStatus": "Closed",
+        "assessedStatus": null
+      },
+      {
+        "programme": "RBON",
+        "approvalStatus": "Approved",
+        "declaredStatus": "Operational",
+        "assessedStatus": "Operational"
+      },
+      {
+        "programme": "GOS General",
+        "approvalStatus": "Approved",
+        "declaredStatus": "Operational",
+        "assessedStatus": "Operational"
+      },
+      {
+        "programme": "GSN",
+        "approvalStatus": "Approved",
+        "declaredStatus": "Operational",
+        "assessedStatus": null
+      }
+    ],
+    "observations": [
+      {
+        "observedVariable": "Air temperature (at specified distance from reference surface)",
+        "geometry": "Point",
+        "programmes": [
+          "GBON",
+          "GSN",
+          "ANTON - deprecated",
+          "RBON"
+        ]
+      },
+      {
+        "observedVariable": "Atmospheric pressure",
+        "geometry": "Point",
+        "programmes": [
+          "GBON",
+          "ANTON - deprecated",
+          "GSN",
+          "RBON"
+        ]
+      },
+      {
+        "observedVariable": "Cloud amount",
+        "geometry": "Point",
+        "programmes": [
+          "GOS General"
+        ]
+      },
+      {
+        "observedVariable": "Cloud base height",
+        "geometry": "Point",
+        "programmes": [
+          "GOS General"
+        ]
+      },
+      {
+        "observedVariable": "Horizontal wind direction at specified distance from reference surface",
+        "geometry": "Point",
+        "programmes": [
+          "GBON",
+          "ANTON - deprecated",
+          "GSN",
+          "RBON"
+        ]
+      },
+      {
+        "observedVariable": "Horizontal wind speed at specified distance from reference surface",
+        "geometry": "Point",
+        "programmes": [
+          "GBON",
+          "ANTON - deprecated",
+          "GSN",
+          "RBON"
+        ]
+      },
+      {
+        "observedVariable": "Past weather",
+        "geometry": "Point",
+        "programmes": [
+          "GOS General"
+        ]
+      },
+      {
+        "observedVariable": "Present weather",
+        "geometry": "Point",
+        "programmes": [
+          "GOS General"
+        ]
+      },
+      {
+        "observedVariable": "Relative humidity (with respect to water)",
+        "geometry": "Point",
+        "programmes": [
+          "GBON",
+          "ANTON - deprecated",
+          "CLIMAT(C) - deprecated",
+          "RBON"
+        ]
+      },
+      {
+        "observedVariable": "Sunshine duration",
+        "geometry": "Point",
+        "programmes": [
+          "ANTON - deprecated",
+          "GSN",
+          "CLIMAT(C) - deprecated",
+          "RBON"
+        ]
+      },
+      {
+        "observedVariable": "Type of cloud",
+        "geometry": "Point",
+        "programmes": [
+          "GOS General"
+        ]
+      },
+      {
+        "observedVariable": "Visibility",
+        "geometry": "Point",
+        "programmes": [
+          "GOS General"
+        ]
+      }
+    ],
+    "environment": {
+      "climateZone": null,
+      "surfaceCover": null,
+      "localTopography": null
+    },
+    "responsibleParty": [
+      "Dirección Meteorológica de Chile"
+    ],
+    "description": "The station was originally registered based on WMO Pub 9 Vol A information containing these observation remarks: A;ANTON;CLIMAT(C);GSN;ICE;METAR/SPECI A/R;O/R;SEA;SNOW;SOLRA;SUNDUR (see code table A for explanations). These remarks imply the following additional observations that could not be registered automatically: Ice observations; State of sea observations; Snow survey; Solar radiation measurements.",
+    "url": null,
+    "provenance": {
+      "source": "WMO OSCAR / Surface（现役系统公开 REST 接口）",
+      "endpoint": "https://oscar.wmo.int/surface/rest/api/stations/station/{id}/stationReport",
+      "snapshot": "2026-10-04T04:53:25Z",
+      "lastModified": "2024-01-23"
+    }
+  }
+}

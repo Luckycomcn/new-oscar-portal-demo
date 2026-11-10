@@ -1,0 +1,101 @@
+[
+    {
+        "id": 1,
+        "name": "Agricultural meteorological station",
+        "definition": "A station affiliated with the application area \"Agricultural meteorology\"."
+    },
+    {
+        "id": 2,
+        "name": "Aircraft meteorological station",
+        "definition": "A station affiliated with the ABOS program."
+    },
+    {
+        "id": 3,
+        "name": "Automatic weather station (AWS)",
+        "definition": "A station measuring one of the following observation automatically: pressure, humidity, precipitation, temperature and horizontal wind speed and direction.",
+        "visibility": 2
+    },
+    {
+        "id": 4,
+        "name": "Climatological station",
+        "definition": "A station affiliated with the application area \"Climate monitoring (GCOS)\", \"Climate science\", \"Climate applications\" or the programs \"GCOS\" or \"RBCN\".",
+        "visibility": 2
+    },
+    {
+        "id": 5,
+        "name": "Cryosphere station",
+        "definition": "A station measuring a cryosphere variable.",
+        "visibility": 2
+    },
+    {
+        "id": 16,
+        "name": "GBON Surface station",
+        "definition": "A station measuring the variable \"Atmospheric pressure\" in the context of GBON."
+    },
+    {
+        "id": 17,
+        "name": "GBON Upper air station",
+        "definition": "A station measuring \"Temperature profile\" with a radiosonde in the context of GBON."
+    },
+    {
+        "id": 18,
+        "name": "Hydrological station",
+        "definition": "A station measuring one of the hydrological variables or affiliated to WHYCOS or of station type Lake/River"
+    },
+    {
+        "id": 6,
+        "name": "Precipitation station",
+        "definition": "A station measuring amount or intensity of precipitation.",
+        "visibility": 2
+    },
+    {
+        "id": 7,
+        "name": "Radar wind profiler station",
+        "definition": "A station affiliated with the GOS program \"Wind Profilers\".",
+        "visibility": 2
+    },
+    {
+        "id": 8,
+        "name": "Radiation station",
+        "definition": "A station measuring a variable related to downwelling or upwelling radiation."
+    },
+    {
+        "id": 9,
+        "name": "Sea profiling station",
+        "definition": "A station on sea (fixed, mobile or mobile underwater) measuring the vertical profile of ocean temperature.",
+        "visibility": 2
+    },
+    {
+        "id": 15,
+        "name": "Space Weather station",
+        "definition": "A station affiliated with the application area \"Space Weather\"."
+    },
+    {
+        "id": 10,
+        "name": "Surface land meteorological station (SYNOP)",
+        "definition": "A station on land measuring humidity, pressure, temperature and horizontal wind speed and direction.",
+        "visibility": 2
+    },
+    {
+        "id": 11,
+        "name": "Surface marine meteorological station",
+        "definition": "A station on sea (fixed, mobile or on ice) measuring atmospheric pressure.",
+        "visibility": 2
+    },
+    {
+        "id": 12,
+        "name": "Upper-air / PILOT station",
+        "definition": "A station measuring upper wind with a radiosonde without additional observations."
+    },
+    {
+        "id": 13,
+        "name": "Upper-air / Radiosonde station",
+        "definition": "A station measuring vertical profiles of pressure and humidity, temperature or upper wind with a radiosonde."
+    },
+    {
+        "id": 14,
+        "name": "Weather radar",
+        "definition": "A station affiliated with the WRO program.",
+        "visibility": 2
+    }
+]

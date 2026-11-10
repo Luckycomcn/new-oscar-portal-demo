@@ -1,0 +1,166 @@
+/* ==========================================================================
+   文档模式（?doc=1）：为技术方案插图重制的高可读版式
+   —— 放大字号、提高对比、去除装饰背景与悬浮元素，保证缩放到 A4 正文宽度后仍可辨读
+   ========================================================================== */
+
+body.doc-mode {
+  --bg: #ffffff;
+  --bg-grad-1: #ffffff;
+  --bg-grad-2: #ffffff;
+  --panel: #ffffff;
+  --panel-2: #f4f7fb;
+  --line: #c9d5e5;
+  --line-strong: #9db0c8;
+  --text: #0d1b2e;
+  --text-dim: #2c3f57;
+  --text-mute: #5a6b80;
+  --accent: #0b7f8c;
+  --accent-2: #1f5fc4;
+  --ok: #0f7a4d;
+  --warn: #9a6400;
+  --bad: #b6322c;
+  background: #ffffff;
+  font-size: 17px;
+}
+
+body.doc-mode::before { display: none; }
+
+body.doc-mode .topbar {
+  padding: 12px 20px;
+  border-bottom: 2px solid var(--line);
+  background: #ffffff;
+  backdrop-filter: none;
+}
+body.doc-mode .brand-text strong { font-size: 19px; }
+body.doc-mode .brand-text span { font-size: 13px; }
+body.doc-mode .logo { width: 34px; height: 34px; }
+body.doc-mode .nav a { font-size: 18px; padding: 8px 16px; }
+body.doc-mode .tools .ghost { font-size: 15px; }
+body.doc-mode .ro-badge { font-size: 14px; border-color: var(--line-strong); }
+
+body.doc-mode .app { max-width: 660px; padding: 16px; }
+
+/* 文档模式固定栅格：不触发窄屏折叠，保证图内版面与设计稿一致 */
+body.doc-mode .g2 { grid-template-columns: 1fr; }
+body.doc-mode .g3 { grid-template-columns: repeat(3, 1fr); }
+body.doc-mode .g4 { grid-template-columns: repeat(4, 1fr); }
+body.doc-mode .g-2-1 { grid-template-columns: 1fr; }
+body.doc-mode .g-1-2 { grid-template-columns: 1fr; }
+
+body.doc-mode h1.page-title { font-size: 28px; }
+body.doc-mode .page-desc { font-size: 19px; line-height: 1.55; margin-bottom: 16px; }
+body.doc-mode .panel { border-width: 1.5px; padding: 16px 18px; }
+body.doc-mode .panel-title { font-size: 18px; }
+body.doc-mode .panel-title small { font-size: 15px; }
+
+body.doc-mode .kpi { padding: 14px 16px; border-width: 1.5px; }
+body.doc-mode .kpi .k { font-size: 14px; }
+body.doc-mode .kpi .v { font-size: 34px; }
+body.doc-mode .kpi .s { font-size: 13px; }
+
+body.doc-mode table.data { font-size: 15px; }
+body.doc-mode table.data th { font-size: 13px; padding: 7px 8px; }
+body.doc-mode table.data td { padding: 7px 8px; }
+body.doc-mode table.data td .sub { font-size: 14px; }
+
+body.doc-mode .chip { font-size: 16px; padding: 5px 12px; }
+body.doc-mode .chip .c { font-size: 14px; }
+body.doc-mode .tag { font-size: 15px; padding: 3px 10px; }
+body.doc-mode input, body.doc-mode select, body.doc-mode button { font-size: 17px; }
+body.doc-mode label.field > span.lbl { font-size: 14px; }
+body.doc-mode .bar-row { font-size: 16px; grid-template-columns: 190px 1fr 64px; }
+body.doc-mode .bar-row .bv { font-size: 14px; }
+body.doc-mode .map-legend { font-size: 15px; padding: 10px 12px; }
+body.doc-mode .map-legend .ttl { font-size: 13px; }
+body.doc-mode .map-legend .row { margin-top: 5px; }
+body.doc-mode .map-ui button { font-size: 15px; padding: 6px 12px; }
+body.doc-mode .notice { font-size: 16px; }
+body.doc-mode .muted { font-size: 16px; }
+body.doc-mode .footer { font-size: 15px; }
+body.doc-mode .split { grid-template-columns: 1fr; }
+body.doc-mode .pager { font-size: 15px; }
+body.doc-mode .mono-box { font-size: 15px; }
+body.doc-mode .arch .node b { font-size: 19px; }
+body.doc-mode .arch .node .m { font-size: 14px; }
+body.doc-mode .arch .arrow span { font-size: 14px; }
+body.doc-mode dl.kv { font-size: 18px; }
+body.doc-mode dl.kv dt { font-size: 16px; }
+body.doc-mode .section h3 { font-size: 19px; }
+body.doc-mode .section h3 .idx { font-size: 14px; }
+body.doc-mode .boot { display: none; }
+
+/* 文档模式下地图高度略增，保证要素可辨 */
+body.doc-mode .map-box { min-height: 560px; }
+
+/* ---------------------------------------------------------------- 标注层 */
+
+.anno-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+}
+.anno-box {
+  position: absolute;
+  border: 2.5px dashed #d9480f;
+  border-radius: 4px;
+}
+.anno-badge {
+  position: absolute;
+  min-width: 30px;
+  height: 30px;
+  padding: 0 7px;
+  border-radius: 15px;
+  background: #d9480f;
+  color: #fff;
+  font: 700 18px/30px var(--sans);
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
+}
+.anno-note {
+  position: absolute;
+  max-width: 340px;
+  padding: 6px 10px;
+  background: #fff8f3;
+  border: 1.5px solid #d9480f;
+  border-radius: 4px;
+  color: #8a2c05;
+  font: 400 15px/1.45 var(--sans);
+  white-space: normal;
+}
+
+/* ---- 表格列宽：固定布局，避免插图右侧列被裁切 ---- */
+body.doc-mode table.data { font-size: 13px; }
+body.doc-mode table.data th { font-size: 12px; }
+body.doc-mode #se-table table,
+body.doc-mode #st-prog table,
+body.doc-mode #st-obs table,
+body.doc-mode #op-ep table,
+body.doc-mode #op-nf table,
+body.doc-mode #ex-bulk table { table-layout: fixed; }
+
+body.doc-mode #se-table th:nth-child(1) { width: 25%; }
+body.doc-mode #se-table th:nth-child(2) { width: 11%; }
+body.doc-mode #se-table th:nth-child(3) { width: 15%; }
+body.doc-mode #se-table th:nth-child(4) { width: 17%; }
+body.doc-mode #se-table th:nth-child(5) { width: 15%; }
+body.doc-mode #se-table th:nth-child(6) { width: 17%; }
+
+body.doc-mode #st-prog th:nth-child(1) { width: 22%; }
+body.doc-mode #st-prog th:nth-child(2) { width: 13%; }
+body.doc-mode #st-prog th:nth-child(3) { width: 19%; }
+body.doc-mode #st-prog th:nth-child(4) { width: 19%; }
+body.doc-mode #st-prog th:nth-child(5) { width: 27%; }
+
+body.doc-mode #op-nf th:nth-child(1) { width: 12%; }
+body.doc-mode #op-nf th:nth-child(2) { width: 40%; }
+body.doc-mode #op-nf th:nth-child(3) { width: 36%; }
+body.doc-mode #op-nf th:nth-child(4) { width: 12%; }
+
+body.doc-mode .tag { font-size: 12px; padding: 2px 7px; }
+body.doc-mode .chip { font-size: 13px; padding: 3px 9px; }
+
+body.doc-mode .arch { grid-template-columns: 1fr; gap: 0; }
+body.doc-mode .arch .arrow { height: 30px; }
+body.doc-mode .arch .node { margin-bottom: 2px; }
+body.doc-mode .arch .arrow span { position: static; display: block; text-align: center; line-height: 30px; }
