@@ -206,7 +206,6 @@ export default {
     "inRegion": "in WMO Region {region}",
     "download": "Download",
     "generating": "Generating...",
-    "pdf": "Station report as PDF",
     "xml": "Station as WMDR XML",
     "csv": "Station data as CSV",
     "wmdrV2": "Station as WMDR V2 (JSON)",

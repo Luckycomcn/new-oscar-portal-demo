@@ -3,12 +3,11 @@
  *
  * Facility queries use the WIS2 WMO Resource Catalogue. Reference vocabularies and
  * legacy numeric contact links retain bundled snapshots. Name/list compatibility
- * helpers retain offline fallback; reports and exports require a real facility.
+ * suggestions retain offline fallback; station searches, reports and exports require a real facility.
  */
 import stationNameRaw from '../data/stationName.json'
 import wigosIdsRaw from '../data/wigosIds.json'
 import countryRaw from '../data/country.json'
-import stationsRaw from '../data/stations.json'
 import stationClassRaw from '../data/StationClassRef.json'
 import contactsRaw from '../data/contacts.json'
 import { stations as demoStations } from '../data/stations'
@@ -215,45 +214,6 @@ export async function searchStationsPage(
     }
   }
   return { rows, total: result.numberMatched, timeStamp: result.timeStamp }
-}
-
-export async function searchStations(params: StationSearchParams): Promise<StationSearchRow[]> {
-  try {
-    return (await searchStationsPage(params)).rows
-  } catch {
-    return searchStationsLocal(params)
-  }
-}
-
-function searchStationsLocal(params: StationSearchParams): StationSearchRow[] {
-  const rows = stationsRaw as {
-    id: number; name: string; wigos?: string; terr?: string;
-    lat?: number; lon?: number; type?: string; decl?: string
-  }[]
-  const q = (params.term ?? '').trim().toLowerCase()
-  const country = (params.country ?? '').trim().toLowerCase()
-  const list = rows.map((r) => ({
-    id: r.id,
-    name: r.name,
-    wigosId: r.wigos ?? String(r.id),
-    country: r.terr ?? '',
-    type: r.type ?? '',
-    status: r.decl ?? '',
-    lat: Number(r.lat ?? 0),
-    lon: Number(r.lon ?? 0),
-  }))
-  if (!q && !country && !params.types?.length) return list
-  return list.filter((s) => {
-    const checks: boolean[] = []
-    if (q) checks.push(`${s.name} ${s.wigosId} ${s.country} ${s.type}`.toLowerCase().includes(q))
-    if (country) checks.push(s.country.toLowerCase().includes(country))
-    if (params.types?.length) {
-      const needles = params.types.map((t) => t.toLowerCase())
-      checks.push(needles.some((t) => s.type.toLowerCase().includes(t) || t.includes(s.type.toLowerCase())))
-    }
-    const op = (params.operation ?? 'AND').toUpperCase()
-    return checks.length ? (op === 'OR' ? checks.some(Boolean) : checks.every(Boolean)) : true
-  })
 }
 
 function featureToReport(feature: WigosFeature): StationReport {

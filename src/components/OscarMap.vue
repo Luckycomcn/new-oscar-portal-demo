@@ -28,7 +28,6 @@
               <svg class="legacy-replacement-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5" /></svg> {{ downloading ? $t('common.generating') : $t('common.download') }} ▾
             </button>
             <span v-show="dlOpen" class="dl-menu">
-              <button type="button" @click="downloadPdf">{{ $t('stationReport.pdf') }}</button>
               <button type="button" @click="downloadXml">{{ $t('stationReport.xml') }}</button>
               <button type="button" @click="downloadCsv">{{ $t('stationReport.csv') }}</button>
               <button type="button" @click="downloadWmdrV2">{{ $t('stationReport.wmdrV2') }}</button>
@@ -497,7 +496,7 @@ function onPopupLeave() {
   }, 250)
 }
 
-async function runDownload(format: 'xml' | 'csv' | 'json' | 'pdf') {
+async function runDownload(format: 'xml' | 'csv' | 'json') {
   if (!hover.value || downloading.value) return
   const id = hover.value.wigosId
   downloading.value = true
@@ -514,7 +513,6 @@ async function runDownload(format: 'xml' | 'csv' | 'json' | 'pdf') {
   }
 }
 
-const downloadPdf = () => runDownload('pdf')
 const downloadXml = () => runDownload('xml')
 const downloadCsv = () => runDownload('csv')
 const downloadWmdrV2 = () => runDownload('json')

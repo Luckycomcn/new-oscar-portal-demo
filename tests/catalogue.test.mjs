@@ -39,12 +39,6 @@ const oscar = entry.namespace
 const downloadModule = await load(resolve('src/utils/catalogueDownload.ts'))
 await downloadModule.evaluate()
 const downloads = downloadModule.namespace
-let pdfSaved = false
-globalThis.document = { createElement: () => ({ click() { pdfSaved = true }, remove() {} }), body: { appendChild() {} } }
-globalThis.window = { setTimeout(callback) { callback() } }
-globalThis.fetch = async (url) => String(url).startsWith('/oscar-station')
-  ? new Response(JSON.stringify({ stationId: 173943 })) : new Response('<html>Error</html>')
-await assert.rejects(downloads.downloadCatalogueRecord('0-22000-0-7810046', 'pdf'), /did not return a PDF/)
 const processModule = await load(resolve('src/api/wmdrProcesses.ts'))
 await processModule.evaluate()
 const sample = {

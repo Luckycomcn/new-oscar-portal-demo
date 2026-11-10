@@ -24,7 +24,6 @@
               {{ downloading ? $t('stationReport.generating') : $t('stationReport.download') }} ▾
             </button>
             <span v-show="dlOpen" class="dl-menu">
-              <button type="button" @click="downloadPdf">{{ $t('stationReport.pdf') }}</button>
               <button type="button" @click="downloadXml">{{ $t('stationReport.xml') }}</button>
               <button type="button" @click="downloadCsv">{{ $t('stationReport.csv') }}</button>
               <button type="button" @click="downloadWmdrV2">{{ $t('stationReport.wmdrV2') }}</button>
@@ -223,7 +222,7 @@ async function load() {
   }
 }
 
-async function runDownload(format: 'json' | 'xml' | 'csv' | 'pdf') {
+async function runDownload(format: 'json' | 'xml' | 'csv') {
   if (downloading.value || !report.value) return
   downloading.value = true
   downloadError.value = ''
@@ -236,7 +235,6 @@ async function runDownload(format: 'json' | 'xml' | 'csv' | 'pdf') {
     downloading.value = false
   }
 }
-const downloadPdf = () => runDownload('pdf')
 const downloadXml = () => runDownload('xml')
 const downloadCsv = () => runDownload('csv')
 const downloadWmdrV2 = () => runDownload('json')

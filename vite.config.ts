@@ -9,22 +9,10 @@ export default defineConfig({
   server: { proxy: { '/wmdr-source': {
     target: 'https://oscar.wmo.int', changeOrigin: true,
     rewrite: (path) => path.replace(/^\/wmdr-source/, '/oai/provider'),
-  }, '/oscar-station': {
-    target: 'https://oscar.wmo.int', changeOrigin: true,
-    rewrite: (path) => path.replace(/^\/oscar-station/, '/surface/rest/api/stations/station'),
-  }, '/oscar-pdf': {
-    target: 'https://oscar.wmo.int', changeOrigin: true,
-    rewrite: (path) => path.replace(/^\/oscar-pdf/, '/surface/rest/api/stations/download/station'),
   } } },
   preview: { proxy: { '/wmdr-source': {
     target: 'https://oscar.wmo.int', changeOrigin: true,
     rewrite: (path) => path.replace(/^\/wmdr-source/, '/oai/provider'),
-  }, '/oscar-station': {
-    target: 'https://oscar.wmo.int', changeOrigin: true,
-    rewrite: (path) => path.replace(/^\/oscar-station/, '/surface/rest/api/stations/station'),
-  }, '/oscar-pdf': {
-    target: 'https://oscar.wmo.int', changeOrigin: true,
-    rewrite: (path) => path.replace(/^\/oscar-pdf/, '/surface/rest/api/stations/download/station'),
   } } },
   plugins: [
     vue(),

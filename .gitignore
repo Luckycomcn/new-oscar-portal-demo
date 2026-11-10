@@ -9,6 +9,7 @@ lerna-debug.log*
 
 node_modules
 dist
+docs
 dist.zip
 dist-ssr
 *.local
@@ -30,10 +31,8 @@ dist-ssr
 .env.*
 !.env.example
 tmp/
-delivery/*.tar
-delivery/*.tar.gz
-delivery/*.zip
-delivery/SHA256SUMS.txt
 *.pem
 *.key
 
+delivery/
+docs/

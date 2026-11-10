@@ -42,31 +42,7 @@ export function saveCatalogueFile(blob: Blob, id: string, extension: string) {
   window.setTimeout(() => URL.revokeObjectURL(url), 10000)
 }
 
-export async function downloadCatalogueRecord(id: string, format: 'json' | 'csv' | 'xml' | 'pdf') {
-  if (format === 'pdf') {
-    const lookup = await fetch(`/oscar-station?wmoIndex=${encodeURIComponent(id)}`, {
-      headers: { Accept: 'application/json' }, signal: AbortSignal.timeout(30000),
-    })
-    if (!lookup.ok) throw new Error(`OSCAR station HTTP ${lookup.status}`)
-    const station = await lookup.json()
-    if (!Number.isSafeInteger(station.stationId) || station.stationId <= 0) {
-      throw new Error('No OSCAR station found for this WIGOS identifier')
-    }
-    const response = await fetch('/oscar-pdf?registration=false', {
-      method: 'POST', headers: { Accept: 'application/pdf' },
-      body: new URLSearchParams({ data: JSON.stringify({ id: station.stationId, imageUrl: '' }) }),
-      signal: AbortSignal.timeout(60000),
-    })
-    if (!response.ok) throw new Error(`PDF HTTP ${response.status}`)
-    const blob = await response.blob()
-    if (!(await blob.slice(0, 5).text()).startsWith('%PDF-')) throw new Error('OSCAR did not return a PDF file')
-    const record = await fetchDownloadRecord(id)
-    const { renderStationMap, appendStationMap } = await import('./reportMap')
-    const image = await renderStationMap(record)
-    const bytes = await appendStationMap(await blob.arrayBuffer(), image, id)
-    saveCatalogueFile(new Blob([new Uint8Array(bytes)], { type: 'application/pdf' }), id, 'pdf')
-    return
-  }
+export async function downloadCatalogueRecord(id: string, format: 'json' | 'csv' | 'xml') {
   const record = await fetchDownloadRecord(id)
   if (format === 'xml') {
     const link = record.links?.find((item) => item.rel === 'original' && /xml/i.test(item.type ?? ''))

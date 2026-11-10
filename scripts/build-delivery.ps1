@@ -1,8 +1,8 @@
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $deliveryRoot = Join-Path $projectRoot 'delivery'
-$imageTag = 'oscar-surface:1.0.0'
-$archivePath = Join-Path $deliveryRoot 'oscar-surface-1.0.0-linux-amd64.tar'
+$imageTag = 'new-oscar-portal-demo:1.0.0'
+$archivePath = Join-Path $deliveryRoot 'new-oscar-portal-demo-1.0.0-linux-amd64.tar'
 
 if (-not (Get-Command docker -ErrorAction SilentlyContinue)) {
     throw 'Docker is not installed or not on PATH. Install and start Docker with Linux containers, then retry.'

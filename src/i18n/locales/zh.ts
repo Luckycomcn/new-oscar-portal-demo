@@ -206,7 +206,6 @@ export default {
     "inRegion": "位于 WMO 第 {region} 区",
     "download": "下载",
     "generating": "生成中...",
-    "pdf": "台站报告（PDF）",
     "xml": "台站数据（WMDR XML）",
     "csv": "台站数据（CSV）",
     "wmdrV2": "台站数据（WMDR V2 JSON）",
