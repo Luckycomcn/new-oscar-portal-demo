@@ -1,38 +1,66 @@
+param(
+    [string]$ImageTag = 'new-oscar-portal-demo:1.0.0',
+    [string]$AmapKey = '',
+    [string]$TiandituKey = ''
+)
+
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $deliveryRoot = Join-Path $projectRoot 'delivery'
-$imageTag = 'new-oscar-portal-demo:1.0.0'
-$archivePath = Join-Path $deliveryRoot 'new-oscar-portal-demo-1.0.0-linux-amd64.tar'
+$archiveName = 'new-oscar-portal-demo-1.0.0-linux-amd64.tar'
+$archivePath = Join-Path $deliveryRoot $archiveName
 
 if (-not (Get-Command docker -ErrorAction SilentlyContinue)) {
-    throw 'Docker is not installed or not on PATH. Install and start Docker with Linux containers, then retry.'
+    throw 'Install Docker and start its Linux container engine first.'
 }
-docker info --format '{{.OSType}}'
-if ($LASTEXITCODE -ne 0) { throw 'Docker Engine is unavailable. Start Docker and retry.' }
-
-Push-Location $projectRoot
-try {
-    $mapSettings = node --input-type=module -e "import {loadEnv} from 'vite'; const e=loadEnv('production',process.cwd()); console.log(JSON.stringify({amap:e.VITE_AMAP_KEY,tianditu:e.VITE_TIANDITU_KEY}));" | ConvertFrom-Json
-    if ($LASTEXITCODE -ne 0) { throw 'Unable to read map build settings with Vite.' }
-} finally {
-    Pop-Location
+$dockerOs = docker info --format '{{.OSType}}'
+if ($LASTEXITCODE -ne 0 -or $dockerOs -ne 'linux') {
+    throw 'Docker Linux engine is unavailable. Start Docker Desktop in Linux containers mode and retry.'
 }
+New-Item -ItemType Directory -Path $deliveryRoot -Force | Out-Null
 
-docker build --platform linux/amd64 --tag $imageTag --build-arg "VITE_AMAP_KEY=$($mapSettings.amap)" --build-arg "VITE_TIANDITU_KEY=$($mapSettings.tianditu)" --build-arg 'VITE_AMAP_SERVICE_HOST=/_AMapService' $projectRoot
-if ($LASTEXITCODE -ne 0) { throw 'Image build failed; no delivery archive was generated.' }
-
-# Validate the bundled web server configuration before exporting.
-docker run --rm --platform linux/amd64 --env AMAP_SECURITY_JS_CODE=configuration-check $imageTag nginx -t
+docker build --platform linux/amd64 --tag $ImageTag --build-arg "VITE_AMAP_KEY=$AmapKey" --build-arg "VITE_TIANDITU_KEY=$TiandituKey" --build-arg 'VITE_AMAP_SERVICE_HOST=/_AMapService' $projectRoot
+if ($LASTEXITCODE -ne 0) { throw 'Image build failed.' }
+docker run --rm --platform linux/amd64 $ImageTag nginx -t
 if ($LASTEXITCODE -ne 0) { throw 'Nginx configuration validation failed.' }
-
-docker compose --env-file (Join-Path $projectRoot '.env.local') --file (Join-Path $deliveryRoot 'compose.yaml') config --quiet
-if ($LASTEXITCODE -ne 0) { throw 'Compose configuration validation failed.' }
-
-docker save --output $archivePath $imageTag
+docker save --output $archivePath $ImageTag
 if ($LASTEXITCODE -ne 0) { throw 'Image export failed.' }
 
 Copy-Item -LiteralPath (Join-Path $projectRoot 'LICENSE') -Destination $deliveryRoot
 Copy-Item -LiteralPath (Join-Path $projectRoot 'NOTICE') -Destination $deliveryRoot
 $archiveHash = (Get-FileHash -LiteralPath $archivePath -Algorithm SHA256).Hash.ToLowerInvariant()
-Set-Content -LiteralPath (Join-Path $deliveryRoot 'SHA256SUMS.txt') -Value "$archiveHash  $(Split-Path -Leaf $archivePath)" -Encoding ascii
+Set-Content -LiteralPath (Join-Path $deliveryRoot 'SHA256SUMS.txt') -Value "$archiveHash  $archiveName" -Encoding ascii
+$instructions = @"
+# New OSCAR Portal - Demo
+
+Image: $ImageTag
+Platform: Linux amd64 (x86_64)
+
+1. Install Docker and start the Linux container engine.
+2. Import the image:
+
+    docker load -i $archiveName
+
+3. Start the portal:
+
+    docker run -d --name oscar-portal --restart unless-stopped -p 8080:8080 $ImageTag
+
+4. Open http://localhost:8080 (or http://SERVER_IP:8080).
+
+The target server does not need Node.js or the source code.
+Catalogue queries, metadata downloads and maps require internet access.
+OpenStreetMap needs no key. Optional AMap/Tianditu keys must be supplied at build time.
+For AMap, also pass -e AMAP_SECURITY_JS_CODE=YOUR_CODE to docker run.
+The default image contains no private map keys.
+
+Check logs: docker logs oscar-portal
+Stop: docker stop oscar-portal
+Remove container: docker rm oscar-portal (stop it first)
+
+Verify the archive on Linux: sha256sum -c SHA256SUMS.txt
+Verify on PowerShell: Get-FileHash ./$archiveName -Algorithm SHA256
+
+See LICENSE and NOTICE for licensing and attribution.
+"@
+Set-Content -LiteralPath (Join-Path $deliveryRoot 'DEPLOYMENT.md') -Value $instructions -Encoding utf8
 Write-Host "Delivery files are ready: $deliveryRoot"
