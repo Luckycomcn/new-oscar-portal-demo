@@ -2,7 +2,6 @@
   <div class="oscar-header">
     <div class="oscar-header__left">
       <a target="_blank" href="https://www.wmo.int" class="oscar-header__wmo">
-        <!-- <img src="/images/logo_wmo.png" alt="World Meteorological Organization" /> -->
         <img src="../assets/wmoLogo.jpeg" alt="World Meteorological Organization" />
         <span class="oscar-header__wmo-text">{{ $t('header.wmo1') }}<br />{{ $t('header.wmo2') }}<br />{{ $t('header.wmo3') }}</span>
       </a>

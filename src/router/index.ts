@@ -24,7 +24,7 @@ const router = createRouter({
   ],
 })
 
-const OSCAR_TITLE = 'Observing Systems Capability Analysis and Review Tool (OSCAR)'
+const OSCAR_TITLE = 'New OSCAR Portal – Demo'
 
 router.afterEach(() => {
   document.title = OSCAR_TITLE
