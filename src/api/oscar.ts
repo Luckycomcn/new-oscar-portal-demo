@@ -8,7 +8,7 @@
 import stationNameRaw from '../data/stationName.json'
 import wigosIdsRaw from '../data/wigosIds.json'
 import countryRaw from '../data/country.json'
-import stationsRaw from '../../web/data/stations.json'
+import stationsRaw from '../data/stations.json'
 import stationClassRaw from '../data/StationClassRef.json'
 import contactsRaw from '../data/contacts.json'
 import { stations as demoStations } from '../data/stations'

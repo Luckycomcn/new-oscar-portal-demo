@@ -26,7 +26,7 @@
 |---|---|
 | `src/style.scss` | 独立实现的全局 SCSS，替代原站样式 |
 | `public/js/` | `go.js`、`go-vendor.js`（原站 Angular / Esri 脚本，供对照；业务逻辑已用 Vue 重写） |
-| `public/images/` | 从 oscar.wmo.int 下载的 `logo_wmo.png`、`logo_oscar.png`、`meteo_logo.png`、`header_bg.png` |
+| `public/images/` | 从 oscar.wmo.int 下载的 `logo_wmo.png`、`logo_oscar.png`、`header_bg.png` |
 | `public/fonts/` | Font Awesome 4.4 字体文件 |
 
 ### Vue 组件与页面

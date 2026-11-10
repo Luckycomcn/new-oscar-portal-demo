@@ -72,7 +72,7 @@
 ├── public/                  # 原样拷贝到构建产物的静态资源
 │   ├── images/              # 保留图片资源
 │   └── data/                # 含 world-countries.geojson（来源见 public/data/README.md）
-└── web/data/                # 站点等数据快照（构建期被 src/api 引用）
+
 ```
 
 > 仅保留源文件：`node_modules/`、`dist/`、`dist.zip` 等生成物不纳入版本控制（见 `.gitignore`）。请按下方说明在本地构建。
@@ -133,7 +133,7 @@ docker run -d --name oscar-surface -p 8080:8080 oscar-surface
    默认语言 `en`，用户切换后保存在 `localStorage` 的 `oscar-locale` 键。如需默认中文，将 `DEFAULT_LOCALE` 改为 `'zh'`。
 
 5. **本地数据文件**
-   `src/api/oscar.ts` 引用了 `web/data/stations.json` 以及 `src/data/*.json`。这些是构建期输入，**请勿删除**，否则类型检查 / 构建会失败。
+   `src/api/oscar.ts` 引用了 `src/data/stations.json` 以及 `src/data/*.json`。这些是构建期输入，**请勿删除**，否则类型检查 / 构建会失败。
 
 6. **Node 版本**
    若 `npm ci` 因本地二进制（如 `sass-embedded`、`lightningcss`）报错，请确认 Node 版本 ≥ 18，并删除 `node_modules` 后重装。
