@@ -241,6 +241,7 @@ export default {
     "email": "邮箱"
   },
   "map": {
+    "filteredSnapshot": "筛选地图快照：{date} UTC · 当前视野 {count} 个站点（密集点聚合）",
     "overviewSnapshot": "站点概览（密集点聚合），快照更新：{date} UTC",
     "overviewUnmapped": "{count} 条记录无有效点坐标",
     "overviewZoomHint": "点击地图中的圆点放大查看站点。",

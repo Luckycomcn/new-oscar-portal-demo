@@ -1,13 +1,99 @@
 {
-  "version": "77db6bdcf8ed579a",
-  "generatedAt": "2026-11-11T02:13:14.217Z",
+  "version": "81d185b0cd989bfa",
+  "generatedAt": "2026-11-11T08:58:21.330Z",
   "source": "https://wmo-resource-catalogue.labs.wis2dev.io/collections/wigos-observing-facility-metadata",
   "total": 64976,
   "mapped": 64447,
   "unmapped": 529,
   "maxZoom": 5,
   "tileSize": 512,
-  "path": "data/station-overview/77db6bdcf8ed579a/{z}/{x}/{y}.pbf",
+  "path": "data/station-overview/81d185b0cd989bfa/{z}/{x}/{y}.pbf",
   "tileCount": 1365,
-  "bytes": 6670702
+  "bytes": 6670702,
+  "pointFiles": {
+    "landFixed": {
+      "total": 26127,
+      "mapped": 26127,
+      "unmapped": 0,
+      "path": "data/station-overview/81d185b0cd989bfa/points/landFixed.json"
+    },
+    "landMobile": {
+      "total": 2,
+      "mapped": 1,
+      "unmapped": 1,
+      "path": "data/station-overview/81d185b0cd989bfa/points/landMobile.json"
+    },
+    "landOnIce": {
+      "total": 73,
+      "mapped": 72,
+      "unmapped": 1,
+      "path": "data/station-overview/81d185b0cd989bfa/points/landOnIce.json"
+    },
+    "seaFixed": {
+      "total": 1008,
+      "mapped": 1008,
+      "unmapped": 0,
+      "path": "data/station-overview/81d185b0cd989bfa/points/seaFixed.json"
+    },
+    "seaMobile": {
+      "total": 11899,
+      "mapped": 11758,
+      "unmapped": 141,
+      "path": "data/station-overview/81d185b0cd989bfa/points/seaMobile.json"
+    },
+    "seaOnIce": {
+      "total": 182,
+      "mapped": 168,
+      "unmapped": 14,
+      "path": "data/station-overview/81d185b0cd989bfa/points/seaOnIce.json"
+    },
+    "lakeRiverFixed": {
+      "total": 5288,
+      "mapped": 5261,
+      "unmapped": 27,
+      "path": "data/station-overview/81d185b0cd989bfa/points/lakeRiverFixed.json"
+    },
+    "lakeRiverMobile": {
+      "total": 0,
+      "mapped": 0,
+      "unmapped": 0,
+      "path": "data/station-overview/81d185b0cd989bfa/points/lakeRiverMobile.json"
+    },
+    "underwaterFixed": {
+      "total": 2,
+      "mapped": 2,
+      "unmapped": 0,
+      "path": "data/station-overview/81d185b0cd989bfa/points/underwaterFixed.json"
+    },
+    "underwaterMobile": {
+      "total": 20367,
+      "mapped": 20025,
+      "unmapped": 342,
+      "path": "data/station-overview/81d185b0cd989bfa/points/underwaterMobile.json"
+    },
+    "airFixed": {
+      "total": 21,
+      "mapped": 21,
+      "unmapped": 0,
+      "path": "data/station-overview/81d185b0cd989bfa/points/airFixed.json"
+    },
+    "airMobile": {
+      "total": 7,
+      "mapped": 4,
+      "unmapped": 3,
+      "path": "data/station-overview/81d185b0cd989bfa/points/airMobile.json"
+    },
+    "spaceBased": {
+      "total": 0,
+      "mapped": 0,
+      "unmapped": 0,
+      "path": "data/station-overview/81d185b0cd989bfa/points/spaceBased.json"
+    },
+    "unknown": {
+      "total": 0,
+      "mapped": 0,
+      "unmapped": 0,
+      "path": "data/station-overview/81d185b0cd989bfa/points/unknown.json"
+    }
+  }
 }

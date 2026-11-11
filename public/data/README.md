@@ -11,6 +11,18 @@ This directory contains static data files that are copied unchanged into the bui
 - **Missing geometry**: Records without valid point coordinates are excluded and counted in the manifest and map note. The note also identifies the generated snapshot date; this is an overview, not a live position feed.
 - **Caching**: Content-versioned directory, immutable cache headers and protobuf compression in Nginx. Publish the manifest and tiles together; keep prior versions available while old application builds may still use them.
 
+## `station-overview/<version>/points/<facilityType>.json`
+
+Exact per-type station points, generated together with the overview. Each row is
+`[stationId, longitude, latitude]`; the manifest records total, mapped and
+unmapped counts per type. Unlike grouped MVT representatives, these include every
+valid station of that exact type, so type filtering cannot lose minority types
+inside shared colour cells. The map loads only selected type files and reuses
+them across viewport changes. Coordinates retain six decimal places; station
+details remain live and are fetched on demand. These snapshot files are not used
+for programme, country, region, variable or keyword predicates that they cannot
+accurately evaluate.
+
 ## `world-countries.geojson`
 
 - **Purpose**: Country and territory boundary vectors (`FeatureCollection`) for map rendering and other geographic features.

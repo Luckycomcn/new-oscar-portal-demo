@@ -23,7 +23,7 @@
       <div v-else-if="error && mode === 'list'" class="state-message" role="alert">{{ error }} <el-button @click="loadPage">{{ $t('common.retry') }}</el-button></div>
       <template v-else>
         <div v-show="mode === 'map'" class="map-wrap">
-          <OscarMap :map-query="mapQuery" />
+          <OscarMap v-if="mode === 'map'" :map-query="mapQuery" />
         </div>
         <template v-if="mode === 'list'">
           <div class="table-wrap">
@@ -46,7 +46,7 @@
           </footer>
         </template>
       </template>
-      <footer v-if="fetchedAt" class="data-note">{{ $t('search.remoteNote', { count: filtered.length, total: total.toLocaleString(), date: fetchedAt.slice(0, 10) }) }}</footer>
+      <footer v-if="fetchedAt && mode === 'list'" class="data-note">{{ $t('search.remoteNote', { count: filtered.length, total: total.toLocaleString(), date: fetchedAt.slice(0, 10) }) }}</footer>
     </section>
   </div>
 </template>
@@ -100,6 +100,7 @@ const page = ref(1)
 const pageSize = ref(25)
 const ascending = ref(true)
 let requestSeq = 0
+let pageController: AbortController | undefined
 
 interface VariableNode { id: number; text: string; children?: VariableNode[] }
 
@@ -155,7 +156,11 @@ function toStation(feature: WigosFeature): Station | null {
 }
 
 async function loadPage() {
+  pageController?.abort()
+  const controller = new AbortController()
+  pageController = controller
   const seq = ++requestSeq
+  const mapOnly = mode.value === 'map'
   loading.value = true
   error.value = ''
   try {
@@ -167,12 +172,14 @@ async function loadPage() {
       territories: filters.terr ? [filters.terr] : [],
       variables: variableId != null ? [variableId] : [],
       regions: filters.ra ? [filters.ra] : [],
-      limit: pageSize.value,
-      offset: (page.value - 1) * pageSize.value,
+      limit: mapOnly ? 1 : pageSize.value,
+      offset: mapOnly ? 0 : (page.value - 1) * pageSize.value,
+      full: !mapOnly,
+      signal: controller.signal,
       sortby: ascending.value ? 'title' : '-title',
     })
     if (seq !== requestSeq) return
-    rows.value = result.features.map(toStation).filter(Boolean) as Station[]
+    rows.value = mapOnly ? [] : result.features.map(toStation).filter(Boolean) as Station[]
     total.value = result.numberMatched
     fetchedAt.value = result.timeStamp ?? new Date().toISOString()
   } catch (cause) {
@@ -234,10 +241,13 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
+  requestSeq++
+  pageController?.abort()
   window.clearTimeout(filterTimer)
 })
 
 watch([keyword, () => ({ ...filters })], scheduleReload)
+watch(mode, () => { void loadPage() })
 watch(pageSize, () => {
   page.value = 1
   void loadPage()

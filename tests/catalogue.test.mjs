@@ -149,3 +149,89 @@ for (const query of [{q:'test'}, {types:['landFixed']}, {programs:['GBON']}, {te
 }
 assert.ok(api.WIGOS_TILES_URL.endsWith('/tiles/WebMercatorQuad/{z}/{y}/{x}?f=pbf'))
 console.log('PASS: unfiltered tiles, every search filter switches to JSON, tile row/column order')
+
+const mapsModule = await load(resolve('src/api/mapFacilities.ts'))
+await mapsModule.evaluate()
+const maps = mapsModule.namespace
+const manifest = JSON.parse(await readFile('src/data/stationOverview.json', 'utf8'))
+let pointRequests = 0
+globalThis.fetch = async url => {
+  pointRequests++
+  assert.ok(String(url).startsWith('/data/station-overview/'))
+  return new Response(await readFile('public' + url, 'utf8'))
+}
+let mapProgress
+const typeResult = await maps.loadFilteredMap({ types: ['Land (fixed)'], bbox: [-180,-90,180,90] }, (delta, loaded, total) => { mapProgress = [delta.length, loaded, total] })
+assert.equal(typeResult.features.length, manifest.pointFiles.landFixed.mapped)
+assert.equal(typeResult.snapshotDate, manifest.generatedAt.slice(0,10))
+assert.ok(typeResult.features.every(f => f.properties.facilityType.id === 'landFixed' && f.mapSummary))
+assert.deepEqual(mapProgress, [manifest.pointFiles.landFixed.mapped,manifest.pointFiles.landFixed.total,manifest.pointFiles.landFixed.total])
+await maps.loadFilteredMap({ types: ['landFixed'], bbox: [0,0,10,10] }, () => {})
+assert.equal(pointRequests, 1, 'panning must reuse the complete type dataset')
+const mixedTypes = await maps.loadFilteredMap({ types: ['landFixed','landMobile'], bbox: [-180,-90,180,90] }, () => {})
+assert.equal(mixedTypes.features.length, manifest.pointFiles.landFixed.mapped + manifest.pointFiles.landMobile.mapped)
+assert.equal(mixedTypes.unmapped, manifest.pointFiles.landMobile.unmapped)
+assert.equal(pointRequests, 2)
+console.log('PASS: exact type snapshot completeness, multi-type union and zero-request viewport reuse')
+
+maps.clearMapCache(); api.clearWigosCache()
+let active = 0, peak = 0, compactCalls = []
+globalThis.fetch = async url => {
+  compactCalls.push(String(url)); active++; peak = Math.max(peak, active)
+  await new Promise(resolve => setTimeout(resolve, 5)); active--
+  const p = new URL(url).searchParams
+  assert.equal(p.get('properties'), 'title')
+  assert.equal(p.get('limit'), '1000')
+  assert.equal(p.get('territories.territory.id'), 'CHE')
+  const type = p.get('facilityType.id'), program = p.get('observations.programAffiliations.programAffiliation.id')
+  const offset = Number(p.get('offset') || 0)
+  const ids = type === 'landFixed'
+    ? (offset ? [`land-${program}`] : Array.from({length:1000},(_,i)=>`land-${i}`))
+    : ['sea-shared',`sea-${program}`]
+  return new Response(JSON.stringify({ features: ids.map(id => ({id,type:'Feature',geometry:{type:'Point',coordinates:[0.2,0.2]},properties:{title:id}})),
+    numberMatched: type === 'landFixed' ? (offset ? 1 : 1001) : 2, numberReturned: ids.length }))
+}
+const combined = { types:['landFixed','seaFixed'], programs:['GBON','GUAN'], territories:['CHE'], bbox:[0,0,1,1] }
+const compact = await maps.loadFilteredMap(combined,()=>{})
+assert.equal(compact.features.length,1005,'multi-select axes must union all branches and deduplicate overlaps')
+assert.equal(compact.features.filter(f=>f.properties.facilityType.id==='landFixed').length,1002)
+assert.equal(compactCalls.length,6)
+assert.ok(peak<=3)
+await maps.loadFilteredMap({...combined,bbox:[0.1,0.1,0.9,0.9]},()=>{})
+assert.equal(compactCalls.length,6,'completed regions must satisfy contained viewport queries without HTTP')
+console.log('PASS: compact server filtering, OR branches, deduplication, stable pagination target, bounded concurrency and region cache')
+
+maps.clearMapCache(); api.clearWigosCache()
+globalThis.fetch=async url=>{
+  const offset=Number(new URL(url).searchParams.get('offset')||0)
+  return new Response(JSON.stringify({features:offset?[]:Array.from({length:1000},(_,i)=>({...sample,id:String(i)})),numberMatched:1001}))
+}
+await assert.rejects(maps.loadFilteredMap({q:'test',types:['landFixed']},()=>{}),/Incomplete/)
+maps.clearMapCache(); api.clearWigosCache()
+globalThis.fetch=async()=>new Response('failure',{status:503})
+await assert.rejects(maps.loadFilteredMap({q:'test',types:['landFixed']},()=>{}),/503/)
+const cancelMap=new AbortController();cancelMap.abort()
+await assert.rejects(maps.loadFilteredMap({types:['landFixed'],signal:cancelMap.signal},()=>{}),{name:'AbortError'})
+maps.clearMapCache();api.clearWigosCache()
+globalThis.fetch=async url=>String(url).startsWith('/data/')?new Response('missing',{status:404}):new Response(JSON.stringify({features:[sample],numberMatched:1}))
+assert.equal((await maps.loadFilteredMap({types:['landFixed']},()=>{})).features.length,1,'missing snapshot must fall back to live compact queries')
+globalThis.fetch=async()=>new Response(JSON.stringify(sample))
+assert.equal((await maps.loadFilteredMap({q:sample.id,types:['landFixed']},()=>{})).features.length,1)
+assert.equal((await maps.loadFilteredMap({q:sample.id,types:['seaFixed']},()=>{})).features.length,0)
+console.log('PASS: no truncated completion, failures/cancellation, snapshot fallback and exact-ID combined filters')
+
+maps.clearMapCache(); api.clearWigosCache()
+const lateDeltas=[]
+globalThis.fetch=async url=>{
+  if(String(url).endsWith('/landFixed.json'))return new Response('missing',{status:404})
+  if(String(url).endsWith('/landMobile.json')){
+    await new Promise(resolve=>setTimeout(resolve,60))
+    return new Response(JSON.stringify([['late-snapshot',0.2,0.2]]))
+  }
+  const type=new URL(url).searchParams.get('facilityType.id')
+  return new Response(JSON.stringify({features:[{...sample,id:`live-${type}`}],numberMatched:1}))
+}
+await maps.loadFilteredMap({types:['landFixed','landMobile']},delta=>lateDeltas.push(...delta.map(f=>f.id)))
+await new Promise(resolve=>setTimeout(resolve,90))
+assert.ok(lateDeltas.length===2 && lateDeltas.every(id=>id.startsWith('live-')),'abandoned snapshot workers must not emit stale points after live fallback completes')
+console.log('PASS: delayed snapshot responses cannot corrupt completed live fallback')

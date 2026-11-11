@@ -66,13 +66,14 @@
       </div>
 
       <div v-if="loading || mapError || (!tilesActive && !matchedCount)" class="map-data-status" role="status" aria-live="polite">
-        <span v-if="loading">{{ $t('common.loading') }}</span>
+        <span v-if="loading">{{ $t('common.loading') }}<span v-if="mapLoadTotal"> {{ mapLoaded.toLocaleString() }} / {{ mapLoadTotal.toLocaleString() }}</span></span>
         <span v-if="!tilesActive && !loading && !mapError && !matchedCount">{{ locale === 'zh' ? '无匹配站点' : 'No matching stations' }}</span>
         <span v-if="mapError" role="alert"> · {{ locale === 'zh' ? '加载失败，结果不完整：' : 'Loading failed; results incomplete: ' }}{{ mapError }} <button @click="loadViewport">{{ $t('common.retry') }}</button></span>
       </div>
     </div>
 
     <p v-if="overviewActive" class="overview-note" role="status">{{ t('map.overviewSnapshot', { date: overview.generatedAt.slice(0, 10) }) }}<span v-if="overview.unmapped"> · {{ t('map.overviewUnmapped', { count: overview.unmapped }) }}</span></p>
+    <p v-else-if="filteredSnapshotDate" class="overview-note" role="status">{{ t('map.filteredSnapshot', { date: filteredSnapshotDate, count: matchedCount.toLocaleString() }) }}<span v-if="filteredUnmapped"> · {{ t('map.overviewUnmapped', { count: filteredUnmapped }) }}</span></p>
     <div v-if="selected" class="oscar-infobox">
       <strong>{{ selected.name }}</strong>
       <div>{{ selected.wigosId }} · {{ selected.type }}</div>
@@ -111,7 +112,6 @@ import { downloadCatalogueRecord } from '../utils/catalogueDownload'
 import { useI18n } from 'vue-i18n'
 import { WORLD_ISLANDS, WORLD_LAND } from '../data/worldLand'
 import {
-  loadMapPages,
   WIGOS_TILES_URL,
   WIGOS_COLLECTION_URL,
   useMapTiles,
@@ -127,6 +127,7 @@ import {
 import { facilityTypeDomain, facilityTypeTitle, programTitle, findTerritoryId, programIdByTitle } from '../data/wmdrCodes'
 import 'ol/ol.css'
 import overview from '../data/stationOverview.json'
+import { loadFilteredMap } from '../api/mapFacilities'
 
 interface HoverInfo {
   count?: number
@@ -261,6 +262,10 @@ for (const source of [overviewTileSource, realtimeTileSource]) {
 const loading = ref(false)
 const mapError = ref('')
 const matchedCount = ref(0)
+const mapLoaded = ref(0)
+const mapLoadTotal = ref(0)
+const filteredSnapshotDate = ref('')
+const filteredUnmapped = ref(0)
 let viewportController: AbortController | undefined
 let lastMove = 0
 let pendingTimer = 0
@@ -270,7 +275,7 @@ let hoverRequestVersion = 0
 let viewportTimer = 0
 let loadSeq = 0
 
-const liveFeatures = ref<WigosFeature[]>([])
+const liveFeatures = shallowRef<WigosFeature[]>([])
 const detailCache: Record<string, WigosFeature> = {}
 
 const LAND_FILL = '#f2f5ef'
@@ -352,6 +357,47 @@ function dotStyle(color: string, radius = 2) {
   })
 }
 
+function clusterFeaturesByDistance(features: Feature[], distance: number): Feature[] {
+  if (!(distance > 0)) return features
+  type Group = { seed: Feature; x: number; y: number; count: number }
+  const buckets = new globalThis.Map<string, Group[]>()
+  const groups: Group[] = []
+  const identity = (feature: Feature) => String(feature.get('wigosId') ?? feature.get('station')?.wigosId ?? '')
+  // Stable seeds keep results independent of page arrival order. A seed is an
+  // actual station, never a cell centre or averaged coordinate.
+  const ordered = [...features].sort((a, b) => identity(a).localeCompare(identity(b)))
+  const radiusSquared = distance * distance
+  for (const feature of ordered) {
+    const [x, y] = (feature.getGeometry() as Point).getCoordinates() as [number, number]
+    const col = Math.floor(x / distance), row = Math.floor(y / distance)
+    const domain = String(feature.get('domain'))
+    let nearest: Group | undefined
+    let best = radiusSquared
+    // Buckets only accelerate neighbour lookup. The circular distance test
+    // spans bucket boundaries and determines membership, not the grid cell.
+    for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) {
+      for (const group of buckets.get(`${col + dx},${row + dy},${domain}`) ?? []) {
+        const squared = (x - group.x) ** 2 + (y - group.y) ** 2
+        if (squared <= radiusSquared && (!nearest || squared < best)) { nearest = group; best = squared }
+      }
+    }
+    if (nearest) nearest.count++
+    else {
+      const group = { seed: feature, x, y, count: 1 }
+      const key = `${col},${row},${domain}`
+      const bucket = buckets.get(key) ?? []
+      bucket.push(group); buckets.set(key, bucket); groups.push(group)
+    }
+  }
+  return groups.map(({ seed, count }) => {
+    if (count === 1) return seed
+    const cluster = new Feature({ geometry: seed.getGeometry()!.clone(), cluster: true, count,
+      domain: seed.get('domain'), representativeId: identity(seed) })
+    cluster.setStyle(seed.getStyle())
+    return cluster
+  })
+}
+
 function buildCloud(): Feature[] {
   const stations = props.visibleStations ?? liveFeatures.value.flatMap(f => {
     const station = featureToStation(f)
@@ -366,25 +412,8 @@ function buildCloud(): Feature[] {
   const view = mapRef.value?.getView()
   const zoom = view?.getZoom() ?? DEFAULT_ZOOM
   if (zoom >= 6) return features
-  // Match the homepage overview's screen-space density and colour domains.
-  const size = (view?.getResolution() ?? 40000) * (zoom < 4 ? 16 : 8)
-  const cells = new globalThis.Map<string, Feature[]>()
-  for (const f of features) {
-    const [x, y] = (f.getGeometry() as Point).getCoordinates()
-    const key = Math.floor(x! / size) + ',' + Math.floor(y! / size) + ',' + f.get('domain')
-    const group = cells.get(key) ?? []
-    group.push(f)
-    cells.set(key, group)
-  }
-  return [...cells.values()].map(group => {
-    if (group.length === 1) return group[0]!
-    const coords = group.map(f => (f.getGeometry() as Point).getCoordinates())
-    const center = [0, 1].map(i => coords.reduce((sum, c) => sum + c[i]!, 0) / coords.length)
-    const domain = group[0]!.get('domain') as StationDomain
-    const cluster = new Feature({ geometry: new Point(center), cluster: true, count: group.length, domain })
-    cluster.setStyle(tileStyles[domain])
-    return cluster
-  })
+  const distance = (view?.getResolution() ?? 40000) * (zoom < 4 ? 16 : 8)
+  return clusterFeaturesByDistance(features, distance)
 }
 
 function stationToHover(s: Station): HoverInfo {
@@ -470,14 +499,14 @@ function onPointerMove(evt: { pixel: number[]; coordinate: number[]; originalEve
         popupPos.value = clampPopup(px + 14, py + 14)
         const cached = detailCache[wigosId]
         const source = cached ?? liveFeatures.value.find((f) => f.id === wigosId)
-        if (source) hover.value = hoverFromFeature(source)
+        if (source && !source.mapSummary) hover.value = hoverFromFeature(source)
         else {
           // Tile features are not in liveFeatures. Show their summary immediately
           // so the asynchronous full-record response can update the same popup.
           hover.value = {
-            title: hit?.get('properties.title') || wigosId,
+            title: source?.properties.title || hit?.get('properties.title') || wigosId,
             wigosId,
-            type: facilityTypeTitle(hit?.get('properties.facilityType.id')) || '—',
+            type: facilityTypeTitle(source?.properties.facilityType?.id ?? hit?.get('properties.facilityType.id')) || '—',
             status: '—',
             programs: hit?.get('properties.observations.programAffiliations.programAffiliation.id') || '—',
             established: '—',
@@ -602,6 +631,10 @@ async function loadViewport() {
     programs: selectedProgramIds(),
   }
   const wasTiles = tilesActive.value
+  filteredSnapshotDate.value = ''
+  filteredUnmapped.value = 0
+  mapLoaded.value = 0
+  mapLoadTotal.value = 0
   tilesActive.value = useMapTiles(query)
   selectStationSource()
   stationTiles.setVisible(tilesActive.value)
@@ -629,18 +662,37 @@ async function loadViewport() {
   vectorRef.value?.getSource()?.clear()
   hover.value = null
   selected.value = null
+  const received = new globalThis.Map<string, WigosFeature>()
+  let paintTimer = 0
+  const paint = () => {
+    window.clearTimeout(paintTimer)
+    paintTimer = 0
+    if (seq !== loadSeq || controller.signal.aborted) return
+    liveFeatures.value = [...received.values()]
+    matchedCount.value = received.size
+    const source = vectorRef.value?.getSource()
+    source?.clear()
+    source?.addFeatures(buildCloud())
+  }
   try {
-    await loadMapPages({ ...query, bbox, signal: controller.signal }, (features, total) => {
+    const result = await loadFilteredMap({ ...query, bbox, signal: controller.signal }, (delta, loaded, total) => {
       if (seq !== loadSeq || controller.signal.aborted) return
-      liveFeatures.value = features
-      matchedCount.value = total
-      const source = vectorRef.value?.getSource()
-      source?.clear()
-      source?.addFeatures(buildCloud())
+      for (const feature of delta) received.set(feature.id, feature)
+      mapLoaded.value = loaded
+      mapLoadTotal.value = total
+      if (!paintTimer) paintTimer = window.setTimeout(paint, 150)
     })
+    if (seq === loadSeq && !controller.signal.aborted) {
+      received.clear()
+      for (const feature of result.features) received.set(feature.id, feature)
+      paint()
+      filteredSnapshotDate.value = result.snapshotDate ?? ''
+      filteredUnmapped.value = result.unmapped
+    }
   } catch (cause) {
     if (seq === loadSeq && !controller.signal.aborted) mapError.value = cause instanceof Error ? cause.message : String(cause)
   } finally {
+    window.clearTimeout(paintTimer)
     if (seq === loadSeq) loading.value = false
   }
 }
@@ -736,7 +788,16 @@ watch(() => props.visibleStations, () => {
   dlOpen.value = false
 })
 
-watch(() => props.mapQuery, () => { void loadViewport() }, { deep: true })
+watch(() => props.mapQuery, () => {
+  viewportController?.abort()
+  loadSeq++
+  filteredSnapshotDate.value = ''
+  mapLoaded.value = 0
+  mapLoadTotal.value = 0
+  loading.value = true
+  window.clearTimeout(viewportTimer)
+  viewportTimer = window.setTimeout(() => void loadViewport(), 350)
+}, { deep: true })
 
 watch([focusedStation, filterCountry, filterType, filterPrograms, filterStatuses], () => {
   if (props.visibleStations) return

@@ -162,6 +162,7 @@ export default {
     "demoNote": "Connecté au catalogue en ligne. Les exportations récupèrent 250 enregistrements par page et peuvent être annulées. Le CSV est converti depuis les enregistrements de l’API ; le téléchargement utilise les mêmes données que l’aperçu."
   },
   "map": {
+    "filteredSnapshot": "Carte filtrée : instantané du {date} UTC · {count} stations dans cette vue (points denses regroupés)",
     "overviewSnapshot": "Aperçu des stations (points denses regroupés), instantané : {date} UTC",
     "overviewUnmapped": "{count} fiches sans coordonnées ponctuelles valides",
     "overviewZoomHint": "Cliquez sur ce point pour zoomer et consulter les stations.",

@@ -191,8 +191,8 @@ station ID, facility type and count per cell and colour domain (16px at global
 scales, 8px at regional scales). Dense points
 show their count and zoom on click; they do not present a representative record
 as the details of the whole group. The snapshot date is shown below the map.
-At zoom 6 and above the map switches to live catalogue tiles; searches and
-filtered map queries retain their existing live-data behavior. If local tiles
+At zoom 6 and above the unfiltered map switches to live catalogue tiles; filtered
+maps follow the snapshot/compact-query paths described below. If local tiles
 fail, the map falls back to the live service. A custom catalogue host bypasses
 the bundled snapshot unless it matches its recorded source.
 
@@ -211,6 +211,46 @@ do not require a catalogue download. Commit the updated manifest and versioned
 tile directory together; retain older versions during rolling deployment. Nginx
 serves these versioned paths with immutable caching and protobuf compression.
 Snapshot data remain subject to the upstream provider's terms and attribution.
+
+### Filtered search maps
+
+Type-only filters use separate complete point files listed in the overview
+manifest's `pointFiles`. These contain every valid station of each exact type,
+not the representative points in the colour-grouped overview. The files are
+loaded once and reused across viewport changes, zooms and list/map switches.
+The map displays the snapshot date and the number of valid stations in the
+current viewport; the list's live total may differ if the catalogue has changed.
+
+Combined filters and keywords use compact live catalogue queries containing
+only title and geometry. Because nested fields are not reliably returned by
+upstream projections, requests are partitioned by exact facility type. Multi-value
+filters form OR branches within each field and AND combinations across fields,
+with ID deduplication and at most three requests running concurrently. These
+queries may still paginate on their first load; they never intentionally stop
+at a sample limit. First-page totals remain the pagination target even when
+deep pages report approximate totals. Missing pages or duplicate IDs produce
+an incomplete-results error rather than a false completion.
+
+Completed pages and regions have bounded three-minute memory caches. A viewport
+contained in a cached region needs no new map query. Superseded searches are
+cancelled, filter changes are debounced, and map updates are coalesced. Map mode
+only loads a lightweight count for the header; full table records are requested
+when list mode is selected. The hidden list does not download a full record page,
+and list mode does not mount a hidden map. Full station metadata are fetched on
+hover, rather than displaying inferred statuses from compact summaries.
+
+The fallback for an unavailable type snapshot is the compact live query path.
+Custom catalogue hosts bypass snapshots from a different source. Refresh the
+overview to update both the homepage tiles and exact per-type point files.
+
+Filtered search points cluster by circular map distance below zoom 6 (16 screen
+pixels at global scales, 8 at regional scales). Each group's representative is
+an actual member station, not an averaged coordinate. Spatial buckets accelerate
+neighbour lookup but do not define membership. Colour domains remain separate;
+points retain a 2.5px radius, and hovering a group shows its count. Station IDs
+determine stable seeds independently of page arrival order. At zoom 6 and above,
+individual points are shown. The precomputed unfiltered homepage overview is a
+separate display path and is not changed by this search-map clustering rule.
 
 ```bash
 npm run build

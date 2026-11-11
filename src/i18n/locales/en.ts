@@ -241,6 +241,7 @@ export default {
     "email": "Email"
   },
   "map": {
+    "filteredSnapshot": "Filtered map snapshot: {date} UTC · {count} stations in this view (dense points grouped)",
     "overviewSnapshot": "Station overview (dense points grouped), snapshot: {date} UTC",
     "overviewUnmapped": "{count} records without valid point coordinates",
     "overviewZoomHint": "Click this map point to zoom in and inspect stations.",

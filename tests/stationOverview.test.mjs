@@ -32,4 +32,21 @@ for (let z = 0; z <= manifest.maxZoom; z++) {
 assert.equal(manifest.total, manifest.mapped + manifest.unmapped)
 assert.ok(grouped > 0)
 assert.ok(firstViewBytes < 700000, `global overview too large: ${firstViewBytes}`)
+let pointTotal = 0, missingTotal = 0
+const allPointIds = new Set()
+for (const [type, entry] of Object.entries(manifest.pointFiles)) {
+  const rows = JSON.parse(await readFile(`public/${entry.path}`, 'utf8'))
+  assert.equal(rows.length, entry.mapped, `${type} must contain every valid station`)
+  assert.equal(entry.total, entry.mapped + entry.unmapped)
+  for (const [id, lon, lat] of rows) {
+    assert.ok(!allPointIds.has(id), 'station IDs must not be duplicated across types')
+    allPointIds.add(id)
+    assert.ok(Number.isFinite(lon) && Number.isFinite(lat))
+    assert.ok(Math.abs(lon) <= 180 && Math.abs(lat) <= 90)
+  }
+  pointTotal += rows.length; missingTotal += entry.unmapped
+}
+assert.equal(pointTotal, manifest.mapped)
+assert.equal(missingTotal, manifest.unmapped)
 console.log(`PASS: all overview levels preserve station counts; first view ${firstViewBytes} bytes`)
+console.log(`PASS: exact per-type snapshots cover ${pointTotal} points without representative-type filtering`)

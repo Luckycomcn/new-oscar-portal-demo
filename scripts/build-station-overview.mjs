@@ -12,6 +12,7 @@ const types = [...codes.matchAll(/\{ id: '([^']+)', title: '[^']*', domain: '([^
 const cacheDir = new URL('../tmp/overview-source/', import.meta.url)
 await mkdir(cacheDir, { recursive: true })
 const records = new Map()
+const typeStats = {}
 let expected = 0, unmapped = 0
 async function json(url) {
   for (let attempt = 0; attempt < 3; attempt++) {
@@ -50,13 +51,15 @@ async function loadType(type) {
   }
   if (!Number.isInteger(total) || features.length !== total || new Set(features.map(f => f.id)).size !== total) throw new Error(`Invalid cached pagination: ${type.id}`)
   expected += total
+  let missing = 0
   for (const f of features) {
     const c = f.geometry?.coordinates
-    if (f.geometry?.type !== 'Point' || !c || !Number.isFinite(c[0]) || !Number.isFinite(c[1]) || Math.abs(c[0]) > 180 || Math.abs(c[1]) > 90) { unmapped++; continue }
+    if (f.geometry?.type !== 'Point' || !c || !Number.isFinite(c[0]) || !Number.isFinite(c[1]) || Math.abs(c[0]) > 180 || Math.abs(c[1]) > 90) { unmapped++; missing++; continue }
     if (records.has(f.id)) throw new Error(`Duplicate facility ${f.id}`)
     const lat = Math.max(-85.05112878, Math.min(85.05112878, c[1])) * Math.PI / 180
-    records.set(f.id, { id: f.id, type: type.id, domain: type.domain, x: (c[0] + 180) / 360, y: (1 - Math.log(Math.tan(Math.PI / 4 + lat / 2)) / Math.PI) / 2 })
+    records.set(f.id, { id: f.id, type: type.id, domain: type.domain, lon: c[0], lat: c[1], x: (c[0] + 180) / 360, y: (1 - Math.log(Math.tan(Math.PI / 4 + lat / 2)) / Math.PI) / 2 })
   }
+  typeStats[type.id] = { total, mapped: total - missing, unmapped: missing }
   console.log(`${type.id}: ${total}`)
 }
 // Keep upstream load bounded.
@@ -65,7 +68,7 @@ const all = await json(`${collection}/items?f=json&limit=1&properties=title`)
 if (expected !== all.numberMatched) throw new Error(`Type coverage ${expected} differs from catalogue ${all.numberMatched}; refusing to publish partial overview`)
 const points = [...records.values()].sort((a,b) => a.id.localeCompare(b.id))
 if (points.length + unmapped !== expected) throw new Error('Overview accounting mismatch')
-const version = createHash('sha256').update('overview-v3-adaptive-cells').update(JSON.stringify(points)).digest('hex').slice(0, 16)
+const version = createHash('sha256').update('overview-v4-exact-type-points').update(JSON.stringify(points)).update(JSON.stringify(types.map(t => typeStats[t.id]))).digest('hex').slice(0, 16)
 const root = new URL(`../public/data/station-overview/${version}/`, import.meta.url)
 const maxZoom = 5, extent = 4096
 let bytes = 0, tileCount = 0
@@ -115,7 +118,16 @@ for (let z = 0; z <= maxZoom; z++) {
     }
   }
 }
-const manifest = { version, generatedAt: new Date().toISOString(), source: collection, total: expected, mapped: points.length, unmapped, maxZoom, tileSize: 512, path: `data/station-overview/${version}/{z}/{x}/{y}.pbf`, tileCount, bytes }
+await mkdir(new URL('points/', root), { recursive: true })
+const pointFiles = {}
+for (const type of types) {
+  // Unlike the overview representatives, these retain EVERY valid station per
+  // exact type, so filtering does not lose minority types inside colour cells.
+  const rows = points.filter(p => p.type === type.id).map(p => [p.id, Number(p.lon.toFixed(6)), Number(p.lat.toFixed(6))])
+  await writeFile(new URL(`points/${type.id}.json`, root), JSON.stringify(rows))
+  pointFiles[type.id] = { ...typeStats[type.id], path: `data/station-overview/${version}/points/${type.id}.json` }
+}
+const manifest = { version, generatedAt: new Date().toISOString(), source: collection, total: expected, mapped: points.length, unmapped, maxZoom, tileSize: 512, path: `data/station-overview/${version}/{z}/{x}/{y}.pbf`, tileCount, bytes, pointFiles }
 const manifestFile = new URL('../src/data/stationOverview.json', import.meta.url)
 await writeFile(new URL('../src/data/stationOverview.json.tmp', import.meta.url), JSON.stringify(manifest, null, 2) + '\n')
 await rename(new URL('../src/data/stationOverview.json.tmp', import.meta.url), manifestFile)

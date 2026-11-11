@@ -83,6 +83,8 @@ export interface WigosProperties {
 }
 
 export interface WigosFeature {
+  /** Map-only summary; fetch authoritative details before displaying metadata. */
+  mapSummary?: boolean
   id: string
   type: string
   geometry?: { type: string; coordinates?: number[] } | null
@@ -569,7 +571,7 @@ export function resolveTerritoryId(value: string): string | undefined {
   return findTerritoryId(value) ?? (/^[A-Za-z]{3}$/.test(value.trim()) ? value.trim().toUpperCase() : undefined)
 }
 
-function resolveRegionId(value: string): string | undefined {
+export function resolveRegionId(value: string): string | undefined {
   const needle = value.trim().toLowerCase()
   return wmoRegions.find((region) => region.id.toLowerCase() === needle || region.title.toLowerCase() === needle)?.id
 }
