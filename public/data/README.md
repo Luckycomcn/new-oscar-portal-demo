@@ -2,6 +2,15 @@
 
 This directory contains static data files that are copied unchanged into the build output and can be accessed directly by URL at runtime.
 
+## `station-overview/<version>/{z}/{x}/{y}.pbf`
+
+- **Purpose**: Fast unfiltered global/regional station overview at zooms below 6.
+- **Source**: Public [WIGOS observing facility catalogue](https://wmo-resource-catalogue.labs.wis2dev.io/collections/wigos-observing-facility-metadata), fetched through compact paginated items queries. These are derived station data, subject to the upstream provider's terms; project code licensing does not relicense upstream records.
+- **Generation**: `npm run refresh:station-overview`; metadata and source URL are recorded in `src/data/stationOverview.json`. Normal builds require no data refresh.
+- **Content**: MVT layer `hits`, point geometry, representative `id`, `properties.facilityType.id`, and `count`. No contact information or full station records are bundled. Points are grouped per colour domain in 16px cells at tile zoom 0–2 and 8px cells at 3–5 (512px tiles). Every valid mapped station contributes to a count at each level.
+- **Missing geometry**: Records without valid point coordinates are excluded and counted in the manifest and map note. The note also identifies the generated snapshot date; this is an overview, not a live position feed.
+- **Caching**: Content-versioned directory, immutable cache headers and protobuf compression in Nginx. Publish the manifest and tiles together; keep prior versions available while old application builds may still use them.
+
 ## `world-countries.geojson`
 
 - **Purpose**: Country and territory boundary vectors (`FeatureCollection`) for map rendering and other geographic features.

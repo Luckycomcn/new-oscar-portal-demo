@@ -14,7 +14,8 @@
         @mouseleave="onPopupLeave"
       >
         <div class="identify-popup__title">{{ hover.title }}</div>
-        <div class="identify-popup__body">
+        <div v-if="hover.count" class="identify-popup__body">{{ t('map.overviewZoomHint') }}</div>
+        <div v-else class="identify-popup__body">
           <div><b>{{ $t('map.wigosId') }}:</b><br />{{ hover.wigosId }}</div>
           <div><b>{{ $t('map.stationType') }}:</b><br />{{ hover.type }}</div>
           <div><b>{{ $t('map.declaredStatus') }}:</b><br />{{ hover.status }}</div>
@@ -22,7 +23,7 @@
           <div><b>{{ $t('map.dateEstablished') }}:</b><br />{{ hover.established }}</div>
           <div v-if="hover.closed"><b>{{ $t('map.dateClosed') }}:</b><br />{{ hover.closed }}</div>
         </div>
-        <div class="identify-popup__actions">
+        <div v-if="!hover.count" class="identify-popup__actions">
           <span class="dl-wrap">
             <button type="button" class="btn btn-default btn-xs" :disabled="downloading" @click="dlOpen = !dlOpen">
               <svg class="legacy-replacement-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 16v5h16v-5" /></svg> {{ downloading ? $t('common.generating') : $t('common.download') }} ▾
@@ -71,6 +72,7 @@
       </div>
     </div>
 
+    <p v-if="overviewActive" class="overview-note" role="status">{{ t('map.overviewSnapshot', { date: overview.generatedAt.slice(0, 10) }) }}<span v-if="overview.unmapped"> · {{ t('map.overviewUnmapped', { count: overview.unmapped }) }}</span></p>
     <div v-if="selected" class="oscar-infobox">
       <strong>{{ selected.name }}</strong>
       <div>{{ selected.wigosId }} · {{ selected.type }}</div>
@@ -111,6 +113,7 @@ import { WORLD_ISLANDS, WORLD_LAND } from '../data/worldLand'
 import {
   loadMapPages,
   WIGOS_TILES_URL,
+  WIGOS_COLLECTION_URL,
   useMapTiles,
   type FacilitySearchParams,
   getFeature,
@@ -123,8 +126,10 @@ import {
 } from '../api/wigos'
 import { facilityTypeDomain, facilityTypeTitle, programTitle, findTerritoryId, programIdByTitle } from '../data/wmdrCodes'
 import 'ol/ol.css'
+import overview from '../data/stationOverview.json'
 
 interface HoverInfo {
+  count?: number
   title: string
   wigosId: string
   type: string
@@ -191,12 +196,22 @@ function syncAmap() {
   amap.setZoomAndCenter(zoom, toLonLat(center), true)
 }
 const tilesActive = ref(false)
+const overviewActive = ref(false)
+let overviewUnavailable = overview.source !== WIGOS_COLLECTION_URL
 const pendingTiles = new Set<unknown>()
-const tileSource = new VectorTileSource({
+const realtimeTileSource = new VectorTileSource({
   format: new MVT({ layers: ['hits'] }),
   url: WIGOS_TILES_URL,
   wrapX: true,
 })
+const overviewTileSource = new VectorTileSource({
+  format: new MVT({ layers: ['hits'] }),
+  url: `${import.meta.env.BASE_URL}${overview.path}`,
+  tileSize: overview.tileSize,
+  maxZoom: overview.maxZoom,
+  wrapX: true,
+})
+let tileSource = overviewTileSource
 const tileStyles = Object.fromEntries(Object.entries(domainColors).map(([domain, color]) => [domain, dotStyle(color, 2.5)])) as Record<StationDomain, Style>
 const stationTiles = new VectorTileLayer({
   source: tileSource,
@@ -207,19 +222,42 @@ const stationTiles = new VectorTileLayer({
     return tileStyles[facilityTypeDomain(feature.get('properties.facilityType.id') ?? '')]
   },
 })
-tileSource.on('tileloadstart', event => {
-  pendingTiles.add(event.tile)
-  if (tilesActive.value) loading.value = true
-})
+function selectStationSource() {
+  const local = tilesActive.value && !overviewUnavailable && (mapRef.value?.getView().getZoom() ?? DEFAULT_ZOOM) < overview.maxZoom + 1
+  overviewActive.value = local
+  const next = local ? overviewTileSource : realtimeTileSource
+  if (tileSource === next) return
+  pendingTiles.clear()
+  tileSource = next
+  stationTiles.setSource(next)
+  hoverRequestVersion++
+  hover.value = null
+  hoverKey = ''
+  popupPinned.value = false
+  isOverPopup.value = false
+  mapError.value = ''
+  loading.value = false
+}
 function tileFinished(tile: unknown) {
   pendingTiles.delete(tile)
   if (tilesActive.value) loading.value = pendingTiles.size > 0
 }
-tileSource.on('tileloadend', event => tileFinished(event.tile))
-tileSource.on('tileloaderror', event => {
-  tileFinished(event.tile)
-  if (tilesActive.value) mapError.value = locale.value === 'zh' ? '站点瓦片加载失败，请重试' : 'Station tiles failed to load. Please retry.'
-})
+for (const source of [overviewTileSource, realtimeTileSource]) {
+  source.on('tileloadstart', event => {
+    if (source !== tileSource) return
+    pendingTiles.add(event.tile)
+    if (tilesActive.value) loading.value = true
+  })
+  source.on('tileloadend', event => { if (source === tileSource) tileFinished(event.tile) })
+  source.on('tileloaderror', event => {
+    if (source !== tileSource) return
+    tileFinished(event.tile)
+    if (source === overviewTileSource) {
+      overviewUnavailable = true
+      selectStationSource()
+    } else if (tilesActive.value) mapError.value = locale.value === 'zh' ? '站点瓦片加载失败，请重试' : 'Station tiles failed to load. Please retry.'
+  })
+}
 const loading = ref(false)
 const mapError = ref('')
 const matchedCount = ref(0)
@@ -315,30 +353,25 @@ function dotStyle(color: string, radius = 2) {
 }
 
 function buildCloud(): Feature[] {
-  if (props.visibleStations) {
-    const styles = Object.fromEntries(
-      Object.entries(domainColors).map(([domain, color]) => [domain, dotStyle(color, 3)]),
-    ) as Record<StationDomain, Style>
-    return props.visibleStations.map((s) => {
-      const feature = new Feature({ geometry: new Point(mapCoordinate(s.lon, s.lat)), station: s, domain: s.domain })
-      feature.setStyle(styles[s.domain])
-      return feature
-    })
-  }
-  const features: Feature[] = []
-  for (const f of liveFeatures.value) {
-    const s = featureToStation(f)
-    if (!s) continue
-    const feature = new Feature({ geometry: new Point(mapCoordinate(s.lon, s.lat)), station: s, domain: s.domain, wigosId: f.id })
-    feature.setStyle(dotStyle(domainColors[s.domain], 2.5))
-    features.push(feature)
-  }
-  if ((mapRef.value?.getView().getZoom() ?? DEFAULT_ZOOM) >= 6) return features
-  const size = (mapRef.value?.getView().getResolution() ?? 40000) * 45
+  const stations = props.visibleStations ?? liveFeatures.value.flatMap(f => {
+    const station = featureToStation(f)
+    return station ? [station] : []
+  })
+  const features = stations.map(s => {
+    const feature = new Feature({ geometry: new Point(mapCoordinate(s.lon, s.lat)), station: s, domain: s.domain,
+      wigosId: props.visibleStations ? undefined : s.wigosId })
+    feature.setStyle(tileStyles[s.domain])
+    return feature
+  })
+  const view = mapRef.value?.getView()
+  const zoom = view?.getZoom() ?? DEFAULT_ZOOM
+  if (zoom >= 6) return features
+  // Match the homepage overview's screen-space density and colour domains.
+  const size = (view?.getResolution() ?? 40000) * (zoom < 4 ? 16 : 8)
   const cells = new globalThis.Map<string, Feature[]>()
   for (const f of features) {
     const [x, y] = (f.getGeometry() as Point).getCoordinates()
-    const key = Math.floor(x! / size) + ',' + Math.floor(y! / size)
+    const key = Math.floor(x! / size) + ',' + Math.floor(y! / size) + ',' + f.get('domain')
     const group = cells.get(key) ?? []
     group.push(f)
     cells.set(key, group)
@@ -347,10 +380,9 @@ function buildCloud(): Feature[] {
     if (group.length === 1) return group[0]!
     const coords = group.map(f => (f.getGeometry() as Point).getCoordinates())
     const center = [0, 1].map(i => coords.reduce((sum, c) => sum + c[i]!, 0) / coords.length)
-    const cluster = new Feature({ geometry: new Point(center), cluster: true })
-    cluster.setStyle(new Style({
-      image: new CircleStyle({ radius: Math.min(28, 6 + Math.log2(group.length) * 2.5), fill: new Fill({ color: 'rgba(22, 126, 112, 0.65)' }), stroke: new Stroke({ color: '#fff', width: 1 }) }),
-    }))
+    const domain = group[0]!.get('domain') as StationDomain
+    const cluster = new Feature({ geometry: new Point(center), cluster: true, count: group.length, domain })
+    cluster.setStyle(tileStyles[domain])
     return cluster
   })
 }
@@ -415,6 +447,16 @@ function onPointerMove(evt: { pixel: number[]; coordinate: number[]; originalEve
     const station = (hit?.get('station') as Station | undefined) ?? null
     const wigosId = (hit?.get('wigosId') ?? hit?.get('id') ?? hit?.get('_id')) as string | undefined
     const key = wigosId || (station ? station.wigosId : '')
+    const count = Number(hit?.get('count') ?? 1)
+    if (count > 1) {
+      window.clearTimeout(hideTimer)
+      hoverKey = ''
+      popupPos.value = clampPopup(px + 14, py + 14)
+      hover.value = { title: locale.value === 'zh' ? `${count} 个站点` : `${count} stations`, count, wigosId: '', type: '', status: '', programs: '', established: '' }
+      const target = map.getTargetElement()
+      if (target) target.style.cursor = 'pointer'
+      return
+    }
     if (station && !wigosId) {
       if (!hover.value || hoverKey !== key) {
         hoverKey = key
@@ -561,6 +603,7 @@ async function loadViewport() {
   }
   const wasTiles = tilesActive.value
   tilesActive.value = useMapTiles(query)
+  selectStationSource()
   stationTiles.setVisible(tilesActive.value)
   if (tilesActive.value) {
     loadSeq++
@@ -626,7 +669,16 @@ onMounted(() => {
       showFullExtent: true,
     }),
   })
-  map.on('singleclick', (evt) => {
+  map.on('singleclick', async (evt) => {
+    if (tilesActive.value) {
+      const source = tileSource
+      const hits = await stationTiles.getFeatures(evt.pixel)
+      if (mapRef.value !== map || !tilesActive.value || source !== tileSource) return
+      if (Number(hits[0]?.get('count') ?? 1) > 1) {
+        map.getView().animate({ center: evt.coordinate, zoom: Math.min(overview.maxZoom + 1, (map.getView().getZoom() ?? 2) + 2), duration: 250 })
+        return
+      }
+    }
     identifying.value = true
     window.setTimeout(() => {
       identifying.value = false
@@ -642,6 +694,11 @@ onMounted(() => {
   map.on('postrender', syncAmap)
   map.on('movestart', () => { viewportController?.abort(); loadSeq++; if (!tilesActive.value) loading.value = false })
   map.on('moveend', () => {
+    if (!tilesActive.value) {
+      const source = vectorRef.value?.getSource()
+      source?.clear()
+      source?.addFeatures(buildCloud())
+    }
     window.clearTimeout(viewportTimer)
     viewportTimer = window.setTimeout(() => void loadViewport(), 400)
   })
@@ -655,6 +712,7 @@ onMounted(() => {
     }, 500)
   })
   mapRef.value = map
+  map.getView().on('change:resolution', () => { if (tilesActive.value) selectStationSource() })
   void loadWorldLand()
   if (!props.visibleStations) {
     void loadViewport()
@@ -815,6 +873,7 @@ function flyToFocusedStation() {
 </script>
 <style scoped lang="scss">
 .map-data-status { position: absolute; bottom: 30px; left: 12px; right: 12px; z-index: 5; padding: 6px 10px; background: #fffffff0; border-radius: 5px; font-size: 12px; overflow-wrap: anywhere; }
+.overview-note { margin: 4px 0; font-size: 11px; color: #586e65; }
 .oscar-map-shell {
   position: relative;
   padding: 0 0 14px;

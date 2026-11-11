@@ -162,6 +162,9 @@ export default {
     "demoNote": "Conectado al catálogo en línea. Las exportaciones obtienen 250 registros por página y pueden cancelarse. El CSV se convierte desde los registros de la API; la descarga utiliza los mismos datos que la vista previa."
   },
   "map": {
+    "overviewSnapshot": "Vista general de estaciones (puntos densos agrupados), instantánea: {date} UTC",
+    "overviewUnmapped": "{count} registros sin coordenadas puntuales válidas",
+    "overviewZoomHint": "Pulse este punto para ampliar y consultar las estaciones.",
     "identifying": "Espere, identificando estaciones...",
     "wigosId": "Identificador de estación WIGOS",
     "stationType": "Tipo de estación",

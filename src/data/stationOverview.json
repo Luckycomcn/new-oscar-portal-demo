@@ -1,0 +1,13 @@
+{
+  "version": "77db6bdcf8ed579a",
+  "generatedAt": "2026-11-11T02:13:14.217Z",
+  "source": "https://wmo-resource-catalogue.labs.wis2dev.io/collections/wigos-observing-facility-metadata",
+  "total": 64976,
+  "mapped": 64447,
+  "unmapped": 529,
+  "maxZoom": 5,
+  "tileSize": 512,
+  "path": "data/station-overview/77db6bdcf8ed579a/{z}/{x}/{y}.pbf",
+  "tileCount": 1365,
+  "bytes": 6670702
+}

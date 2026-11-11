@@ -28,3 +28,12 @@ assert.equal(requested, '0-test')
 resolveDetail({ id: '0-test', properties: {title: 'Full station'} }); await new Promise(resolve=>setImmediate(resolve))
 assert.equal(context.hover.value.title, 'Full station')
 console.log('PASS: uncached vector tile immediately opens summary and receives full details')
+
+const originalGet = hit.get
+hit.get = key => key === 'count' ? 42 : originalGet(key)
+context.lastMove = 0
+context.getFeature = () => { throw new Error('Aggregated overview points must not fetch a representative station detail') }
+context.onPointerMove({ pixel: [30,40] }); await callback()
+assert.equal(context.hover.value.count, 42)
+assert.equal(context.hover.value.wigosId, '')
+console.log('PASS: overview groups show a count without misleading station details')

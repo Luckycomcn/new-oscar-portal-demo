@@ -241,6 +241,9 @@ export default {
     "email": "邮箱"
   },
   "map": {
+    "overviewSnapshot": "站点概览（密集点聚合），快照更新：{date} UTC",
+    "overviewUnmapped": "{count} 条记录无有效点坐标",
+    "overviewZoomHint": "点击地图中的圆点放大查看站点。",
     "identifying": "请稍候，正在识别台站…",
     "wigosId": "WIGOS 台站标识符",
     "stationType": "台站类型",

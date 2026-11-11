@@ -241,6 +241,9 @@ export default {
     "email": "Email"
   },
   "map": {
+    "overviewSnapshot": "Station overview (dense points grouped), snapshot: {date} UTC",
+    "overviewUnmapped": "{count} records without valid point coordinates",
+    "overviewZoomHint": "Click this map point to zoom in and inspect stations.",
     "identifying": "Please wait, identifying stations...",
     "wigosId": "WIGOS Station Identifier",
     "stationType": "Station Type",

@@ -114,6 +114,37 @@ Open [http://localhost:8080/](http://localhost:8080/). To use a different host p
 
 Building requires network access to container registries and the npm registry. Runtime data and map services also require network access.
 
+### Automatic packaging from `.env.local` (PowerShell)
+
+From the project directory:
+
+```powershell
+# Read and validate map configuration without invoking Docker or writing files.
+./scripts/build-delivery.ps1 -Check
+
+# Build a Linux amd64 image, validate Nginx, and export a delivery archive.
+./scripts/build-delivery.ps1 -ImageTag oscar-portal:latest
+
+# Also start the container after packaging (default host port 8080).
+./scripts/build-delivery.ps1 -ImageTag oscar-portal:latest -Start
+```
+
+The script reads `VITE_TIANDITU_KEY`, `VITE_AMAP_KEY` and
+`VITE_AMAP_SECURITY_JS_CODE` from `.env.local`; `AMAP_SECURITY_JS_CODE`, when
+present, takes precedence for the security code. It passes browser keys at build
+time, uses the image's `/_AMapService` proxy, and writes the security code only
+to `delivery/runtime.env` for container startup. Keys are not printed. The
+security code is not embedded in the image; keep the runtime file private.
+Both `.env.local` and `delivery/` are excluded from Git and the Docker context.
+
+Outputs include the image `.tar`, `SHA256SUMS.txt`, `DEPLOYMENT.md`, `runtime.env`,
+`LICENSE` and `NOTICE` in `delivery/`. On the target server, import the archive
+and follow the generated instructions, including `--env-file runtime.env`.
+Use `-EnvFile` to select another environment file, `-Port 8099` to select another
+host port, or `-ContainerName another-name` to avoid an existing container.
+Existing containers are not replaced automatically. Docker must be running in
+Linux containers mode for actual packaging; `-Check` does not require Docker.
+
 ## Configuration
 
 1. **Deployment paths**
@@ -152,8 +183,39 @@ Building requires network access to container registries and the npm registry. R
 
 ## Validation
 
+### Homepage station overview
+
+At zoom levels below 6, the unfiltered map uses bundled, content-versioned MVT
+tiles from `public/data/station-overview/`. They retain only a representative
+station ID, facility type and count per cell and colour domain (16px at global
+scales, 8px at regional scales). Dense points
+show their count and zoom on click; they do not present a representative record
+as the details of the whole group. The snapshot date is shown below the map.
+At zoom 6 and above the map switches to live catalogue tiles; searches and
+filtered map queries retain their existing live-data behavior. If local tiles
+fail, the map falls back to the live service. A custom catalogue host bypasses
+the bundled snapshot unless it matches its recorded source.
+
+Refresh the snapshot before a release or from a scheduled build job:
+
+```bash
+npm run refresh:station-overview
+npm run build
+```
+
+The refresh downloads compact, paginated public catalogue records with bounded
+concurrency, validates counts and duplicate IDs, and excludes records without
+valid point coordinates (the excluded count is shown). It publishes the manifest
+only after all tiles have been written. Ordinary builds use bundled assets and
+do not require a catalogue download. Commit the updated manifest and versioned
+tile directory together; retain older versions during rolling deployment. Nginx
+serves these versioned paths with immutable caching and protobuf compression.
+Snapshot data remain subject to the upstream provider's terms and attribution.
+
 ```bash
 npm run build
+node tests/stationOverview.test.mjs
+node tests/stationOverviewMode.test.mjs
 node --experimental-vm-modules tests/catalogue.test.mjs
 node --experimental-vm-modules tests/mapHover.test.mjs
 ```
