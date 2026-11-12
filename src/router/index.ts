@@ -14,7 +14,7 @@ const router = createRouter({
       meta: { title: 'route.stationSearch', crumbs: ['route.search', 'route.stationSearch'] },
     },
     {
-      path: '/search/station/stationReportDetails/:wigosId',
+      path: '/station/report/:wigosId',
       name: 'stationReportDetails',
       component: () => import('../views/StationReportView.vue'),
       meta: { title: 'route.stationReport', crumbs: ['route.search', 'route.stationSearch', 'route.stationReport'] },

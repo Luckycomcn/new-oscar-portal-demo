@@ -7,6 +7,8 @@ export default {
     "language": "Language"
   },
   "header": {
+    "portalName": "WIGOS Metadata Portal",
+    "portalTagline": "Global Observing Systems",
     "wmo1": "WORLD",
     "wmo2": "METEOROLOGICAL",
     "wmo3": "ORGANIZATION",
@@ -156,7 +158,7 @@ export default {
     "cancelled": "Export cancelled. No file was generated.",
     "cancel": "Cancel export",
     "title": "Export and interoperability",
-    "sub": "Result sets can be exported in bulk as CSV and JSON; a single record can be downloaded as WMDR V2 (JSON). The portal exposes no business API — machine users should query the Catalogue directly through OGC API - Records (MVP F-16, F-21).",
+    "sub": "Result sets can be exported in bulk as JSON; a single record can be downloaded as WMDR V2 (JSON). For automated access, query the Catalogue directly through OGC API - Records.",
     "bulkTitle": "Bulk export of result set",
     "scope": "Export scope",
     "scopeFiltered": "Filtered records ({count})",
@@ -173,7 +175,7 @@ export default {
     "wigosStationIdentifier": "Wigos station identifier",
     "guideTitle": "Machine-to-machine guide",
     "guideNote": "The business API is provided by the Catalogue through OGC API - Records; the portal only saves pages and export files.",
-    "demoNote": "Connected to the live catalogue. Bulk exports fetch 250 records per page and can be cancelled. CSV is converted from API records; downloads use the same generated data as the preview."
+    "demoNote": "Connected to the live catalogue. Bulk exports fetch 250 records per page and can be cancelled. Downloads use the same generated data as the preview."
   },
   "stationReport": {
     "downloadError": "Download failed: {message}. Please retry.",
@@ -197,6 +199,7 @@ export default {
     "thCode": "Code",
     "noPrograms": "No programme affiliation recorded.",
     "variableId": "Variable id",
+    "observedVariable": "Observed variable",
     "method": "Observing method",
     "noObservations": "No observations recorded for this facility.",
     "noContacts": "No contacts recorded.",
@@ -207,7 +210,6 @@ export default {
     "download": "Download",
     "generating": "Generating...",
     "xml": "Station as WMDR XML",
-    "csv": "Station data as CSV",
     "wmdrV2": "Station as WMDR V2 (JSON)",
     "stationCharacteristics": "Station characteristics",
     "name": "Name",

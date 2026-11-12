@@ -6,7 +6,7 @@
  *   https://wmo-resource-catalogue.labs.wis2dev.io/collections/wigos-observing-facility-metadata
  *
  * The service is anonymous (CORS `*`), so the browser can call it directly. Override the host
- * with `VITE_WIGOS_API_BASE` when deploying against another catalogue instance.
+ * with `VITE_WIGOS_GOFC_URL` when deploying against another catalogue instance.
  */
 import type { Station, StationDomain, StationStatus } from '../data/stations'
 import {
@@ -26,7 +26,7 @@ import {
 export const WIGOS_DEFAULT_BASE = 'https://wmo-resource-catalogue.labs.wis2dev.io'
 export const WIGOS_COLLECTION = 'wigos-observing-facility-metadata'
 
-const envBase = (import.meta.env as Record<string, string | undefined>).VITE_WIGOS_API_BASE
+const envBase = (import.meta.env as Record<string, string | undefined>).VITE_WIGOS_GOFC_URL
 export const WIGOS_API_BASE = (envBase?.trim() || WIGOS_DEFAULT_BASE).replace(/\/+$/, '')
 export const WIGOS_COLLECTION_URL = `${WIGOS_API_BASE}/collections/${WIGOS_COLLECTION}`
 export const WIGOS_ITEMS_URL = `${WIGOS_COLLECTION_URL}/items`

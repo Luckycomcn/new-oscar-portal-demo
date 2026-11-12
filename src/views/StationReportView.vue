@@ -25,7 +25,6 @@
             </button>
             <span v-show="dlOpen" class="dl-menu">
               <button type="button" @click="downloadXml">{{ $t('stationReport.xml') }}</button>
-              <button type="button" @click="downloadCsv">{{ $t('stationReport.csv') }}</button>
               <button type="button" @click="downloadWmdrV2">{{ $t('stationReport.wmdrV2') }}</button>
             </span>
           </span>
@@ -47,11 +46,11 @@
               </table>
             </dd>
             <dt>{{ $t('stationReport.stationType') }}</dt>
-            <dd>{{ report.facilityType }} <small class="code">{{ report.facilityTypeId }}</small></dd>
+            <dd>{{ report.facilityType }} </dd>
             <dt>{{ $t('stationReport.wmoRegion') }}</dt>
-            <dd>{{ report.wmoRegion }} <small class="code">{{ report.wmoRegionId }}</small></dd>
+            <dd>{{ report.wmoRegion }} </dd>
             <dt>{{ $t('stationReport.territory') }}</dt>
-            <dd>{{ report.territories.join(', ') || '—' }} <small class="code">{{ report.territoryIds.join(', ') }}</small></dd>
+            <dd>{{ report.territories.join(', ') || '—' }} </dd>
             <dt>{{ $t('stationReport.coordinates') }}</dt><dd>{{ coords }}</dd>
             <dt>{{ $t('stationReport.dateEstablished') }}</dt><dd>{{ report.established || '—' }}</dd>
             <dt>{{ $t('stationReport.dateClosed') }}</dt><dd>{{ report.closed || $t('stationReport.stillOperational') }}</dd>
@@ -75,9 +74,9 @@
         <h2>{{ $t('stationReport.programmes') }}</h2>
         <div class="info">{{ $t('stationReport.programNote') }}</div>
         <table class="grid">
-          <tr><th>{{ $t('stationReport.thProgramme') }}</th><th>{{ $t('stationReport.thCode') }}</th><th>{{ $t('stationReport.thDeclaredStatus') }}</th></tr>
+          <tr><th>{{ $t('stationReport.thProgramme') }}</th><th>{{ $t('stationReport.thDeclaredStatus') }}</th></tr>
           <tr v-for="program in report.programs" :key="program.id">
-            <td>{{ program.title }}</td><td class="code">{{ program.id }}</td><td>{{ program.status }}</td>
+            <td>{{ program.title }}</td><td>{{ program.status }}</td>
           </tr>
           <tr v-if="!report.programs.length"><td colspan="3">{{ $t('stationReport.noPrograms') }}</td></tr>
         </table>
@@ -87,10 +86,10 @@
         <h2>{{ $t('stationReport.territoryAssignments') }}</h2>
         <div class="info">{{ $t('stationReport.territoryNote') }}</div>
         <table class="grid">
-          <thead><tr><th>{{ $t('stationReport.territory') }}</th><th>{{ $t('stationReport.thCode') }}</th><th>{{ $t('stationReport.validFrom') }}</th><th>{{ $t('stationReport.validTo') }}</th></tr></thead>
+          <thead><tr><th>{{ $t('stationReport.territory') }}</th><th>{{ $t('stationReport.validFrom') }}</th><th>{{ $t('stationReport.validTo') }}</th></tr></thead>
           <tbody>
             <tr v-for="(assignment, index) in report.territoryAssignments" :key="index">
-              <td>{{ assignment.title }}</td><td class="code">{{ assignment.id || '—' }}</td>
+              <td>{{ assignment.title }}</td>
               <td>{{ assignment.from === '..' ? $t('stationReport.unspecified') : assignment.from?.slice(0, 10) || '—' }}</td>
               <td>{{ assignment.to === '..' ? $t('stationReport.openEnded') : assignment.to?.slice(0, 10) || '—' }}</td>
             </tr>
@@ -108,7 +107,7 @@
             ▸{{ item.variable }} <span class="tag" v-if="item.geometry">({{ item.geometry }})</span>
             <div class="t3">
               {{ $t('stationReport.programmesLabel') }} {{ item.programs.map((p) => p.title === p.id ? p.id : `${p.title} (${p.id})`).join(', ') || '—' }}
-              <span v-if="item.variableId != null"> · {{ $t('stationReport.variableId') }} {{ item.variableId }}</span>
+              <span v-if="item.variableId != null"> · {{ $t('stationReport.observedVariable') }}: {{ item.variable }}</span>
             </div>
             <div v-for="(config, index) in item.configurations" :key="config.id || index" class="t4">
               {{ $t('stationReport.deployments') }}: {{ config.from || '—' }} → {{ config.to === '..' ? $t('stationReport.openEnded') : config.to || '—' }}
@@ -128,7 +127,7 @@
             <td>{{ contact.organization || '—' }}</td>
             <td>{{ contact.name || '—' }}</td>
             <td>
-              <a v-for="email in contact.emails" :key="email" :href="email.startsWith('http') ? email : `mailto:${email}`">{{ email }}</a>
+              <a v-for="email in contact.emails" :key="email" :href="email.startsWith('http') ? email : `mailto:${email}`"><p>{{ email }}</p></a>
               <span v-if="!contact.emails.length">—</span>
             </td>
           </tr>
@@ -145,9 +144,6 @@
           </li>
           <li v-if="!report.links.length">{{ $t('stationReport.noLinks') }}</li>
         </ul>
-        <div class="info">
-          <b>{{ $t('stationReport.conformsTo') }}</b> {{ report.conformsTo.join(', ') || '—' }}
-        </div>
       </section>
     </template>
   </div>
@@ -222,7 +218,7 @@ async function load() {
   }
 }
 
-async function runDownload(format: 'json' | 'xml' | 'csv') {
+async function runDownload(format: 'json' | 'xml') {
   if (downloading.value || !report.value) return
   downloading.value = true
   downloadError.value = ''
@@ -236,7 +232,6 @@ async function runDownload(format: 'json' | 'xml' | 'csv') {
   }
 }
 const downloadXml = () => runDownload('xml')
-const downloadCsv = () => runDownload('csv')
 const downloadWmdrV2 = () => runDownload('json')
 function miniZoom(delta: number) {
   const view = miniMap.value?.getView()

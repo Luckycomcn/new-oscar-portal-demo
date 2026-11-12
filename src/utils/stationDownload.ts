@@ -10,7 +10,7 @@ export interface StationDownloadMeta {
   closed?: string
   lon?: number
   lat?: number
-  /** Extended fields used by the CSV and WMDR V2 exports. */
+  /** Extended fields used by the WMDR V2 exports. */
   country?: string
   className?: string
   wmoRegion?: string
@@ -100,59 +100,6 @@ export function downloadStationXml(meta: StationDownloadMeta) {
     .filter((l) => l !== '')
     .join('\n')
   saveBlob(new Blob([xml], { type: 'application/xml' }), `${fileBase(wid)}.xml`)
-}
-
-const CSV_HEADER = [
-  'wigosId',
-  'name',
-  'stationType',
-  'stationClass',
-  'latitude',
-  'longitude',
-  'elevation',
-  'wmoRegion',
-  'territory',
-  'operatingStatus',
-  'assessedStatus',
-  'programmeAffiliation',
-  'supervisory',
-  'dateEstablished',
-  'lastModified',
-  'dateClosed',
-  'observedVariables',
-]
-
-function csvCell(value: unknown): string {
-  const s = String(value ?? '')
-  return /[",\n\r]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s
-}
-
-/** Station as CSV — one data row following the WMDR V2 element set. */
-export function downloadStationCsv(meta: StationDownloadMeta) {
-  const wid = meta.wigosId || '0-22000-0-0000000'
-  const today = new Date().toISOString().slice(0, 10)
-  const row = [
-    wid,
-    meta.name || meta.shortId || wid,
-    meta.type ?? '',
-    meta.className ?? '',
-    meta.lat ?? '',
-    meta.lon ?? '',
-    meta.elevation ?? '',
-    meta.wmoRegion ?? '',
-    meta.country ?? '',
-    meta.status ?? '',
-    meta.assessedStatus ?? '',
-    parsePrograms(meta).join(';'),
-    meta.org ?? '',
-    meta.established ?? '',
-    today,
-    meta.closed ?? '',
-    (meta.observedVariables ?? []).join(';'),
-  ]
-  // BOM keeps non-ASCII station names readable when the file is opened in Excel.
-  const csv = `\ufeff${CSV_HEADER.join(',')}\r\n${row.map(csvCell).join(',')}\r\n`
-  saveBlob(new Blob([csv], { type: 'text/csv;charset=utf-8' }), `${fileBase(wid)}.csv`)
 }
 
 /** Station as WMDR V2 (JSON) — WIGOS Metadata Representation v2 record. */

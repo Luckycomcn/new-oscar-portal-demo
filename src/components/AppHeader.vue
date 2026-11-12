@@ -1,15 +1,14 @@
 <template>
   <div class="oscar-header">
     <div class="oscar-header__left">
-      <a target="_blank" href="https://www.wmo.int" class="oscar-header__wmo">
-        <img src="../assets/wmoLogo.jpeg" alt="World Meteorological Organization" />
-        <span class="oscar-header__wmo-text">{{ $t('header.wmo1') }}<br />{{ $t('header.wmo2') }}<br />{{ $t('header.wmo3') }}</span>
-      </a>
-      <span class="oscar-header__divider"></span>
-      <router-link :to="{ name: 'home' }" class="oscar-header__brand">
-        <span class="oscar-header__brand-name">{{ $t('header.brandName') }}</span>
-        <span class="oscar-header__brand-sub">{{ $t('header.brandSub1') }}<br /> {{ $t('header.brandSub2') }} <br />{{ $t('header.brandSub3') }}</span>
+      <router-link :to="{ name: 'home' }" class="oscar-header__logo">
+        <img src="../assets/oscar-logo.svg" alt="OSCAR — Observing Systems Capability Analysis and Review Tool" />
       </router-link>
+      <!-- <span class="oscar-header__divider" aria-hidden="true"></span>
+      <router-link :to="{ name: 'home' }" class="oscar-header__brand">
+        <span class="oscar-header__brand-name">{{ $t('header.portalName') }}</span>
+        <span class="oscar-header__brand-sub">{{ $t('header.portalTagline') }}</span>
+      </router-link> -->
     </div>
     <div class="oscar-header__right">
       <AppNavbar />
@@ -22,8 +21,6 @@ import AppNavbar from './AppNavbar.vue'
 </script>
 
 <style scoped lang="scss">
-$header-wmo-blue: #005288;
-$header-ink: #333;
 $header-border: #e5e5e5;
 $header-sep: #9db3ad;
 
@@ -33,81 +30,82 @@ $header-sep: #9db3ad;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  background: #fff;
-  padding: 10px 18px 8px;
+  background: #fff url('../assets/header-grid.svg') no-repeat 48% center / 560px auto;
+  min-height: 72px;
+  box-sizing: border-box;
+  padding: 10px 24px;
   border-bottom: 1px solid $header-border;
 
   &__left {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 22px;
     min-width: 0;
   }
 
-  &__wmo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
+  &__logo {
+    display: block;
+    width: 300px;
+    max-width: 55vw;
+    flex-shrink: 0;
 
     img {
-      height: 52px;
-      width: auto;
-    }
-
-    &-text {
-      font-size: 9px;
-      line-height: 1.35;
-      letter-spacing: 0.04em;
-      color: $header-wmo-blue;
-      font-weight: 600;
+      display: block;
+      width: 100%;
+      height: auto;
     }
   }
 
   &__divider {
     width: 1px;
-    align-self: stretch;
+    height: 32px;
+    flex-shrink: 0;
     background: $header-sep;
     margin: 4px 2px;
   }
 
   &__brand {
     display: flex;
-    align-items: center;
-    gap: 8px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
     text-decoration: none;
 
     &-name {
-      font-size: 32px;
-      font-weight: 800;
-      letter-spacing: 0.02em;
-      color: var(--oscar-theme);
-      line-height: 1;
+      font-size: 18px;
+      font-weight: 600;
+      color: #174661;
+      line-height: 1.25;
     }
 
     &-sub {
-      font-size: 10px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
       line-height: 1.3;
-      color: $header-ink;
+      color: #718793;
     }
   }
 
-  &__ch {
-    display: flex;
-    align-items: flex-start;
-    gap: 6px;
-    text-decoration: none;
-    color: $header-ink;
-    font-size: 8.5px;
-    line-height: 1.35;
-    text-align: left;
+  &__right {
+    flex-shrink: 0;
+    background: #fff;
+  }
+
+  @media (max-width: 1200px) {
+    #{$root}__brand-name { font-size: 15px; }
+    #{$root}__left { gap: 14px; }
+    #{$root}__logo { width: 270px; }
   }
 
   @media (max-width: 900px) {
     flex-wrap: wrap;
 
-    #{$root}__brand-sub,
-    #{$root}__ch {
+    #{$root}__left {
+      flex-wrap: wrap;
+    }
+
+    #{$root}__brand,
+    #{$root}__divider {
       display: none;
     }
   }

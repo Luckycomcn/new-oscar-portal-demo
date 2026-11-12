@@ -263,15 +263,12 @@ export async function getStationReport(id: string): Promise<StationReport> {
   return featureToReport(feature)
 }
 
-export async function downloadStationReport(id: string, format: 'xml' | 'json' | 'csv'): Promise<Blob> {
+export async function downloadStationReport(id: string, format: 'xml' | 'json'): Promise<Blob> {
   const feature = await getFeature(id)
   if (!feature) throw new Error(`WIGOS facility not found: ${id}`)
   const report = featureToReport(feature)
   if (format === 'json') {
     return new Blob([JSON.stringify(feature, null, 2)], { type: 'application/geo+json;charset=utf-8' })
-  }
-  if (format === 'csv') {
-    return new Blob([stationToCsv(report)], { type: 'text/csv;charset=utf-8' })
   }
   return new Blob([stationToXml(report)], { type: 'application/xml;charset=utf-8' })
 }
@@ -289,25 +286,6 @@ function stationToXml(s: StationReport): string {
   const wigos = (s.wigosIds ?? []).map((w) => `    <wigosId primary="${w.primary ? 'true' : 'false'}">${escXml(w.wid)}</wigosId>`).join('\n')
   const loc = s.locations?.[0]
   return `<?xml version="1.0" encoding="UTF-8"?>\n<stationReport>\n  <name>${escXml(s.name)}</name>\n  <type>${escXml(s.typeName)}</type>\n  <wmoRegion>${escXml(s.wmoRaName)}</wmoRegion>\n  <declaredStatus>${escXml(s.declaredStatusName)}</declaredStatus>\n  <operatingStatus>${escXml(s.operatingStatusName)}</operatingStatus>\n  <dateEstablished>${escXml(s.dateEstablished)}</dateEstablished>\n  <territory>${escXml(s.territories?.[0]?.territoryName)}</territory>\n  <latitude>${escXml(loc?.latitude)}</latitude>\n  <longitude>${escXml(loc?.longitude)}</longitude>\n  <elevation>${escXml(loc?.elevation)}</elevation>\n${wigos}\n</stationReport>\n`
-}
-
-function stationToCsv(s: StationReport): string {
-  const loc = s.locations?.[0]
-  const rows: [string, string][] = [
-    ['name', s.name],
-    ['wigosId', (s.wigosIds ?? []).map((w) => w.wid).join(';')],
-    ['territory', s.territories?.[0]?.territoryName ?? ''],
-    ['wmoRegion', s.wmoRaName ?? ''],
-    ['type', s.typeName ?? ''],
-    ['class', s.stationClasses ?? ''],
-    ['declaredStatus', s.declaredStatusName ?? ''],
-    ['operatingStatus', s.operatingStatusName ?? ''],
-    ['dateEstablished', s.dateEstablished ?? ''],
-    ['latitude', String(loc?.latitude ?? '')],
-    ['longitude', String(loc?.longitude ?? '')],
-    ['elevation', String(loc?.elevation ?? '')],
-  ]
-  return `key,value\n${rows.map(([k, v]) => `${k},"${String(v).replace(/"/g, '""')}"`).join('\n')}\n`
 }
 
 interface RefItem {

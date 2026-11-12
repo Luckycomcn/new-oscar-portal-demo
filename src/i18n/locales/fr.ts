@@ -7,6 +7,8 @@ export default {
     "language": "Langue"
   },
   "header": {
+    "portalName": "Portail de métadonnées WIGOS",
+    "portalTagline": "Systèmes mondiaux d’observation",
     "wmo1": "ORGANISATION",
     "wmo2": "MÉTÉOROLOGIQUE",
     "wmo3": "MONDIALE",
@@ -136,7 +138,7 @@ export default {
   },
   "export": {
     "title": "Exportation et interopérabilité",
-    "sub": "Les résultats peuvent être exportés en CSV et JSON ; une fiche peut être téléchargée au format WMDR V2 (JSON). Pour un accès automatisé, interrogez directement le catalogue via OGC API - Records.",
+    "sub": "Les résultats peuvent être exportés en JSON ; une fiche peut être téléchargée au format WMDR V2 (JSON). Pour un accès automatisé, interrogez directement le catalogue via OGC API - Records.",
     "remoteError": "Échec de la requête au catalogue : {message}. Aucun fichier généré. Veuillez réessayer.",
     "noQuery": "Effectuez une recherche de stations avant d’exporter les résultats filtrés.",
     "progress": "Récupération des enregistrements : {count} / {total}",
@@ -159,7 +161,7 @@ export default {
     "wigosStationIdentifier": "Identifiant de station WIGOS",
     "guideTitle": "Guide d’accès automatisé",
     "guideNote": "L’API est fournie par le catalogue via OGC API - Records ; le portail enregistre uniquement des pages et des fichiers d’exportation.",
-    "demoNote": "Connecté au catalogue en ligne. Les exportations récupèrent 250 enregistrements par page et peuvent être annulées. Le CSV est converti depuis les enregistrements de l’API ; le téléchargement utilise les mêmes données que l’aperçu."
+    "demoNote": "Connecté au catalogue en ligne. Les exportations récupèrent 250 enregistrements par page et peuvent être annulées. Le téléchargement utilise les mêmes données que l’aperçu."
   },
   "map": {
     "filteredSnapshot": "Carte filtrée : instantané du {date} UTC · {count} stations dans cette vue (points denses regroupés)",

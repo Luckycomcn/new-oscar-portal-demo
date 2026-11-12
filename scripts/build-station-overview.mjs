@@ -5,7 +5,7 @@ import { loadEnv } from 'vite'
 
 // Explicit refresh, never a network dependency of npm run build.
 const env = loadEnv('production', process.cwd(), 'VITE_')
-const base = (process.env.VITE_WIGOS_API_BASE?.trim() || env.VITE_WIGOS_API_BASE?.trim() || 'https://wmo-resource-catalogue.labs.wis2dev.io').replace(/\/+$/, '')
+const base = (process.env.VITE_WIGOS_GOFC_URL?.trim() || env.VITE_WIGOS_GOFC_URL?.trim() || 'https://wmo-resource-catalogue.labs.wis2dev.io').replace(/\/+$/, '')
 const collection = `${base}/collections/wigos-observing-facility-metadata`
 const codes = await readFile(new URL('../src/data/wmdrCodes.ts', import.meta.url), 'utf8')
 const types = [...codes.matchAll(/\{ id: '([^']+)', title: '[^']*', domain: '([^']+)' \}/g)].map(m => ({ id: m[1], domain: m[2] }))

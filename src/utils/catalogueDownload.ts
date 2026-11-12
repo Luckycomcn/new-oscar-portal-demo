@@ -15,22 +15,6 @@ export async function fetchDownloadRecord(id: string): Promise<WigosFeature> {
   return record
 }
 
-/** Preserve every field, including nested observations, contacts and territory dates. */
-export function recordToCsv(record: WigosFeature): string {
-  const rows: string[][] = [['field', 'value']]
-  function visit(value: unknown, path: string) {
-    if (value !== null && typeof value === 'object' && Object.keys(value).length) {
-      for (const [key, child] of Object.entries(value)) visit(child, path ? `${path}.${key}` : key)
-    } else {
-      const text = value !== null && typeof value === 'object' ? JSON.stringify(value) : String(value ?? '')
-      // Prevent spreadsheet applications from evaluating source strings as formulas.
-      rows.push([path, /^[=+@\-\t\r\n]/.test(text) ? `'${text}` : text])
-    }
-  }
-  visit(record, '')
-  return '\uFEFF' + rows.map((row) => row.map((cell) => `"${cell.replace(/"/g, '""')}"`).join(',')).join('\r\n')
-}
-
 export function saveCatalogueFile(blob: Blob, id: string, extension: string) {
   const url = URL.createObjectURL(blob)
   const anchor = document.createElement('a')
@@ -42,7 +26,7 @@ export function saveCatalogueFile(blob: Blob, id: string, extension: string) {
   window.setTimeout(() => URL.revokeObjectURL(url), 10000)
 }
 
-export async function downloadCatalogueRecord(id: string, format: 'json' | 'csv' | 'xml') {
+export async function downloadCatalogueRecord(id: string, format: 'json' | 'xml') {
   const record = await fetchDownloadRecord(id)
   if (format === 'xml') {
     const link = record.links?.find((item) => item.rel === 'original' && /xml/i.test(item.type ?? ''))
@@ -64,9 +48,9 @@ export async function downloadCatalogueRecord(id: string, format: 'json' | 'csv'
     saveCatalogueFile(new Blob([xml], { type: 'application/xml;charset=utf-8' }), id, 'xml')
     return
   }
-  const content = format === 'json' ? JSON.stringify(record, null, 2) : recordToCsv(record)
+  const content = JSON.stringify(record, null, 2)
   saveCatalogueFile(new Blob([content], {
-    type: format === 'json' ? 'application/geo+json;charset=utf-8' : 'text/csv;charset=utf-8',
+    type: 'application/geo+json;charset=utf-8',
   }), id, format)
 }
 

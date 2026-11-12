@@ -7,6 +7,8 @@ export default {
     "language": "语言"
   },
   "header": {
+    "portalName": "WIGOS 元数据门户",
+    "portalTagline": "全球观测系统",
     "wmo1": "世界",
     "wmo2": "气象组织",
     "wmo3": "",
@@ -156,7 +158,7 @@ export default {
     "cancelled": "导出已取消，未生成文件。",
     "cancel": "取消导出",
     "title": "导出与互操作",
-    "sub": "结果集可批量导出为 CSV 和 JSON；单条记录可下载为 WMDR V2（JSON）。本门户不对外提供业务 API——机器用户应通过 OGC API - Records 直接查询目录（MVP F-16、F-21）。",
+    "sub": "结果集可批量导出为 JSON；单条记录可下载为 WMDR V2（JSON）。自动化访问请通过 OGC API - Records 直接查询目录。",
     "bulkTitle": "结果集批量导出",
     "scope": "导出范围",
     "scopeFiltered": "筛选后的记录（{count}）",
@@ -173,7 +175,7 @@ export default {
     "wigosStationIdentifier": "Wigos 台站标识符",
     "guideTitle": "机器对机器指南",
     "guideNote": "业务 API 由目录通过 OGC API - Records 提供；本门户仅保存页面和导出文件。",
-    "demoNote": "已连接真实目录。批量导出按每页 250 条获取，全部记录可能耗时较长，可随时取消。CSV 由接口记录转换；生成后下载与预览使用同一份数据。"
+    "demoNote": "已连接真实目录。批量导出按每页 250 条获取，可随时取消。生成后下载与预览使用同一份数据。"
   },
   "stationReport": {
     "downloadError": "下载失败：{message}，请重试。",
@@ -197,6 +199,7 @@ export default {
     "thCode": "代码",
     "noPrograms": "未记录计划归属。",
     "variableId": "变量 ID",
+    "observedVariable": "观测变量",
     "method": "观测方法",
     "noObservations": "该设施未记录观测。",
     "noContacts": "未记录联系人。",
@@ -207,7 +210,6 @@ export default {
     "download": "下载",
     "generating": "生成中...",
     "xml": "台站数据（WMDR XML）",
-    "csv": "台站数据（CSV）",
     "wmdrV2": "台站数据（WMDR V2 JSON）",
     "stationCharacteristics": "台站特征",
     "name": "名称",

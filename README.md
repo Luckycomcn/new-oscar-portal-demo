@@ -13,7 +13,7 @@ The application provides four page types:
 | Home | http://localhost:5173/#/ |
 | Station search | http://localhost:5173/#/search |
 | Export | http://localhost:5173/#/export |
-| Station report | http://localhost:5173/#/search/station/stationReportDetails/0-22000-0-2903947 |
+| Station report | http://localhost:5173/#/station/report/0-22000-0-2903947 |
 
 Station reports share one template, with the WIGOS identifier changing to match the selected station. Search results and map markers open the corresponding report. Unrecognized routes redirect to the home page.
 
@@ -153,7 +153,7 @@ Linux containers mode for actual packaging; `-Check` does not require Docker.
 
 2. **Catalogue service**
 
-   The default catalogue host is `https://wmo-resource-catalogue.labs.wis2dev.io`. Set `VITE_WIGOS_API_BASE` in a local `.env.local` file to override it, then restart Vite or rebuild.
+   The default catalogue host is `https://wmo-resource-catalogue.labs.wis2dev.io`. Set `VITE_WIGOS_GOFC_URL` in a local `.env.local` file to override it, then restart Vite or rebuild.
 
 3. **Download proxies**
 

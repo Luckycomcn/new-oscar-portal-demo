@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="560" height="80" viewBox="0 0 560 80" role="img" aria-labelledby="title">
+  <title id="title">OSCAR — Observing Systems Capability Analysis and Review Tool</title>
+  <g fill="#005BAB" font-family="Arial, Helvetica, sans-serif">
+    <text x="0" y="67" font-size="84" font-weight="600" letter-spacing="-3">OSCAR</text>
+    <g font-size="21" font-weight="400">
+      <text x="310" y="22">Observing Systems</text>
+      <text x="310" y="47">Capability Analysis</text>
+      <text x="310" y="72">and Review Tool</text>
+    </g>
+  </g>
+</svg>

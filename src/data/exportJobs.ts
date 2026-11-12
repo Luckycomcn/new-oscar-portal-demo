@@ -1,7 +1,7 @@
 export interface ExportJob {
   id: string
   name: string
-  format: 'xml' | 'json' | 'csv'
+  format: 'xml' | 'json'
   description: string
   updatedOn: string
   recordCount: number
@@ -11,7 +11,7 @@ export const exportJobs: ExportJob[] = [
   {
     id: 'stations-full',
     name: 'Station list (full)',
-    format: 'csv',
+    format: 'json',
     description: 'All surface stations with WIGOS id, territory, type and declared status.',
     updatedOn: '2024-04-23',
     recordCount: 14,

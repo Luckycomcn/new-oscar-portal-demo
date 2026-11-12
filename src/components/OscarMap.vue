@@ -30,7 +30,6 @@
             </button>
             <span v-show="dlOpen" class="dl-menu">
               <button type="button" @click="downloadXml">{{ $t('stationReport.xml') }}</button>
-              <button type="button" @click="downloadCsv">{{ $t('stationReport.csv') }}</button>
               <button type="button" @click="downloadWmdrV2">{{ $t('stationReport.wmdrV2') }}</button>
             </span>
           </span>
@@ -417,9 +416,8 @@ function buildCloud(): Feature[] {
 }
 
 function stationToHover(s: Station): HoverInfo {
-  const wid = s.wigosId.split('-').pop() ?? s.wigosId
   return {
-    title: props.visibleStations ? s.name : wid,
+    title: s.name || s.wigosId,
     wigosId: s.wigosId,
     type: s.type,
     status: s.status,
@@ -434,7 +432,7 @@ function hoverFromFeature(feature: WigosFeature): HoverInfo {
   const s = featureToStation(feature)
   if (s) {
     return {
-      title: props.visibleStations ? s.name : s.wigosId.split('-').pop() ?? s.wigosId,
+      title: feature.properties.title || s.name || feature.id,
       wigosId: s.wigosId,
       type: s.type,
       status: s.status,
@@ -567,7 +565,7 @@ function onPopupLeave() {
   }, 250)
 }
 
-async function runDownload(format: 'xml' | 'csv' | 'json') {
+async function runDownload(format: 'xml' | 'json') {
   if (!hover.value || downloading.value) return
   const id = hover.value.wigosId
   downloading.value = true
@@ -585,7 +583,6 @@ async function runDownload(format: 'xml' | 'csv' | 'json') {
 }
 
 const downloadXml = () => runDownload('xml')
-const downloadCsv = () => runDownload('csv')
 const downloadWmdrV2 = () => runDownload('json')
 function currentBbox(): [number, number, number, number] | null {
   const map = mapRef.value
@@ -996,6 +993,7 @@ function flyToFocusedStation() {
 }
 
 .identify-popup__title {
+  overflow-wrap: anywhere;
   padding: 6px 8px;
   border-bottom: 1px solid #d5e4dc;
   font-weight: 600;

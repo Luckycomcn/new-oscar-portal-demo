@@ -13,10 +13,7 @@
           <option value="all">{{ $t('export.scopeAll', { count: allCount.toLocaleString() }) }}</option>
         </select>
         <label class="export-label">{{ $t('export.format') }}</label>
-        <select v-model="format" :disabled="bulkBusy" class="form-control">
-          <option value="csv">CSV</option>
-          <option value="json">JSON</option>
-        </select>
+        <div class="form-control">JSON</div>
         <label class="export-label">{{ $t('export.fields') }}</label>
         <select v-model="fieldSet" :disabled="bulkBusy" class="form-control">
           <option value="mandatory">{{ $t('export.fieldsMandatory') }}</option>
@@ -68,7 +65,6 @@ const scope = ref<'all' | 'filtered'>(snapshot?.query ? 'filtered' : 'all')
 const allCount = ref(0)
 const filteredCount = ref(0)
 const scopeCount = computed(() => scope.value === 'all' ? allCount.value : filteredCount.value)
-const format = ref<'csv' | 'json'>('csv')
 const fieldSet = ref<'mandatory' | 'full'>('mandatory')
 const wigosId = ref('0-20000-0-89057')
 const bulkBusy = ref(false)
@@ -96,7 +92,7 @@ onMounted(async () => {
       ? (await searchFacilities({ ...snapshot.query, limit: 1 })).numberMatched : 0
   } catch (error) { bulkHint.value = t('export.remoteError', { message: String(error) }) }
 })
-watch([scope, format, fieldSet], () => {
+watch([scope, fieldSet], () => {
   bulkBlob.value = null
   bulkPreview.value = ''
   bulkHint.value = ''
@@ -115,19 +111,6 @@ function exportFeature(feature: WigosFeature): WigosFeature {
   const { title, facilityType, wmoRegion, territories, created, updated } = feature.properties
   return { type: feature.type, id: feature.id, geometry: feature.geometry, time: feature.time,
     properties: { title, facilityType, wmoRegion, territories, created, updated } }
-}
-function csv(features: WigosFeature[]) {
-  const keys = fieldSet.value === 'full'
-    ? ['id', 'geometry', 'time', 'properties', 'links', 'conformsTo']
-    : ['id', 'title', 'facilityType', 'wmoRegion', 'territories', 'geometry', 'time', 'created', 'updated']
-  const quote = (value: unknown) => {
-    let text = typeof value === 'object' && value !== null ? JSON.stringify(value) : String(value ?? '')
-    if (typeof value === 'string' && /^[=+@\-\t\r\n]/.test(text)) text = "'" + text
-    return '"' + text.replace(/"/g, '""') + '"'
-  }
-  return '\uFEFF' + [keys.join(','), ...features.map((feature) => keys.map((key) =>
-    quote(key in feature ? (feature as unknown as Record<string, unknown>)[key] : (feature.properties as Record<string, unknown>)[key]),
-  ).join(','))].join('\r\n')
 }
 async function genBulk() {
   if (bulkBusy.value) return
@@ -162,10 +145,8 @@ async function genBulk() {
       bulkHint.value = t('export.progress', { count: records.length, total: expected })
       if (!result.features.length) break
     }
-    const content = format.value === 'json'
-      ? JSON.stringify({ type: 'FeatureCollection', features: records, numberReturned: records.length }, null, 2)
-      : csv(records)
-    bulkBlob.value = new Blob([content], { type: format.value === 'json' ? 'application/geo+json;charset=utf-8' : 'text/csv;charset=utf-8' })
+    const content = JSON.stringify({ type: 'FeatureCollection', features: records, numberReturned: records.length }, null, 2)
+    bulkBlob.value = new Blob([content], { type: 'application/geo+json;charset=utf-8' })
     bulkPreview.value = content.slice(0, 12000)
     bulkHint.value = t('export.generated', { count: records.length })
   } catch (error) {
@@ -174,7 +155,7 @@ async function genBulk() {
   } finally { bulkBusy.value = false }
 }
 function downloadBulk() {
-  if (bulkBlob.value) trigger(bulkBlob.value, `wigos-${scope.value}.${format.value}`)
+  if (bulkBlob.value) trigger(bulkBlob.value, `wigos-${scope.value}.json`)
 }
 function cancelBulk() { controller?.abort() }
 async function genSingle() {
