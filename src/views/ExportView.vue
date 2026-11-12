@@ -197,18 +197,18 @@ function trigger(blob: Blob, filename: string) {
   padding: 0 20px 0 20px;
 }
 .export-page h1 { font-size: 22px; margin: 0 0 6px; color: #1a2b26; }
-.export-sub { color: #5b6f67; font-size: 12px; margin-bottom: 16px; }
+.export-sub { color: #5b6f83; font-size: 12px; margin-bottom: 16px; }
 .export-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-.export-card { min-width: 0; background: #fff; border: 1px solid #e3ece8; border-radius: 10px; padding: 16px; box-shadow: 0 1px 4px rgba(0,0,0,.04); }
-.export-card h2 { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: #355349; margin: 0 0 12px; border: 0; padding: 0; }
-.export-label { display: block; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; color: #8aa198; margin: 10px 0 4px; }
+.export-card { min-width: 0; background: #fff; border: 1px solid #e0e8f0; border-radius: 10px; padding: 16px; box-shadow: 0 1px 4px rgba(0,0,0,.04); }
+.export-card h2 { font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: #35536e; margin: 0 0 12px; border: 0; padding: 0; }
+.export-label { display: block; font-size: 10px; letter-spacing: .05em; text-transform: uppercase; color: #778da1; margin: 10px 0 4px; }
 .export-card .form-control { margin-bottom: 2px; }
 .export-actions { display: flex; align-items: center; gap: 8px; margin: 12px 0; flex-wrap: wrap; }
-.btn-export { background: #bfe9dc; border: 1px solid #9adcc8; color: #134e3f; border-radius: 6px; padding: 6px 14px; }
-.btn-export:hover { background: #a8e2cf; }
-.export-count { background: #f1f5f3; border: 1px solid #e3ece8; border-radius: 6px; padding: 5px 10px; font-size: 12px; color: #355349; }
-.export-note { background: #eef7f6; border-left: 3px solid #5ec4b6; padding: 8px 10px; font-size: 12px; color: #355349; border-radius: 0 6px 6px 0; margin-bottom: 10px; }
-.export-preview { background: #f4f7f6; border: 1px solid #e3ece8; border-radius: 6px; padding: 10px; font-size: 11px; color: #5b6f67; max-height: 220px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
+.btn-export { background: var(--oscar-theme); border: 1px solid var(--oscar-theme); color: #fff; border-radius: 6px; padding: 6px 14px; }
+.btn-export:hover:enabled { background: var(--oscar-theme-soft); color: var(--oscar-theme); }
+.export-count { background: #f1f6fb; border: 1px solid #e0e8f0; border-radius: 6px; padding: 5px 10px; font-size: 12px; color: #35536e; }
+.export-note { background: #eef5fb; border-left: 3px solid var(--oscar-theme); padding: 8px 10px; font-size: 12px; color: #35536e; border-radius: 0 6px 6px 0; margin-bottom: 10px; }
+.export-preview { background: #f4f7fb; border: 1px solid #e0e8f0; border-radius: 6px; padding: 10px; font-size: 11px; color: #5b6f83; max-height: 220px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; }
 .export-hint { background: #fff8e6; border: 1px solid #f0d48a; color: #7a5b12; border-radius: 6px; padding: 6px 10px; font-size: 12px; margin: 8px 0; }
 .export-guide { margin-bottom: 16px; }
 @media (max-width: 900px) { .export-grid { grid-template-columns: 1fr; } }

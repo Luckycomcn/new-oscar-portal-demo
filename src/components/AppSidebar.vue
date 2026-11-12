@@ -216,7 +216,7 @@ watch(selectedStatuses, (v) => { filterStatuses.value = [...v] }, { immediate: t
 
 .quick-access-panel {
   position: relative;
-  background: #eaf4ef;
+  background: var(--oscar-theme-soft);
   border: 0;
   border-radius: 12px;
   padding: 16px 14px 16px;
@@ -229,10 +229,10 @@ watch(selectedStatuses, (v) => { filterStatuses.value = [...v] }, { immediate: t
   width: 28px;
   height: 28px;
   padding: 0;
-  border: 1px solid #d5e4dc;
+  border: 1px solid #d5e3ef;
   border-radius: 50%;
   background: #fff;
-  color: #6b8077;
+  color: #687e90;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -264,7 +264,7 @@ watch(selectedStatuses, (v) => { filterStatuses.value = [...v] }, { immediate: t
 .qa-label {
   display: block;
   margin: 12px 0 8px;
-  color: #355349;
+  color: #35536e;
   font-size: 13px;
   font-weight: 600;
 }
@@ -292,7 +292,7 @@ watch(selectedStatuses, (v) => { filterStatuses.value = [...v] }, { immediate: t
   align-items: center;
   gap: 6px;
   margin: 0;
-  color: #355349;
+  color: #35536e;
   font-weight: 400;
   cursor: pointer;
 }
@@ -303,7 +303,7 @@ watch(selectedStatuses, (v) => { filterStatuses.value = [...v] }, { immediate: t
   width: 14px;
   height: 14px;
   margin: 0;
-  border: 2px solid #9bb5aa;
+  border: 2px solid #a9bfd4;
   border-radius: 50%;
   background: #fff;
 }

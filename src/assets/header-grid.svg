@@ -1,13 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 160" fill="none">
-  <g stroke="#005BAB" stroke-opacity=".08" stroke-width="1">
-    <ellipse cx="340" cy="80" rx="230" ry="130"/>
-    <ellipse cx="340" cy="80" rx="155" ry="130"/>
-    <ellipse cx="340" cy="80" rx="65" ry="130"/>
-    <path d="M110 80h460M126 32h428M126 128h428M340-50v260"/>
-    <path d="m185 32 90 48 130-48 95 96" stroke-dasharray="3 6"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="100" viewBox="0 0 640 100" fill="none">
+  <g stroke="#005BAB" stroke-opacity=".11" stroke-width=".8">
+    <path d="M46 0Q29 50 46 100M91 0Q77 50 91 100M137 0Q126 50 137 100M183 0Q175 50 183 100M229 0Q224 50 229 100M274 0Q272 50 274 100M320 0V100M366 0Q368 50 366 100M411 0Q416 50 411 100M457 0Q465 50 457 100M503 0Q514 50 503 100M549 0Q563 50 549 100M594 0Q611 50 594 100"/>
+    <path d="M39 25Q320 10 601 25M37 75Q320 90 603 75" stroke-opacity=".06"/>
   </g>
-  <g fill="#005BAB" fill-opacity=".15">
-    <circle cx="185" cy="32" r="3"/><circle cx="275" cy="80" r="3"/>
-    <circle cx="405" cy="32" r="3"/><circle cx="500" cy="128" r="3"/>
+  <path fill="#fff" fill-opacity=".94" d="M20 39h600v20H20z"/>
+  <g fill="#527da5" fill-opacity=".8" font-family="Arial, Helvetica, sans-serif" font-size="10" text-anchor="middle">
+    <text x="39" y="53">180°</text>
+    <text x="84" y="53">150°W</text>
+    <text x="130" y="53">120°W</text>
+    <text x="176" y="53">90°W</text>
+    <text x="222" y="53">60°W</text>
+    <text x="267" y="53">30°W</text>
+    <text x="320" y="53">0°</text>
+    <text x="373" y="53">30°E</text>
+    <text x="418" y="53">60°E</text>
+    <text x="464" y="53">90°E</text>
+    <text x="510" y="53">120°E</text>
+    <text x="556" y="53">150°E</text>
+    <text x="601" y="53">180°</text>
   </g>
 </svg>

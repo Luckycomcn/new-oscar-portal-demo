@@ -22,7 +22,7 @@ import AppNavbar from './AppNavbar.vue'
 
 <style scoped lang="scss">
 $header-border: #e5e5e5;
-$header-sep: #9db3ad;
+$header-sep: #a9bfd4;
 
 .oscar-header {
   $root: &;
@@ -30,7 +30,7 @@ $header-sep: #9db3ad;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  background: #fff url('../assets/header-grid.svg') no-repeat 48% center / 560px auto;
+  background: #fff url('../assets/header-grid.svg') no-repeat 48% center / 640px auto;
   min-height: 72px;
   box-sizing: border-box;
   padding: 10px 24px;

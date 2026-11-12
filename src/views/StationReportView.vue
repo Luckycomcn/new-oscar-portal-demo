@@ -291,10 +291,10 @@ $srd-ink: #222;
 $srd-muted: #666;
 $srd-dt: #555;
 $srd-theme: var(--oscar-theme);
-$srd-line: #dbe8e1;
-$srd-panel-head: #eef4f1;
-$srd-grid-line: #d5e0da;
-$srd-grid-head: #f4f8f6;
+$srd-line: #dce6ef;
+$srd-panel-head: #eef5fb;
+$srd-grid-line: #d5e0eb;
+$srd-grid-head: #f5f9fc;
 $srd-info-bg: #e8f4fd;
 $srd-info-line: #bcd9f0;
 
@@ -368,6 +368,11 @@ $srd-info-line: #bcd9f0;
   border-radius: 4px;
   padding: 3px 12px;
   cursor: pointer;
+
+  &:hover:enabled, &:focus-visible {
+    background: var(--oscar-theme-soft);
+    color: $srd-theme;
+  }
 }
 
 .dl-wrap {
@@ -461,7 +466,7 @@ $srd-info-line: #bcd9f0;
   width: 100%;
   height: 230px;
   border: 1px solid #ccc;
-  background: #eef3ec;
+  background: #eef5fb;
 }
 
 .mini-tools {

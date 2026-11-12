@@ -124,7 +124,7 @@ function handleLanguageChange(value: Locale) {
   gap: 8px;
   min-height: 48px;
   padding: 0 18px;
-  color: #4b5c55;
+  color: #4b6073;
   font-size: 14px;
   border: 0;
   background: transparent;
@@ -133,6 +133,10 @@ function handleLanguageChange(value: Locale) {
 .site-nav :deep(.navbar-nav > li > a .fa) {
   color: var(--oscar-theme);
   font-size: 15px;
+}
+
+.site-nav :deep(.navbar-nav > li > a .el-icon) {
+  color: var(--oscar-theme);
 }
 
 .site-nav :deep(.navbar-nav > li.active > a),
@@ -162,7 +166,7 @@ function handleLanguageChange(value: Locale) {
   gap: 8px;
   min-height: 48px;
   padding: 0 18px;
-  color: #4b5c55;
+  color: #4b6073;
   font-size: 14px;
   cursor: pointer;
   outline: none;
@@ -192,7 +196,7 @@ function handleLanguageChange(value: Locale) {
 
 .nav-language__arrow {
   font-size: 12px !important;
-  color: #8aa198 !important;
+  color: #778da1 !important;
 }
 
 
@@ -203,7 +207,7 @@ function handleLanguageChange(value: Locale) {
 .site-nav :deep(.navbar-form > .fa-search) {
   top: 10px;
   left: 22px;
-  color: #8aa198;
+  color: #778da1;
   z-index: 1;
 }
 
@@ -213,19 +217,19 @@ function handleLanguageChange(value: Locale) {
   padding-left: 34px;
   border-radius: 18px;
   background: #fff;
-  border: 1px solid #c9ddd3;
-  color: #24332e;
+  border: 1px solid #c9daea;
+  color: #243746;
   box-shadow: none;
 }
 
 .site-nav :deep(.navbar-form > .form-control::placeholder) {
-  color: #8aa198;
+  color: #778da1;
 }
 
 .site-nav :deep(.navbar-form > .form-control:focus) {
   width: 260px;
   border-color: var(--oscar-theme);
-  color: #24332e;
+  color: #243746;
 }
 </style>
 

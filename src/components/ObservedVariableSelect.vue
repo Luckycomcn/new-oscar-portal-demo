@@ -148,22 +148,22 @@ onUnmounted(() => document.removeEventListener('click', onDocClick))
 <style scoped lang="scss">
 .ov-select { position: relative; }
 .ov-input { width: 100%; display: flex; align-items: center; justify-content: space-between; height: 34px; padding: 0 10px; background: #fff; border: 1px solid #dcdfe6; border-radius: 4px; color: #606266; font-size: 13px; cursor: pointer; }
-.open .ov-input { border-color: #409eff; }
+.open .ov-input { border-color: var(--oscar-theme); }
 .ov-text.placeholder { color: #a8abb2; }
 .ov-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .ov-suffix { display: flex; align-items: center; gap: 6px; color: #909399; }
 .ov-suffix svg { width: 12px; height: 12px; }
-.ov-count { background: #409eff; color: #fff; font-size: 11px; border-radius: 9px; padding: 0 7px; line-height: 18px; }
+.ov-count { background: var(--oscar-theme); color: #fff; font-size: 11px; border-radius: 9px; padding: 0 7px; line-height: 18px; }
 .ov-dropdown { position: absolute; z-index: 50; top: calc(100% + 6px); left: 0; width: 320px; max-width: 78vw; background: #fff; border: 1px solid #e4e7ed; border-radius: 6px; box-shadow: 0 6px 24px rgba(0,0,0,.12); }
 .ov-search { padding: 10px 10px 6px; }
-.ov-search input { width: 100%; height: 32px; padding: 0 12px; border: 1px solid #409eff; border-radius: 4px; outline: none; }
+.ov-search input { width: 100%; height: 32px; padding: 0 12px; border: 1px solid var(--oscar-theme); border-radius: 4px; outline: none; }
 .ov-tree { max-height: 340px; overflow: auto; padding: 4px 4px 8px; border-top: 1px solid #eee; margin: 0 10px 0; }
 .ov-empty { padding: 16px; text-align: center; color: #909399; }
 .ov-row { display: flex; align-items: center; gap: 4px; padding: 3px 2px; border-left: 1px dotted #bbb; }
 .ov-row.match { background: #f0f7ff; }
 .ov-caret { width: 18px; height: 18px; line-height: 16px; text-align: center; cursor: pointer; color: #606266; border: 1px solid #aaa; border-radius: 2px; font-size: 12px; flex-shrink: 0; background: #fff; }
 .ov-caret.empty { border: none; cursor: default; }
-.ov-caret.open { color: #409eff; border-color: #409eff; }
+.ov-caret.open { color: var(--oscar-theme); border-color: var(--oscar-theme); }
 .el-checkbox { display: flex; align-items: center; gap: 6px; cursor: pointer; font-weight: 400; }
 .el-checkbox__input { display: inline-flex; }
 .el-checkbox__inner { width: 15px; height: 15px; border: 1px solid #999; border-radius: 2px; background: #fff; display: inline-block; position: relative; }
@@ -172,5 +172,6 @@ onUnmounted(() => document.removeEventListener('click', onDocClick))
 .el-checkbox__label { font-size: 13px; color: #333; }
 .ov-footer { display: flex; justify-content: flex-end; gap: 8px; padding: 10px; border-top: 1px solid #eee; }
 .ov-btn { height: 28px; padding: 0 12px; border: 1px solid #dcdfe6; background: #fff; border-radius: 4px; cursor: pointer; font-size: 12px; }
-.ov-btn.primary { background: #409eff; border-color: #409eff; color: #fff; }
+.ov-btn.primary { background: var(--oscar-theme); border-color: var(--oscar-theme); color: #fff; }
+.ov-btn:hover { background: var(--oscar-theme-soft); color: var(--oscar-theme); border-color: var(--oscar-theme); }
 </style>

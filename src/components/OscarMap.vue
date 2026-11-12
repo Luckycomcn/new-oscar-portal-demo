@@ -165,14 +165,15 @@ const downloadError = ref('')
 const { t, locale } = useI18n()
 const dlOpen = ref(false)
 type Basemap = 'osm' | 'amap' | 'tianditu'
-const DEFAULT_CENTER = [20, 12]
+const DEFAULT_CENTER = [0, 0]
+const WORLD_EXTENT = transformExtent([-180, -85, 180, 85], 'EPSG:4326', 'EPSG:3857')
 const DEFAULT_ZOOM = 2.2
 const CHINA_CENTER: [number, number] = [104, 35]
 const CHINA_ZOOM = 4
 const basemap = ref<Basemap>('osm')
 const basemapStatus = ref('')
 const amapEl = ref<HTMLDivElement | null>(null)
-const osmLayer = new TileLayer({ source: new OSM({ wrapX: true }) })
+const osmLayer = new TileLayer({ source: new OSM({ wrapX: false }) })
 const tiandituLayers = (['vec', 'cva'] as const).map((layer) => new TileLayer({
   source: tiandituSource(layer), visible: false,
 }))
@@ -202,14 +203,14 @@ const pendingTiles = new Set<unknown>()
 const realtimeTileSource = new VectorTileSource({
   format: new MVT({ layers: ['hits'] }),
   url: WIGOS_TILES_URL,
-  wrapX: true,
+  wrapX: false,
 })
 const overviewTileSource = new VectorTileSource({
   format: new MVT({ layers: ['hits'] }),
   url: `${import.meta.env.BASE_URL}${overview.path}`,
   tileSize: overview.tileSize,
   maxZoom: overview.maxZoom,
-  wrapX: true,
+  wrapX: false,
 })
 let tileSource = overviewTileSource
 const tileStyles = Object.fromEntries(Object.entries(domainColors).map(([domain, color]) => [domain, dotStyle(color, 2.5)])) as Record<StationDomain, Style>
@@ -312,9 +313,9 @@ function landFeatures(): Feature<Geometry>[] {
   return feats
 }
 
-const landSource = new VectorSource()
+const landSource = new VectorSource({ wrapX: false })
 const gridLayer = new VectorLayer({
-  source: new VectorSource({ features: graticuleLines() }),
+  source: new VectorSource({ features: graticuleLines(), wrapX: false }),
   style: new Style({ stroke: new Stroke({ color: GRID_STROKE, width: 1 }) }),
 })
 
@@ -697,7 +698,7 @@ async function loadViewport() {
 onMounted(() => {
   if (!mapEl.value) return
   const vector = new VectorLayer({
-    source: new VectorSource({ features: buildCloud() }),
+    source: new VectorSource({ features: buildCloud(), wrapX: false }),
     declutter: false,
   })
   vectorRef.value = vector
@@ -711,11 +712,13 @@ onMounted(() => {
     view: new View({
       center: fromLonLat(DEFAULT_CENTER),
       zoom: DEFAULT_ZOOM,
-      minZoom: 0,
+      minZoom: -2,
       maxZoom: 18,
-      constrainResolution: true,
+      extent: WORLD_EXTENT,
+      constrainOnlyCenter: true,
+      constrainResolution: false,
       smoothResolutionConstraint: true,
-      showFullExtent: true,
+      showFullExtent: false,
     }),
   })
   map.on('singleclick', async (evt) => {
@@ -761,12 +764,20 @@ onMounted(() => {
     }, 500)
   })
   mapRef.value = map
+  fitWorld()
   map.getView().on('change:resolution', () => { if (tilesActive.value) selectStationSource() })
   void loadWorldLand()
   if (!props.visibleStations) {
     void loadViewport()
   }
-  resizeObserver.value = new ResizeObserver(() => map.updateSize())
+  resizeObserver.value = new ResizeObserver(() => {
+    const view = map.getView()
+    const previousSize = map.getSize()
+    const previousWorldZoom = previousSize ? view.getZoomForResolution((WORLD_EXTENT[2]! - WORLD_EXTENT[0]!) / previousSize[0]!) : undefined
+    const showingWorld = basemap.value === 'osm' && previousWorldZoom != null && Math.abs((view.getZoom() ?? 0) - previousWorldZoom) < 0.05
+    map.updateSize()
+    if (showingWorld) fitWorld()
+  })
   resizeObserver.value.observe(mapEl.value)
 })
 
@@ -825,8 +836,22 @@ function zoomBy(delta: number) {
   view.animate({ zoom: zoom + delta, duration: 180 })
 }
 
+function fitWorld(duration = 0) {
+  const map = mapRef.value
+  const size = map?.getSize()
+  if (!map || !size?.[0]) return
+  const view = map.getView()
+  // Fill wide containers with one world; polar latitudes may fall outside the viewport.
+  const resolution = (WORLD_EXTENT[2]! - WORLD_EXTENT[0]!) / size[0]
+  view.animate({ center: fromLonLat(DEFAULT_CENTER), resolution, duration })
+}
+
 function resetView() {
   const world = basemap.value === 'osm'
+  if (world) {
+    fitWorld(250)
+    return
+  }
   mapRef.value?.getView().animate({
     center: world ? fromLonLat(DEFAULT_CENTER) : mapCoordinate(CHINA_CENTER[0], CHINA_CENTER[1]),
     zoom: world ? DEFAULT_ZOOM : CHINA_ZOOM,
@@ -908,9 +933,10 @@ async function selectBasemap(event: Event) {
   popupPinned.value = false
   const view = mapRef.value?.getView()
   view?.cancelAnimations()
-  view?.setMinZoom(next === 'amap' ? 2 : next === 'tianditu' ? 1 : 0)
+  view?.setMinZoom(next === 'amap' ? 2 : next === 'tianditu' ? 1 : -2)
   view?.setCenter(next === 'osm' ? fromLonLat(DEFAULT_CENTER) : mapCoordinate(CHINA_CENTER[0], CHINA_CENTER[1]))
   view?.setZoom(next === 'osm' ? DEFAULT_ZOOM : CHINA_ZOOM)
+  if (next === 'osm') fitWorld()
   syncAmap()
 }
 
@@ -931,7 +957,7 @@ function flyToFocusedStation() {
 </script>
 <style scoped lang="scss">
 .map-data-status { position: absolute; bottom: 30px; left: 12px; right: 12px; z-index: 5; padding: 6px 10px; background: #fffffff0; border-radius: 5px; font-size: 12px; overflow-wrap: anywhere; }
-.overview-note { margin: 4px 0; font-size: 11px; color: #586e65; }
+.overview-note { margin: 4px 16px; font-size: 11px; color: #586e83; }
 .oscar-map-shell {
   position: relative;
   padding: 0 0 14px;
@@ -940,9 +966,10 @@ function flyToFocusedStation() {
 .oscar-ol-wrap {
   position: relative;
   overflow: hidden;
-  border: 1px solid #dbe8e1;
+  border: 1px solid #dce6ef;
   border-radius: 12px;
   background: #dcebf3;
+  margin: 0 16px;
 }
 
 .oscar-ol-map {
@@ -969,7 +996,7 @@ function flyToFocusedStation() {
   bottom: 14px;
   transform: translateX(-50%);
   z-index: 5;
-  background: rgba(11, 107, 79, 0.9);
+  background: rgba(0, 91, 171, 0.9);
   color: #fff;
   padding: 4px 12px;
   border-radius: 12px;
@@ -984,7 +1011,7 @@ function flyToFocusedStation() {
   max-height: 340px;
   overflow: auto;
   background: rgba(255, 255, 255, 0.96);
-  border: 1px solid #9db3ad;
+  border: 1px solid #a9bfd4;
   border-radius: 4px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
   font-size: 12px;
@@ -995,7 +1022,7 @@ function flyToFocusedStation() {
 .identify-popup__title {
   overflow-wrap: anywhere;
   padding: 6px 8px;
-  border-bottom: 1px solid #d5e4dc;
+  border-bottom: 1px solid #d5e3ef;
   font-weight: 600;
   background: #fff;
 }
@@ -1014,8 +1041,8 @@ function flyToFocusedStation() {
   display: flex;
   gap: 6px;
   padding: 8px;
-  border-top: 1px solid #d5e4dc;
-  background: #f6faf8;
+  border-top: 1px solid #d5e3ef;
+  background: #f6f9fc;
 }
 
 .identify-popup__actions .btn-xs {
@@ -1036,7 +1063,7 @@ function flyToFocusedStation() {
   z-index: 10;
   min-width: 180px;
   background: #fff;
-  border: 1px solid #9db3ad;
+  border: 1px solid #a9bfd4;
   border-radius: 4px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
   padding: 4px;
@@ -1057,7 +1084,7 @@ function flyToFocusedStation() {
 }
 
 .identify-popup__actions .dl-menu button:hover {
-  background: #eef6f1;
+  background: var(--oscar-theme-soft);
   color: var(--oscar-theme);
 }
 
@@ -1070,11 +1097,11 @@ function flyToFocusedStation() {
   padding: 10px 12px;
   border-radius: 10px;
   background: rgba(255, 255, 255, 0.94);
-  border: 1px solid #dbe8e1;
-  color: #355349;
+  border: 1px solid #dce6ef;
+  color: #35536e;
   font-size: 12px;
   min-width: 128px;
-  box-shadow: 0 2px 10px rgba(11, 107, 79, 0.08);
+  box-shadow: 0 2px 10px rgba(0, 91, 171, 0.08);
 }
 
 .oscar-legend__title {
@@ -1108,13 +1135,19 @@ function flyToFocusedStation() {
 .oscar-map-tools button {
   width: 34px;
   height: 34px;
-  border: 1px solid #dbe8e1;
+  border: 1px solid #dce6ef;
   border-radius: 8px;
   background: #fff;
-  color: #355349;
+  color: var(--oscar-theme);
   font-size: 18px;
   line-height: 1;
   padding: 0;
+}
+
+.oscar-map-tools button:hover,
+.oscar-map-tools button:focus-visible {
+  background: var(--oscar-theme-soft);
+  border-color: var(--oscar-theme);
 }
 
 .oscar-map-tools__icon svg {
@@ -1142,20 +1175,20 @@ function flyToFocusedStation() {
 .oscar-map-layers select,
 .oscar-map-layers span {
   padding: 6px 8px;
-  border: 1px solid #dbe8e1;
+  border: 1px solid #dce6ef;
   border-radius: 8px;
   background: #fff;
-  color: #355349;
+  color: #35536e;
   font-size: 12px;
 }
 
 .oscar-infobox {
   margin-top: 10px;
   padding: 10px 12px;
-  border: 1px solid #dbe8e1;
+  border: 1px solid #dce6ef;
   border-radius: 10px;
   background: #fff;
-  color: #355349;
+  color: #35536e;
   font-size: 12px;
 }
 
@@ -1171,14 +1204,14 @@ function flyToFocusedStation() {
 }
 
 .oscar-ol-wrap :deep(.ol-scale-line-inner) {
-  border-color: #355349;
-  color: #355349;
+  border-color: #35536e;
+  color: #35536e;
   font-size: 11px;
 }
 
 .oscar-ol-wrap :deep(.ol-attribution) {
   background: transparent;
-  color: #6b8077;
+  color: #687e90;
   font-size: 10px;
 }
 </style>

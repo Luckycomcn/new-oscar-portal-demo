@@ -1,13 +1,30 @@
 // Independently authored application styles. No original-site stylesheet imports.
-$theme: #0b6b4f;
-$ink: #24332e;
-$muted: #6b8077;
-$line: #dbe8e1;
+$theme: #005BAB;
+$ink: #243746;
+$muted: #687e90;
+$line: #dce6ef;
 $desktop: 992px;
 
-:root {
+html:root {
   --oscar-theme: #{$theme};
-  --oscar-theme-soft: #eaf4ef;
+  --oscar-theme-soft: #e6eff7;
+  --oscar-theme-border: #b3cee6;
+  --el-color-primary: #{$theme};
+  --el-color-primary-rgb: 0, 91, 171;
+  --el-color-primary-light-3: #4d8cc4;
+  --el-color-primary-light-5: #80add5;
+  --el-color-primary-light-7: #b3cee6;
+  --el-color-primary-light-8: #ccdeee;
+  --el-color-primary-light-9: #e6eff7;
+  --el-color-primary-dark-2: #004989;
+  --el-color-success: #{$theme};
+  --el-color-success-rgb: 0, 91, 171;
+  --el-color-success-light-3: #4d8cc4;
+  --el-color-success-light-5: #80add5;
+  --el-color-success-light-7: #b3cee6;
+  --el-color-success-light-8: #ccdeee;
+  --el-color-success-light-9: #e6eff7;
+  --el-color-success-dark-2: #004989;
   --oscar-font: 'Open Sans', sans-serif;
 }
 
@@ -62,7 +79,7 @@ hr { border: 0; border-top: 1px solid $line; margin: 20px 0; }
   color: #555; background: #fff; border: 1px solid #ccc; border-radius: 4px;
   font-size: 14px; line-height: 1.43;
   box-shadow: inset 0 1px 1px #00000013;
-  &:focus { outline: 0; border-color: $theme; box-shadow: 0 0 0 2px #0b6b4f1a; }
+  &:focus { outline: 0; border-color: $theme; box-shadow: 0 0 0 2px #005bab1a; }
   &:disabled { background: #f3f5f4; opacity: .7; }
 }
 textarea.form-control { height: auto; }
@@ -75,12 +92,24 @@ textarea.form-control { height: auto; }
   &:focus-visible { outline: 2px solid $theme; outline-offset: 2px; }
   &:disabled { opacity: .65; }
   &-default { background: #fff; border-color: #ccc; color: #333;
-    &:hover:enabled { background: #f0f4f2; border-color: #9db3ad; }
+    &:hover:enabled { background: var(--oscar-theme-soft); border-color: $theme; color: $theme; }
   }
-  &-primary { background: $theme; border-color: $theme; color: #fff; }
+  &-primary { background: $theme; border-color: $theme; color: #fff;
+    &:hover:enabled { background: var(--oscar-theme-soft); border-color: $theme; color: $theme; }
+  }
   &-xs { padding: 1px 5px; font-size: 12px; border-radius: 3px; }
 }
 .legacy-replacement-icon { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1.7; }
+.btn, .el-button, .ov-btn { transition: background-color .15s, border-color .15s, color .15s; }
+.el-button--primary:not(.is-disabled):hover,
+.el-button--success:not(.is-disabled):hover {
+  background: var(--oscar-theme-soft);
+  border-color: var(--oscar-theme);
+  color: var(--oscar-theme);
+}
+.btn-default .legacy-replacement-icon, .el-button:not(.el-button--success):not(.el-button--primary) .el-icon {
+  color: var(--oscar-theme);
+}
 
 // Mobile navigation is opened by the existing Vue state, rather than a legacy plugin.
 .visible-xs, .visible-sm { display: none; }
@@ -94,7 +123,7 @@ textarea.form-control { height: auto; }
     width: min(300px, 85vw); padding: 10px; background: #fff;
     border: 1px solid $line; border-radius: 6px; box-shadow: 0 6px 20px #0002;
     .list-group-item > a { display: block; padding: 10px; }
-    .active > a { color: $theme; font-weight: 600; background: #eaf4ef; }
+    .active > a { color: $theme; font-weight: 600; background: var(--oscar-theme-soft); }
     .subNav { padding-left: 12px; }
   }
   .row-offcanvas.active #xs-menu { display: block; }

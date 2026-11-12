@@ -101,7 +101,7 @@ onBeforeUnmount(() => document.removeEventListener('mousedown', onDocClick))
 
 <style scoped lang="scss">
 .el-select {
-  --el-color-primary: var(--oscar-theme, #0b6b4f);
+  --el-color-primary: var(--oscar-theme, #005BAB);
   position: relative;
   display: block;
   width: 100%;
@@ -188,7 +188,7 @@ onBeforeUnmount(() => document.removeEventListener('mousedown', onDocClick))
 }
 
 .el-select-dropdown__item:hover {
-  background: #f5f7fa;
+  background: var(--oscar-theme-soft);
 }
 
 .el-checkbox__inner {

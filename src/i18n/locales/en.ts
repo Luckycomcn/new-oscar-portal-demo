@@ -100,7 +100,7 @@ export default {
     "searchRemoteError": "Catalogue search failed. Please retry. No demo search result is shown.",
     "typeCountError": "Unable to retrieve the populated facility type count.",
     "title": "Welcome to WIGOS Metadata System Portal",
-    "desc": "The WIGOS Metadata System Portal provides global meteorological observing station information and supports search, map, and data management for WIGOS.",
+    "desc": "provides global meteorological observing station information and supports search, map, and data management for WIGOS",
     "searchPlaceholder": "Search by station name, alias or WIGOS ID...",
     "search": "Search",
     "advancedSearch": "Advanced Search",
