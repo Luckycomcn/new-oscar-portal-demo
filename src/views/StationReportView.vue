@@ -60,9 +60,15 @@
             <dd v-if="report.description">{{ report.description }}</dd>
           </dl>
           <div class="minimap">
-            <div ref="miniEl" class="mini-ol"></div>
+            <div ref="miniAmapEl" class="mini-amap" v-show="reportBasemap === 'amap'"></div>
+            <div ref="miniEl" class="mini-ol" :class="{ 'mini-overlay': reportBasemap === 'amap' }"></div>
+            <div v-if="miniMapError" role="status">{{ $t('map.basemapLoadError') }}</div>
             <div class="mini-tools"><button type="button" @click="miniZoom(1)">+</button><button type="button" @click="miniZoom(-1)">−</button></div>
-            <div class="attr">{{ $t('stationReport.mapAttribution') }}</div>
+            <div class="attr">
+              <a v-if="reportBasemap === 'tianditu'" href="https://map.tianditu.gov.cn/" target="_blank" rel="noopener">© Tianditu</a>
+              <span v-else-if="reportBasemap === 'amap'">© AMap</span>
+              <template v-else>{{ $t('stationReport.mapAttribution') }}</template>
+            </div>
           </div>
         </div>
         <div class="extra">
@@ -150,7 +156,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref, shallowRef, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, shallowRef, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import Map from 'ol/Map'
 import View from 'ol/View'
@@ -166,6 +172,10 @@ import ScaleLine from 'ol/control/ScaleLine'
 import { defaults as defaultControls } from 'ol/control/defaults'
 import { getFeature, featureToReport, WIGOS_ITEMS_URL, type WigosReport, type ReportObservation } from '../api/wigos'
 import { downloadCatalogueRecord } from '../utils/catalogueDownload'
+import { tiandituSource } from '../utils/tianditu'
+import { selectedBasemap } from '../utils/basemap'
+import { loadAmap, toGcj02 } from '../utils/amap'
+import { toLonLat } from 'ol/proj'
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n()
@@ -179,6 +189,19 @@ const downloading = ref(false)
 const dlOpen = ref(false)
 const miniEl = ref<HTMLDivElement | null>(null)
 const miniMap = shallowRef<Map | null>(null)
+const reportBasemap = selectedBasemap.value
+const miniAmapEl = ref<HTMLDivElement | null>(null)
+const miniMapError = ref(false)
+let disposed = false
+let miniAmap: InstanceType<Awaited<ReturnType<typeof loadAmap>>['Map']> | undefined
+function reportCoordinate(lon: number, lat: number) {
+  return fromLonLat(reportBasemap === 'amap' ? toGcj02(lon, lat) : [lon, lat])
+}
+function syncMiniAmap() {
+  const view = miniMap.value?.getView()
+  const center = view?.getCenter()
+  if (center) miniAmap?.setZoomAndCenter(view?.getZoom() ?? 8, toLonLat(center), true)
+}
 
 const catalogueUrl = computed(() => `${WIGOS_ITEMS_URL}/${encodeURIComponent(wid.value)}?f=html`)
 
@@ -243,7 +266,7 @@ function paintMini() {
   const r = report.value
   if (!map || !r || r.lat == null || r.lon == null) return
   const coords: [number, number] = [r.lon, r.lat]
-  const feats = [new Feature({ geometry: new Point(fromLonLat(coords)) })]
+  const feats = [new Feature({ geometry: new Point(reportCoordinate(...coords)) })]
   feats[0].setStyle(
     new Style({
       image: new CircleStyle({
@@ -256,7 +279,7 @@ function paintMini() {
   const layer = map.getLayers().getArray().find((l) => l instanceof VectorLayer) as VectorLayer<VectorSource> | undefined
   layer?.getSource()?.clear()
   layer?.getSource()?.addFeatures(feats)
-  map.getView().animate({ center: fromLonLat(coords), zoom: 8, duration: 250 })
+  map.getView().animate({ center: reportCoordinate(...coords), zoom: 8, duration: 250 })
 }
 
 onMounted(async () => {
@@ -264,7 +287,7 @@ onMounted(async () => {
   await load()
   if (!miniEl.value) return
   const center = report.value?.lon != null && report.value?.lat != null
-    ? fromLonLat([report.value.lon, report.value.lat])
+    ? reportCoordinate(report.value.lon, report.value.lat)
     : fromLonLat([0, 0])
   miniMap.value = new Map({
     target: miniEl.value,
@@ -272,12 +295,35 @@ onMounted(async () => {
       new ScaleLine({ units: 'metric', minWidth: 80 }),
     ]),
     layers: [
-      new TileLayer({ source: new XYZ({ url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', crossOrigin: 'anonymous' }) }),
+      ...(reportBasemap === 'tianditu'
+        ? (['vec', 'cva'] as const).map((layer) => new TileLayer({ source: tiandituSource(layer) }))
+        : reportBasemap === 'amap' ? [] : [new TileLayer({ source: new XYZ({ url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png', crossOrigin: 'anonymous' }) })]),
       new VectorLayer({ source: new VectorSource() }),
     ],
     view: new View({ center, zoom: 8, minZoom: 2, maxZoom: 18 }),
   })
+  miniMap.value.on('moveend', syncMiniAmap)
   paintMini()
+  if (reportBasemap === 'amap' && miniAmapEl.value) {
+    try {
+      const api = await loadAmap()
+      if (disposed || !miniAmapEl.value) return
+      miniAmap = new api.Map(miniAmapEl.value, {
+        viewMode: '2D', center: toLonLat(center), zoom: 8, zooms: [2, 18],
+        dragEnable: false, zoomEnable: true, keyboardEnable: false,
+        animateEnable: false, resizeEnable: true, doubleClickZoom: false,
+        scrollWheel: false, touchZoom: false,
+      })
+      miniAmap.on('complete', syncMiniAmap)
+      syncMiniAmap()
+    } catch { if (!disposed) miniMapError.value = true }
+  }
+})
+
+onBeforeUnmount(() => {
+  disposed = true
+  miniAmap?.destroy()
+  miniMap.value?.setTarget(undefined)
 })
 
 watch(wid, async () => {
@@ -494,6 +540,9 @@ $srd-info-line: #bcd9f0;
     }
   }
 }
+
+.mini-amap { position: absolute; inset: 0 0 auto; height: 230px; pointer-events: none; }
+.mini-overlay { position: relative; background: transparent; }
 
 .attr {
   font-size: 10px;

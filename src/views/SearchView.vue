@@ -289,6 +289,7 @@ h2 { display: inline; margin: 0; padding: 0; border: 0; text-transform: uppercas
 .active-criteria { margin: 16px 0 12px; font-size: 11px; }
 .active-criteria span { display: inline-block; padding: 4px 8px; background: #f5f7fa; border: 1px solid #e4eaf0; border-radius: 4px; overflow-wrap: anywhere; }
 .map-wrap { position: relative; overflow: hidden; border: 1px solid #d9e5e7; border-radius: 6px; }
+.map-wrap :deep(.oscar-ol-wrap) { margin-inline: 0; }
 .map-wrap :deep(.oscar-ol-map) { height: max(430px, calc(100vh - 330px)); }
 .map-caption { padding: 6px 10px; background: #f5f8fa; font-size: 10px; }
 .map-empty { position: absolute; top: 45%; width: 100%; text-align: center; background: #ffffffd9; padding: 12px; }

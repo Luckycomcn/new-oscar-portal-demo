@@ -56,7 +56,7 @@
       </div>
 
       <div class="oscar-map-layers">
-        <select :aria-label="$t('map.basemap')" @change="selectBasemap">
+        <select :value="basemap" :aria-label="$t('map.basemap')" @change="selectBasemap">
           <option value="osm">{{ $t('map.basemapOsm') }}</option>
           <option value="amap">{{ $t('map.basemapAmap') }}</option>
           <option value="tianditu">{{ $t('map.basemapTianditu') }}</option>
@@ -164,7 +164,7 @@ const downloading = ref(false)
 const downloadError = ref('')
 const { t, locale } = useI18n()
 const dlOpen = ref(false)
-type Basemap = 'osm' | 'amap' | 'tianditu'
+import { selectedBasemap, rememberBasemap, type Basemap } from '../utils/basemap'
 const DEFAULT_CENTER = [0, 0]
 const WORLD_EXTENT = transformExtent([-180, -85, 180, 85], 'EPSG:4326', 'EPSG:3857')
 const DEFAULT_ZOOM = 2.2
@@ -779,6 +779,7 @@ onMounted(() => {
     if (showingWorld) fitWorld()
   })
   resizeObserver.value.observe(mapEl.value)
+  void selectBasemap({ target: { value: selectedBasemap.value } } as unknown as Event)
 })
 
 watch(() => props.visibleStations, () => {
@@ -921,6 +922,7 @@ async function selectBasemap(event: Event) {
 
   basemapStatus.value = ''
   basemap.value = next
+  rememberBasemap(next)
   osmLayer.setVisible(next === 'osm')
   tiandituLayers.forEach((layer) => layer.setVisible(next === 'tianditu'))
   gridLayer.setVisible(next !== 'amap')
