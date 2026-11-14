@@ -35,6 +35,9 @@
             <li class="list-group-item" :class="{ active: route.name === 'export' }">
               <router-link :to="{ name: 'export' }" @click="offCanvasOpen = false">{{ t('nav.export') }}</router-link>
             </li>
+            <li class="list-group-item" :class="{ active: route.name === 'about' }">
+              <router-link :to="{ name: 'about' }" @click="offCanvasOpen = false">{{ t('nav.about') }}</router-link>
+            </li>
           </ul>
         </div>
 

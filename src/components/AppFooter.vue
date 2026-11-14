@@ -22,12 +22,16 @@
     <span>
       {{ $t('footer.disclaimer') }}
     </span>
-    <span>{{ $t('footer.version', { version }) }}</span>
+    <span class="footer-version">
+      @ 2026 <a :href="repositoryUrl" target="_blank" rel="noopener noreferrer">new-oscar-portal-demo</a> {{ version }}
+    </span>
   </div>
 </template>
 
 <script setup lang="ts">
 import { version } from '../../package.json'
+
+const repositoryUrl = 'https://github.com/Luckycomcn/new-oscar-portal-demo'
 </script>
 
 <style scoped>
@@ -48,5 +52,13 @@ import { version } from '../../package.json'
   line-height: 1.35;
   letter-spacing: 0.04em;
   font-weight: 600;
+}
+.footer-version a {
+  color: #005288;
+  text-decoration: none;
+}
+.footer-version a:hover,
+.footer-version a:focus-visible {
+  text-decoration: underline;
 }
 </style>

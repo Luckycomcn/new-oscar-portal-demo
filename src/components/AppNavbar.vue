@@ -20,6 +20,12 @@
             {{ t('nav.export') }}
           </router-link>
         </li>
+        <li :class="{ active: route.name === 'about' }">
+          <router-link :to="{ name: 'about' }">
+            <el-icon><InfoFilled /></el-icon>
+            {{ t('nav.about') }}
+          </router-link>
+        </li>
         <li class="nav-language">
           <el-dropdown trigger="click" popper-class="nav-language__menu" @command="handleLanguageChange">
             <span class="nav-language__trigger" :title="t('nav.language')">
@@ -58,7 +64,7 @@ import { useRoute } from 'vue-router'
 import { useI18n } from 'vue-i18n'
 import { ElIcon } from 'element-plus'
 import 'element-plus/es/components/icon/style/css'
-import { ArrowDown, Download, HomeFilled, Search } from '@element-plus/icons-vue'
+import { ArrowDown, Download, HomeFilled, InfoFilled, Search } from '@element-plus/icons-vue'
 import QuickSearch from './QuickSearch.vue'
 import { setLocale, SUPPORTED_LOCALES, getCurrentLanguageLabel, type Locale } from '../i18n'
 

@@ -6,7 +6,7 @@ A demonstration WIGOS metadata portal built with Vue 3, TypeScript, SCSS and Ope
 
 ## Features
 
-The application provides four page types:
+The application provides five page types:
 
 | Page | Development URL |
 | --- | --- |
@@ -14,6 +14,7 @@ The application provides four page types:
 | Station search | http://localhost:5173/#/search |
 | Export | http://localhost:5173/#/export |
 | Station report | http://localhost:5173/#/station/report/0-22000-0-2903947 |
+| About | http://localhost:5173/#/about |
 
 Station reports share one template, with the WIGOS identifier changing to match the selected station. Search results and map markers open the corresponding report. Unrecognized routes redirect to the home page.
 
@@ -21,11 +22,12 @@ Station reports share one template, with the WIGOS identifier changing to match 
 - **Search:** keyword and metadata filters, result tables, pagination and map view.
 - **Station reports:** station characteristics, observation metadata and report downloads.
 - **Export:** generate and download CSV/JSON result sets and individual JSON records.
+- **About:** the WIGOS GOFC OGC API - Records endpoints and related WMO tools.
 - **Maps:** zoom, reset view, select a basemap and inspect station information.
 - **Languages:** English, Chinese, French and Spanish. English is the default; untranslated messages fall back to English.
 - **Routing:** hash-based URLs, suitable for static hosting without SPA history fallback rules.
 
-XML downloads retrieve the original WMDR metadata through its OAI service. CSV/JSON files are generated from catalogue records.
+The original WMDR XML is linked directly from the catalogue record (currently the OSCAR OAI service); CSV/JSON files are generated from catalogue records.
 
 ## Technology
 
@@ -53,7 +55,7 @@ XML downloads retrieve the original WMDR metadata through its OAI service. CSV/J
 ├── vite.config.ts           # Build settings and development proxies
 ├── tsconfig*.json           # TypeScript configuration
 ├── Dockerfile               # Node build stage and Nginx runtime
-├── nginx.conf               # Production web server and proxy settings
+├── nginx.conf               # Production web server settings
 ├── LICENSE                  # Apache License 2.0
 ├── NOTICE                   # Attribution and third-party resource notices
 ├── src/
@@ -64,12 +66,12 @@ XML downloads retrieve the original WMDR metadata through its OAI service. CSV/J
 │   ├── router/              # Hash routes
 │   ├── stores/              # Search and export state
 │   ├── utils/               # Download and map utilities
-│   ├── views/               # The four retained page types
+│   ├── views/               # The five retained page types
 │   └── style.scss           # Independently implemented global styles
 ├── public/                  # Static assets copied into the build
 │   ├── images/              # Retained image assets
 │   └── data/                # Geographic data and source information
-├── scripts/                 # Delivery build helpers
+├── scripts/                 # Delivery build and codelist refresh helpers
 ├── tests/                   # Catalogue and map checks
 └── docs/                    # Local documentation (not version-controlled)
 ```
@@ -149,21 +151,15 @@ Linux containers mode for actual packaging; `-Check` does not require Docker.
 
 1. **Deployment paths**
 
-   Vite uses `base: './'` for relative build asset paths. The favicon references in `index.html` use absolute `/images/*` paths, and download proxy requests use root-relative URLs. Adjust these references and server routing when deploying under a subpath.
+   Vite uses `base: './'` for relative build asset paths. The favicon references in `index.html` use absolute `/images/*` paths. Adjust these references and server routing when deploying under a subpath. No download proxy is required.
 
 2. **Catalogue service**
 
    The default catalogue host is `https://wmo-resource-catalogue.labs.wis2dev.io`. Set `VITE_WIGOS_GOFC_URL` in a local `.env.local` file to override it, then restart Vite or rebuild.
 
-3. **Download proxies**
+3. **Original WMDR XML**
 
-   `vite.config.ts` configures proxies for development and preview; `nginx.conf` provides the production equivalents:
-
-   | Endpoint | Purpose |
-   | --- | --- |
-   | `/wmdr-source` | Retrieve original WMDR XML through the OAI service |
-
-   Removing these proxies without replacing the download implementation will break the corresponding downloads. These are service requests, not imports of the original site's frontend code.
+   The XML download link points directly at the `rel="original"` URL supplied by the catalogue record (today `https://oscar.wmo.int/oai/provider`). No `/wmdr-source` proxy exists in `nginx.conf` or `vite.config.ts`, and no CORS-dependent fetch is made. That OAI endpoint will be retired with the OSCAR/Surface renewal; when the original WMDR2 documents move to a new archive, the catalogue link changes and the portal follows it without a code change.
 
 4. **Styles and images**
 
@@ -177,7 +173,11 @@ Linux containers mode for actual packaging; `-Check` does not require Docker.
 
    JSON reference files imported from `src/data/` are build inputs and must remain available. Station search uses the online catalogue rather than a local station-list fallback.
 
-7. **Map providers**
+7. **WMDR programme/network options**
+
+   `src/data/programAffiliations.json` is generated from the complete WMO codelist at `https://codes.wmo.int/wmdr/ProgramAffiliation` (all published concepts, including GCW CryoNet). Refresh it with `npm run refresh:wmdr-codes` (or pass a local CSV path to `scripts/refresh-wmdr-codes.mjs`). The file is committed so filter options never depend on a runtime request to codes.wmo.int.
+
+8. **Map providers**
 
    OpenStreetMap requires no API key. AMap and Tianditu require provider-specific configuration; see `.env.example`. Values prefixed with `VITE_` are exposed to browser code, so do not place server-only secrets in them. The Docker build accepts `VITE_AMAP_KEY`, `VITE_TIANDITU_KEY` and `VITE_AMAP_SERVICE_HOST` as build arguments.
 

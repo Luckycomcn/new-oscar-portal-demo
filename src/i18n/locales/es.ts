@@ -4,7 +4,8 @@ export default {
     "home": "Inicio",
     "search": "Buscar",
     "export": "Exportar",
-    "language": "Idioma"
+    "language": "Idioma",
+    "about": "Acerca de"
   },
   "header": {
     "portalName": "Portal de metadatos WIGOS",
@@ -18,7 +19,6 @@ export default {
     "brandSub3": "Portal del sistema"
   },
   "footer": {
-    "version": "Versión: {version}",
     "disclaimer": "Las imágenes y los registros del catálogo pertenecen a sus proveedores. Este portal no representa a la OMM ni implica su respaldo.",
     "attribution": "Portal de demostración independiente"
   },
@@ -49,7 +49,8 @@ export default {
     "station": "Estación",
     "stationSearch": "Búsqueda de estaciones",
     "stationReport": "Informe de estación",
-    "export": "Exportar y descargar"
+    "export": "Exportar y descargar",
+    "about": "Acerca de"
   },
   "sidebar": {
     "quickAccess": "Acceso rápido",
@@ -96,7 +97,7 @@ export default {
       "observationTypes": "Tipos de observación",
       "observationTypesNote": "Tipos del catálogo",
       "lastUpdate": "Última actualización",
-      "lastUpdateNote": "(UTC)"
+      "lastUpdateNote": "Último registro del catálogo"
     },
     "searchRemoteError": "La búsqueda en el catálogo falló. Inténtelo de nuevo. No se muestran resultados de demostración.",
     "typeCountError": "No se pudo obtener el número de tipos de estaciones con datos.",

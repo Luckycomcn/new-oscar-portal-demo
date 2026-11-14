@@ -4,7 +4,8 @@ export default {
     "home": "首页",
     "search": "搜索",
     "export": "导出",
-    "language": "语言"
+    "language": "语言",
+    "about": "关于"
   },
   "header": {
     "portalName": "WIGOS 元数据门户",
@@ -19,7 +20,6 @@ export default {
   },
   "footer": {
     "disclaimer": "图片和目录记录的权利归各自提供方所有。本门户不代表 WMO，也不表示获得其认可。",
-    "version": "版本：{version}",
     "attribution": "独立演示门户"
   },
   "menu": {
@@ -53,7 +53,8 @@ export default {
     "station": "台站",
     "stationSearch": "台站搜索",
     "stationReport": "台站报告",
-    "export": "导出与下载"
+    "export": "导出与下载",
+    "about": "关于"
   },
   "sidebar": {
     "quickAccess": "快速访问",
@@ -112,7 +113,7 @@ export default {
       "observationTypes": "观测类型",
       "observationTypesNote": "（记录的 WMDR 站点类型，不含 unknown）",
       "lastUpdate": "最近更新",
-      "lastUpdateNote": "（UTC）"
+      "lastUpdateNote": "目录最新记录"
     },
     "hint": {
       "none": "未找到与 \"{term}\" 匹配的台站，正在显示全部台站。",

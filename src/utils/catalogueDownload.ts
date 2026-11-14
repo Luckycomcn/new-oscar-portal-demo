@@ -32,20 +32,18 @@ export async function downloadCatalogueRecord(id: string, format: 'json' | 'xml'
     const link = record.links?.find((item) => item.rel === 'original' && /xml/i.test(item.type ?? ''))
     if (!link) throw new Error('No original WMDR XML link provided')
     const source = new URL(link.href)
-    // The fixed proxy handles OSCAR's XML source without relying on browser CORS.
-    if (source.origin !== 'https://oscar.wmo.int' || source.pathname !== '/oai/provider') {
-      throw new Error('Unsupported WMDR source')
-    }
-    const response = await fetch(`/wmdr-source${source.search}`, { signal: AbortSignal.timeout(30000) })
-    if (!response.ok) throw new Error(`XML HTTP ${response.status}`)
-    const text = await response.text()
-    const document = new DOMParser().parseFromString(text, 'application/xml')
-    if (document.getElementsByTagName('parsererror').length ||
-        document.getElementsByTagNameNS('*', 'error').length) throw new Error('Invalid XML source response')
-    const metadata = document.getElementsByTagNameNS('*', 'metadata')[0]?.firstElementChild
-    if (!metadata) throw new Error('WMDR metadata missing in source response')
-    const xml = '<?xml version="1.0" encoding="UTF-8"?>\n' + new XMLSerializer().serializeToString(metadata)
-    saveCatalogueFile(new Blob([xml], { type: 'application/xml;charset=utf-8' }), id, 'xml')
+    // Link directly to the source (currently oscar.wmo.int) instead of proxying
+    // /wmdr-source. The catalogue owns this URL: when the OAI endpoint is
+    // replaced by the renewal, the record's original link moves to the new
+    // archive and this code keeps working without a hardcoded host or path.
+    if (source.protocol !== 'https:') throw new Error('Unsupported WMDR source')
+    const anchor = document.createElement('a')
+    anchor.href = source.href
+    anchor.target = '_blank'
+    anchor.rel = 'noopener noreferrer'
+    document.body.appendChild(anchor)
+    anchor.click()
+    anchor.remove()
     return
   }
   const content = JSON.stringify(record, null, 2)

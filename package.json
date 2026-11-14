@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "refresh:station-overview": "node scripts/build-station-overview.mjs --refresh",
+    "refresh:wmdr-codes": "node scripts/refresh-wmdr-codes.mjs",
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview"

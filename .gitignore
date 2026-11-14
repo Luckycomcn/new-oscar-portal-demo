@@ -15,9 +15,8 @@ dist-ssr
 *.local
 *.tsbuildinfo
 
-# Editor directories and files
-.vscode/*
-!.vscode/extensions.json
+# Editor directories and files (untrusted workspace settings are not committed)
+.vscode/
 .idea
 .DS_Store
 *.suo

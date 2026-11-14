@@ -13,7 +13,14 @@
         @mouseenter="onPopupEnter"
         @mouseleave="onPopupLeave"
       >
-        <div class="identify-popup__title">{{ hover.title }}</div>
+        <a
+          v-if="!hover.count && hover.wigosId"
+          class="identify-popup__title identify-popup__title-link"
+          :href="reportHref(hover.wigosId)"
+          target="_blank"
+          rel="noopener noreferrer"
+        >{{ hover.title }}</a>
+        <div v-else class="identify-popup__title">{{ hover.title }}</div>
         <div v-if="hover.count" class="identify-popup__body">{{ t('map.overviewZoomHint') }}</div>
         <div v-else class="identify-popup__body">
           <div><b>{{ $t('map.wigosId') }}:</b><br />{{ hover.wigosId }}</div>
@@ -33,10 +40,12 @@
               <button type="button" @click="downloadWmdrV2">{{ $t('stationReport.wmdrV2') }}</button>
             </span>
           </span>
-          <router-link
+          <a
             class="btn btn-default btn-xs"
-            :to="{ name: 'stationReportDetails', params: { wigosId: hover.wigosId } }"
-          >{{ $t('map.stationReport') }}</router-link>
+            :href="reportHref(hover.wigosId)"
+            target="_blank"
+            rel="noopener noreferrer"
+          >{{ $t('map.stationReport') }}</a>
         </div>
       </div>
 
@@ -74,9 +83,9 @@
     <p v-if="overviewActive" class="overview-note" role="status">{{ t('map.overviewSnapshot', { date: overview.generatedAt.slice(0, 10) }) }}<span v-if="overview.unmapped"> · {{ t('map.overviewUnmapped', { count: overview.unmapped }) }}</span></p>
     <p v-else-if="filteredSnapshotDate" class="overview-note" role="status">{{ t('map.filteredSnapshot', { date: filteredSnapshotDate, count: matchedCount.toLocaleString() }) }}<span v-if="filteredUnmapped"> · {{ t('map.overviewUnmapped', { count: filteredUnmapped }) }}</span></p>
     <div v-if="selected" class="oscar-infobox">
-      <strong>{{ selected.name }}</strong>
+      <strong><a :href="reportHref(selected.wigosId)" target="_blank" rel="noopener noreferrer">{{ selected.name }}</a></strong>
       <div>{{ selected.wigosId }} · {{ selected.type }}</div>
-      <router-link :to="{ name: 'stationReportDetails', params: { wigosId: selected.wigosId } }">{{ $t('map.openStationReport') }}</router-link>
+      <a :href="reportHref(selected.wigosId)" target="_blank" rel="noopener noreferrer">{{ $t('map.openStationReport') }}</a>
     </div>
   </div>
 </template>
@@ -109,6 +118,7 @@ import type { Station, StationDomain } from '../data/stations'
 import { domainColors } from '../data/stations'
 import { downloadCatalogueRecord } from '../utils/catalogueDownload'
 import { useI18n } from 'vue-i18n'
+import { useRouter } from 'vue-router'
 import { WORLD_ISLANDS, WORLD_LAND } from '../data/worldLand'
 import {
   WIGOS_TILES_URL,
@@ -163,6 +173,12 @@ const isOverPopup = ref(false)
 const downloading = ref(false)
 const downloadError = ref('')
 const { t, locale } = useI18n()
+const router = useRouter()
+
+/** Station reports open in a new tab; hash routing resolves relative to the deployed base. */
+function reportHref(wigosId: string): string {
+  return router.resolve({ name: 'stationReportDetails', params: { wigosId } }).href
+}
 const dlOpen = ref(false)
 import { selectedBasemap, rememberBasemap, type Basemap } from '../utils/basemap'
 const DEFAULT_CENTER = [0, 0]
@@ -1022,11 +1038,23 @@ function flyToFocusedStation() {
 }
 
 .identify-popup__title {
+  display: block;
   overflow-wrap: anywhere;
   padding: 6px 8px;
   border-bottom: 1px solid #d5e3ef;
   font-weight: 600;
   background: #fff;
+  color: #222;
+}
+
+.identify-popup__title-link {
+  color: #005288;
+  text-decoration: none;
+}
+
+.identify-popup__title-link:hover,
+.identify-popup__title-link:focus-visible {
+  text-decoration: underline;
 }
 
 .identify-popup__body {

@@ -1,5 +1,6 @@
 import type { StationDomain } from './stations'
 import variableTreeRaw from './variableTree.json'
+import programAffiliationCodes from './programAffiliations.json'
 import { findTerritoryId, territories, territoryById, type WmdrTerritory } from './wmdrTerritories'
 
 export { findTerritoryId, territories, territoryById }
@@ -75,30 +76,13 @@ export function wmoRegionTitle(id?: string | null): string {
 }
 
 /**
- * Program affiliations that currently exist in the WIGOS observing facility catalogue.
- * Curated from https://codes.wmo.int/wmdr/ProgramAffiliation.
+ * All programme / network affiliations published by the WMDR code list at
+ * https://codes.wmo.int/wmdr/ProgramAffiliation. The bundled JSON is generated
+ * by `npm run refresh:wmdr-codes` so advanced-search options always cover every
+ * valid affiliation (including GCW CryoNet) without a runtime dependency on
+ * codes.wmo.int or browser CORS.
  */
-export const programAffiliations: WmdrCode[] = [
-  { id: 'GOSGeneral', title: 'GOS General' },
-  { id: 'GBON', title: 'GBON' },
-  { id: 'RBON', title: 'RBON' },
-  { id: 'RBSN', title: 'RBSN' },
-  { id: 'GSN', title: 'GSN' },
-  { id: 'GUAN', title: 'GUAN' },
-  { id: 'GTOS', title: 'GTOS' },
-  { id: 'GDP', title: 'Global Drifter Program (GDP)' },
-  { id: 'OceanSITES', title: 'OceanSITES' },
-  { id: 'ANTONs', title: 'ANTON(S)' },
-  { id: 'ANTONt', title: 'ANTON(T)' },
-  { id: 'AGAGE', title: 'AGAGE' },
-  { id: 'AERONET', title: 'AERONET' },
-  { id: 'EANET', title: 'EANET' },
-  { id: 'NDACC', title: 'NDACC' },
-  { id: 'TCCON', title: 'TCCON' },
-  { id: 'ICOS', title: 'ICOS' },
-  { id: 'GRUAN', title: 'GRUAN' },
-  { id: 'AMDAR', title: 'AMDAR' },
-]
+export const programAffiliations: WmdrCode[] = programAffiliationCodes as WmdrCode[]
 
 const programIndex = new Map(programAffiliations.map((p) => [p.id.toLowerCase(), p.title]))
 

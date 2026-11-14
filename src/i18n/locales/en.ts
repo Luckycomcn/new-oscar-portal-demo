@@ -4,7 +4,8 @@ export default {
     "home": "Home",
     "search": "Search",
     "export": "Export",
-    "language": "Language"
+    "language": "Language",
+    "about": "About"
   },
   "header": {
     "portalName": "WIGOS Metadata Portal",
@@ -19,7 +20,6 @@ export default {
   },
   "footer": {
     "disclaimer": "Images and catalogue records belong to their respective providers. This portal does not represent WMO or imply its endorsement.",
-    "version": "Version: {version}",
     "attribution": "Independent demonstration portal"
   },
   "menu": {
@@ -53,7 +53,8 @@ export default {
     "station": "Station",
     "stationSearch": "Station search",
     "stationReport": "Station report",
-    "export": "Export and download"
+    "export": "Export and download",
+    "about": "About"
   },
   "sidebar": {
     "quickAccess": "Quick access",
@@ -112,7 +113,7 @@ export default {
       "observationTypes": "Observation types",
       "observationTypesNote": "Types in catalogue",
       "lastUpdate": "Last update",
-      "lastUpdateNote": "(UTC)"
+      "lastUpdateNote": "Latest catalogue record"
     },
     "hint": {
       "none": "No station found for \"{term}\", showing all stations.",

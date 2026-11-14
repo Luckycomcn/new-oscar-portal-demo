@@ -4,7 +4,8 @@ export default {
     "home": "Accueil",
     "search": "Recherche",
     "export": "Exporter",
-    "language": "Langue"
+    "language": "Langue",
+    "about": "À propos"
   },
   "header": {
     "portalName": "Portail de métadonnées WIGOS",
@@ -18,7 +19,6 @@ export default {
     "brandSub3": "Portail du système"
   },
   "footer": {
-    "version": "Version : {version}",
     "disclaimer": "Les images et les données du catalogue restent la propriété de leurs fournisseurs. Ce portail ne représente pas l’OMM et ne bénéficie pas de son approbation.",
     "attribution": "Portail de démonstration indépendant"
   },
@@ -49,7 +49,8 @@ export default {
     "station": "Station",
     "stationSearch": "Recherche de stations",
     "stationReport": "Rapport de station",
-    "export": "Exporter et télécharger"
+    "export": "Exporter et télécharger",
+    "about": "À propos"
   },
   "sidebar": {
     "quickAccess": "Accès rapide",
@@ -96,7 +97,7 @@ export default {
       "observationTypes": "Types d’observation",
       "observationTypesNote": "Types du catalogue",
       "lastUpdate": "Dernière mise à jour",
-      "lastUpdateNote": "(UTC)"
+      "lastUpdateNote": "Dernière fiche du catalogue"
     },
     "searchRemoteError": "La recherche dans le catalogue a échoué. Veuillez réessayer. Aucun résultat de démonstration n’est affiché.",
     "typeCountError": "Impossible de récupérer le nombre de types de stations renseignés.",
